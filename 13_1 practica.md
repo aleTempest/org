@@ -1,3 +1,9 @@
+---
+title: Práctica: 13-1
+author: Agustín Alejandro Mota Hinojosa
+geometry: margin=0.5in
+...
+
 # Terminología {-}
 
   ---------------------- ---------------------------------------------------

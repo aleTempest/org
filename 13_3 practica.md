@@ -1,3 +1,9 @@
+---
+title: Práctica: 13-3
+author: Agustín Alejandro Mota Hinojosa
+geometry: margin=0.5in
+...
+
 # Inténtalo/Resuélvalo {-}
 
 1.  ¿Por qué es importante poder modificar una tabla?

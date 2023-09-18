@@ -1,3 +1,9 @@
+---
+title: Práctica: 13-2
+author: Agustín Alejandro Mota Hinojosa
+geometry: margin=0.5in
+...
+
 # Terminología {-}
 
 1. Permite almacenar el tiempo como un intervalo de años y meses
