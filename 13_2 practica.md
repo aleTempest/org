@@ -1,6 +1,6 @@
 ---
-title: Práctica: 13-2
-author: Agustín Alejandro Mota Hinojosa
+title: "Práctica: 13-2"
+author: "Agustín Alejandro Mota Hinojosa"
 geometry: margin=0.5in
 ...
 
