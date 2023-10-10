@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{select}\PYG{+w}{ }\PYG{n}{uix}\PYG{p}{.}\PYG{n}{index\PYGZus{}name}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{i}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{ucm}\PYG{p}{.}\PYG{k}{column\PYGZus{}name}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{k}{c}\PYG{p}{,}
+\PYG{+w}{       }\PYG{n}{ucm}\PYG{p}{.}\PYG{n}{column\PYGZus{}position}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{p}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{uix}\PYG{p}{.}\PYG{k}{unique}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{n}{u}
+\PYG{+w}{    }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{user\PYGZus{}indexes}\PYG{+w}{ }\PYG{n}{uix}
+\PYG{+w}{        }\PYG{k}{inner}\PYG{+w}{ }\PYG{k}{join}\PYG{+w}{ }\PYG{n}{user\PYGZus{}ind\PYGZus{}columns}\PYG{+w}{ }\PYG{n}{ucm}\PYG{+w}{ }\PYG{k}{on}\PYG{+w}{ }\PYG{n}{uix}\PYG{p}{.}\PYG{n}{index\PYGZus{}name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{ucm}\PYG{p}{.}\PYG{n}{index\PYGZus{}name}
+\PYG{+w}{    }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{ucm}\PYG{p}{.}\PYG{k}{table\PYGZus{}name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}d\PYGZus{}songs\PYGZsq{}}\PYG{p}{;}
+\end{Verbatim}

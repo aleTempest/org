@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{role}\PYG{+w}{ }\PYG{n}{jefe}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{grant}\PYG{+w}{ }\PYG{k}{select}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{insert}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{update}\PYG{p}{,}\PYG{+w}{ }\PYG{k}{delete}\PYG{+w}{ }\PYG{k}{on}\PYG{+w}{ }\PYG{n}{employees}\PYG{+w}{ }\PYG{k}{to}\PYG{+w}{ }\PYG{n}{jefe}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{time\PYGZus{}ex4}
+\PYG{+w}{    }\PYG{p}{(}\PYG{n}{loan\PYGZus{}duration1}\PYG{+w}{ }\PYG{n+nb}{INTERVAL}\PYG{+w}{ }\PYG{k}{YEAR}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{TO}\PYG{+w}{ }\PYG{k}{MONTH}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{loan\PYGZus{}duration2}\PYG{+w}{ }\PYG{n+nb}{INTERVAL}\PYG{+w}{ }\PYG{k}{YEAR}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{TO}\PYG{+w}{ }\PYG{k}{MONTH}\PYG{p}{);}
+\end{Verbatim}

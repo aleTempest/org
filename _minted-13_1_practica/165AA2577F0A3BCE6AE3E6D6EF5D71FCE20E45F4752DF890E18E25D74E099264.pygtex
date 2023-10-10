@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{     }\PYG{k}{select}\PYG{+w}{ }\PYG{o}{*}
+\PYG{+w}{        }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{user\PYGZus{}objects}
+\PYG{+w}{     }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{object\PYGZus{}type}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}sequence\PYGZsq{}}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{alter}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}d\PYGZus{}clients}
+\PYG{+w}{    }\PYG{n}{disable}\PYG{+w}{ }\PYG{k}{constraint}\PYG{+w}{ }\PYG{n}{COPY\PYGZus{}D\PYGZus{}CLIENTS\PYGZus{}PK}\PYG{p}{;}
+\end{Verbatim}

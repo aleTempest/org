@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{     }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{global\PYGZus{}locations}
+\PYG{+w}{     }\PYG{p}{(}\PYG{n}{id}\PYG{+w}{ }\PYG{n+nb}{number}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{primary}\PYG{+w}{ }\PYG{k}{key}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n}{g\PYGZus{}name}\PYG{+w}{ }\PYG{n+nb}{varchar}\PYG{p}{(}\PYG{l+m+mi}{30}\PYG{p}{),}
+\PYG{+w}{      }\PYG{n}{date\PYGZus{}opened}\PYG{+w}{ }\PYG{k}{timestamp}\PYG{+w}{ }\PYG{k}{with}\PYG{+w}{ }\PYG{k}{local}\PYG{+w}{ }\PYG{k}{time}\PYG{+w}{ }\PYG{k}{zone}\PYG{+w}{ }\PYG{k}{default}\PYG{+w}{ }\PYG{n}{sysdate}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n}{address}\PYG{+w}{ }\PYG{n+nb}{varchar}\PYG{p}{(}\PYG{l+m+mi}{60}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{not}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n}{postal\PYGZus{}code}\PYG{+w}{ }\PYG{n+nb}{varchar}\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{),}
+\PYG{+w}{      }\PYG{n}{phone}\PYG{+w}{ }\PYG{n+nb}{varchar}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{not}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n}{email}\PYG{+w}{ }\PYG{n+nb}{varchar}\PYG{p}{(}\PYG{l+m+mi}{30}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{not}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{,}
+\PYG{+w}{      }\PYG{n}{manager\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{number}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{),}
+\PYG{+w}{      }\PYG{n}{emergency\PYGZus{}contact}\PYG{+w}{ }\PYG{n+nb}{varchar}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{),}
+\PYG{+w}{      }\PYG{k}{constraint}\PYG{+w}{ }\PYG{n}{email\PYGZus{}phone\PYGZus{}uk}\PYG{+w}{ }\PYG{k}{unique}\PYG{p}{(}\PYG{n}{email}\PYG{p}{,}\PYG{n}{phone}\PYG{p}{)}
+\PYG{+w}{      }\PYG{p}{);}
+\end{Verbatim}

@@ -1,0 +1,112 @@
+#+title: Práctica: 13-1
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Terminología
+  :PROPERTIES:
+  :CUSTOM_ID: terminología
+  :CLASS: unnumbered
+  :END:
+
+1. Creado y mantenido por el servidor de Oracle.
+    Contiene información sobre la base de datos.
+
+    *Respuesta*: Diccionario de datos
+
+2. Recopilación de objetos que son las estructuras lógicas que hacen
+   referencia directa a los datos de la base de datos.
+
+    *Respuesa*: Esquema
+
+3. Especifica un valor predefinido si se omite un valor en la sentencia insert.
+    Tabla
+
+    *Respuesta*: default
+
+4. Unidad básica de almacenamiento compuesta por filas y columnas.
+
+    *Respuesta*: Almacena los datos.
+
+5. Comando que se utiliza para crear una nueva tabla.
+
+    *Respuesta*: create table
+
+* Inténtelo/Resuélvalo
+  :PROPERTIES:
+  :CUSTOM_ID: inténteloresuélvalo
+  :CLASS: unnumbered
+  :END:
+
+1. Complete el gráfico de la instancia de tabla GRADUATE CANDIDATE.
+   Credits es una columna de clave ajena que hace referencia a la tabla
+   de requisitos.
+
+   | Nombre de la columna | =student_id= | =last_name= | =first_name= | =credits= | =graduation_date= |
+   |----------------------+------------+-----------+------------+---------+-----------------|
+   | Tipo de clave        | pk         |           |            | fk      | No              |
+   | Null/unique          | Si         | No        | No         | Si      | No              |
+   | Columna FK           |            |           |            | =credits= |                 |
+   | Tipo de dato         | =number=     | =varchar2=  | =varchar2=   | =number=  | =date=            |
+   | Lenght               | 6          | 30        | 30         | 6       |                 |
+
+2. Escriba la sintaxis para crear la tabla grad_candidates.
+
+   #+BEGIN_SRC sql
+     create table grad_candidates
+         (student_id number(6),
+         last_name varchar2(30),
+         first_name varchar2(30),
+         credits number(3),
+         graduation_date date default sysdate);
+   #+END_SRC
+
+3. Confirme la creación de la tabla mediante =describe=.
+
+   #+CAPTION: grad_candidates
+   [[./resources/t_grad_candidates.png]]
+
+4. Cree una nueva tabla mediante una subconsulta. Asigne su primer
+   apellido como nombre de la nueva tabla; por ejemplo, =smith_table=.
+   Mediante una subconsulta, copie =grad_candidates= en =smith_table=.
+
+   #+BEGIN_SRC sql
+     create table mota_table
+     as (select * from grad_candidates);
+   #+END_SRC
+
+5. Inserte sus datos personales en la tabla creada en la pregunta 4.
+
+   #+BEGIN_SRC sql
+     insert into mota_table
+         (student_id,last_name,first_name,credits,graduation_date)
+     values
+         (3,'Mota Hinojosa', 'Agustín Alejandro',0,to_date('2025-05-01','YYYY-MM-DD'));
+   #+END_SRC
+
+6. Consulte el diccionario de datos para cada uno:
+
+   1. =user_tables= Devuelve todas las tablas creadas por el usuario
+
+     #+begin_src sql
+     select table_name, status
+     from user_tables;
+     #+end_src
+
+     [[./resources/user_table_status.png]]
+
+   2. =user_objects= Devuelve todas los objetos creados por el usuario
+
+     #+begin_src sql
+     select *
+        from user_objects
+     where object_type = 'sequence';
+     #+end_src
+
+     [[./resources/user_objects_sequence.png]]
+
+   3. =user_catalog= Devuelve tablas y indices creados por el usuario.
+
+      #+begin_src sql
+      select * from user_catalog;
+      #+end_src
+
+      [[./resources/user_catalog.png]]

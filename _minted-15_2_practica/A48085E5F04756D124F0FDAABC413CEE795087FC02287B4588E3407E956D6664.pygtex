@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{delete}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{read\PYGZus{}copy\PYGZus{}d\PYGZus{}cds}\PYG{+w}{ }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{cd\PYGZus{}number}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{90}\PYG{p}{;}
+\end{Verbatim}

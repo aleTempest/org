@@ -1,0 +1,20 @@
+- [X] JTextArea
+- [X] JCheckBox
+- [X] JRadioButton
+- [X] JComboBox
+- [X] JList
+- [X] JTable
+- [X] JScrollPane /agregado pero no se ve/
+- [X] JSeparator /agregado pero no se ve/
+- [X] JProgressBar
+- [X] JSlider
+- [X] JFileChooser
+- [X] JDialog
+- [X] JPopupMenu
+- [ ] JMenuBar
+- [ ] JMenuItem
+- [ ] JToolBar
+- [ ] JTabbedPane
+- [ ] JFileChooser
+- [ ] JColorChooser
+- [ ] JOptionPane

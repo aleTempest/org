@@ -1,0 +1,347 @@
+#+title: upvindex
+#+author: Agustín Alejandro Mota Hinojosa
+
+* Github Token
+SCHEDULED: <2023-11-01 mié.>
+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
+
+* upv
+** tareas
+*** DONE Actividad 6 Matemáticas :mate:
+DEADLINE: <2023-09-18 lun.>
+
+*** DONE Pagar $42 al Abrahm para el cable manhatan
+
+*** WAIT Examen de redes 1° unidad :redes:
+
+*** NO Entrega de documentos beca ITABEC [5/5]
+- [X] Historial académico
+- [X] Copia CURP
+- [X] Copia INE
+- [X] Copia Comprobante de domicilio
+- [X] Documentos de la beca
+- [ ] Copia comprobante de pago 2 quincenas
+
+
+*** DONE Matemáticas: Actividad 6 :mate:
+DEADLINE: <2023-09-21 jue.>
+
+*** DONE Matemáticas: Actividad 5 :mate:
+DEADLINE: <2023-09-20 mié.>
+
+*** DONE Matemáticas: Actividad 7 :mate:
+SCHEDULED: <2023-09-22 vie.>
+
+*** DONE Examen de Inglés Unidad 1 :ingles:
+SCHEDULED: <2023-09-28 jue.>
+
+*** NO Sacar credencial de estudiante [1/3]
+CLOSED: <2023-09-27 mié.>
+DEADLINE: <2023-09-27 mié.>
+Abierto de [09:00AM]--[17:00PM]
+- [X] Solicitar referencia de pago
+- [ ] Pagar $120 pesos en ventanilla
+- [ ] Recoger credencial
+
+*** DONE Reporte de Aplicación de EC :mate:
+DEADLINE: <2023-09-28 jue.>
+-[[https:udomatematica.files.wordpress.com/2010/02/crcimiento-y-decrecimiento-i.pdf][Problemas de crecimiento y decrecimeinto]]
+*** DONE Diferencia entre Protocolo vector distancia y link state :redes:
+SCHEDULED: <2023-09-26 mar.>
+
+** Materias
+*** Programación Orientada a objetos
+**** POM
+***** POM básico
+#+begin_src xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>edu.upvictoria.poo</groupId>
+  <artifactId>practica6</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name></name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+#+end_src
+***** POM para Apache POI
+#+begin_src xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>edu.upvictoria.poo</groupId>
+  <artifactId></artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>apache_poi</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.17</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>3.17</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+     <resource>
+       <directory>src/main/resources</directory>
+     </resource>
+   </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <source>17</source>
+          <target>17</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+#+end_src
+
+**** Tareas
+***** DONE Práctica 14 :poo:
+DEADLINE: <2023-09-21 jue.>
+
+***** DONE Práctica 11: Sistema de Estudiantes :poo:
+DEADLINE: <2023-09-19 mar.>
+
+***** DONE Práctica 09: Buscaminas :poo:
+DEADLINE: <2023-09-19 mar.>
+
+***** DONE Práctica 12: Tic tac toe :poo:
+DEADLINE: <2023-09-20 Mié. 23:59 am>
+
+***** NO Práctica 13: Auto :poo:
+DEADLINE: <2023-09-21 jue.>
+
+***** DONE Examen POO 1° unidad :poo:
+SCHEDULED: <2023-09-22 vie.>
+
+***** DONE Investigar Atributos y métodos de un JFrame :poo:
+SCHEDULED: <2023-09-27 mié. 12:03 PM>
+
+***** DONE Programa que implemente elementos de GUI [19/19] :poo:
+DEADLINE: <2023-09-26 mar.>
+
+***** DONE Calculadora GUI :poo:
+SCHEDULED: <2023-09-27 mié. 12:04 AM>
+Calculadora de operaciones básicas con alrededor de 16 botones,
+usando textfields para calcular y mostrar el resultado.
+***** DONE Timer GUI [2/2]
+- [X] Mostrar tiempo en pantalla
+- [X] Botones para ajustar el timer
+
+***** TODO Punto de venta CRUD
+****** DONE Diseño del CRUD en Figma
+DEADLINE: <2023-09-29 vie.>
+:LOGBOOK:
+CLOCK: [2023-09-28 jue. 22:14]--[2023-09-28 jue. 23:50] =>  1:36
+:END:
+****** TODO Base de datos
+******* TODO Investigar SQLite
+******* TODO Datos de prueba
+****** TODO Librería
+******* TODO Conexión a la base de datos
+****** TODO Alta de productos
+- Clase producto:
+  - Código
+  - Nombre
+  - Marca
+  - Cantidad
+  - Precio
+****** TODO Capacidad de vender productos
+****** TODO Consultar productos
+****** TODO Baja de productos
+****** TODO Reporte de productos
+****** TODO Modificación de productos
+
+***** DONE CRUD de usuarios con archivos
+DEADLINE: <2023-10-03 mar.>
+Reescribir la clase con una clase abstracta para las escenas.
+- Escenas:
+  - Todas tienen un objeto de tipo MainFrame
+  - Otras tienen comportamientos en comun como limpiar todos los campos de texto
+****** DONE Diseño de pantallas
+****** DONE Librería para manejar CSVs
+****** DONE Pantallas
+****** DONE Implementar librería
+******* DONE Crear usuarios
+******* DONE Modificar usuarios
+******* DONE Eliminar usuarios
+Hace overwrite pero funciona.
+******* NO Buscar usuarios
+******* Manejo de excepciones
+En la rama master (ultimo commit) está la pantalla para crear
+usuarios con validación y manejo de excepciones a nivel de
+librería. En las subramas las removí por completo y hay que
+implementar excepciones a nivel de interfaz para validar solo
+los campos.
+
+***** TODO Pase de lista con Excel
+SCHEDULED: <2023-10-10 mar.>
+Crear una interfaz capaz de tomar pase de lista en base a un xlsx.
+Dotar a la interfaz la capacidad de mostrar alumnos y pasar lista de
+uno por uno, o también poder seleccionar todos y pasar lista.
+
+****** TODO Pantallas
+****** TODO Librería para manejar xlsx
+******* TODO Leer archivo
+******* TODO Modificar archivo
+****** TODO Dotar a la GUI la capacidad de usar la librería
+****** Extra:
+- /Dotar a la interfaz la capacidad de mostrar pases de lista
+  anteriores/
+- Ruleta de participación
+
+***** NO Memorama
+SCHEDULED: <2023-10-05 jue.>
+Grid de botones, cada que presiones un botón se cargará una imagen
+en la posición del botón. 16 botones.
+
+***** TODO CRUD con excel
+
+*** Base de datos :bd:
+**** Tareas
+***** DONE Quizes 12-1 hasta 15-1 [10/10] :bd:
+CLOSED: <2023-09-25 lun.>
+DEADLINE: <2023-09-29 vie. 23:59>
+- [X] Práctica 12-1
+- [X] Práctica 12-2
+- [X] Práctica 12-3
+- [X] Práctica 13-1
+- [X] Práctica 13-2
+- [X] Práctica 13-3
+- [X] Práctica 14-1
+- [X] Práctica 14-2
+- [X] Práctica 14-3
+- [X] Práctica 15-1
+
+***** DONE Examen Sección 12 DML :bd:
+SCHEDULED: <2023-09-26 mar.>
+
+***** DONE Examen Sección 13 :bd:
+SCHEDULED: <2023-09-27 mié.>
+***** DONE Examen Sección 14 :bd:
+SCHEDULED: <2023-09-27 mié.>
+
+***** DONE Examen Sección 14 Restricciones :bd:
+DEADLINE: <2023-09-27>
+
+***** NO Sección 11 Práctica 11-1
+DEADLINE: <2023-09-29 vie.>
+
+***** DONE Sección 15 Prácticas [2/3] :bd:
+DEADLINE: <2023-10-06 vie.>
+- [X] Práctica 15-1
+- [X] Práctica 15-2
+- [ ] Práctica 15-3
+
+***** DONE Sección 16 Prácticas [2/2] :bd:
+DEADLINE: <2023-10-06 vie.>
+- [X] Práctica 16-1
+- [X] Práctica 16-2
+
+***** DONE Sección 17 Prácticas [3/3]
+DEADLINE: <2023-10-06 vie.>
+- [X] Práctica 17-1
+- [X] Práctica 17-2
+- [X] Práctica 17-3
+
+***** DONE Sección 15 Quizz
+SCHEDULED: <2023-10-04 mié.>
+7451 1938
+***** DONE Sección 16 Quizz
+SCHEDULED: <2023-10-04 mié.>
+
+***** DONE Sección 17 Quizz
+SCHEDULED: <2023-10-04 mié.>
+
+***** DONE Sección 18 Quizz
+SCHEDULED: <2023-10-04 mié.>
+
+***** TODO Práctica y Examen de SQL
+SCHEDULED: <2023-10-09 lun.>
+
+**** Criterios:
+ - Examen 70%
+ - Ex Cap 10%
+ - Práctica 20%
+**** Currícula de oracle:
+ - Diseño de BD
+ - Prog. de BD con SQL
+ - Prog. de BD con PL/SQL
+**** recursos:
+- [[https:apex.oracle.com][Apex]]
+- [[https:livesql.oracle.com][livesql]]
+- [[https:https://drive.google.com/file/d/1kfHtSyVzss_We618EyxNCAFMvBdhKbXK/view?usp=sharing][Diapositivas del curso]]
+**** quizes
+- 12
+  - [[file:12_1 practica.org][12-1]]
+  - [[file:12_2 practica.org][12-2]]
+  - [[file:12_3 practica.org][12-3]]
+- 13
+  - [[file:13_1 practica.org][13-1]]
+  - [[file:13_2 practica.org][13-2]]
+  - [[file:13_3 practica.org][13-3]]
+- 14
+  - [[file:14_1 practica.org][14-1]]
+  - [[file:14_2 practica.org][14-2]]

@@ -1,0 +1,49 @@
+#+title: Investigación: Clase JFrame
+
+* Métodos principales
+- =new JFrame()=: Crea un nuevo objeto JFrame con el título predeterminado.
+- =add()=: Agrega un componente a la ventana.
+- =setTitle()=: Establece el título de la ventana.
+- =setSize()=: Establece el tamaño de la ventana.
+- =setLocation()=: Establece la ubicación de la ventana.
+- =setVisible()=: Muestra la ventana.
+
+* Métodos para crear un JFrame
+- =new JFrame()=: Crea un nuevo objeto JFrame con el título predeterminado.
+- =JFrame(String title)=: Crea un nuevo objeto JFrame con el título especificado.
+- =JFrame(String title, Icon icon)=: Crea un nuevo objeto JFrame con el título
+    y el icono especificados.
+- =JFrame(String title, LayoutManager layout)=: Crea un nuevo objeto JFrame con
+    el título y el administrador de diseño especificado.
+
+* Métodos para agregar componentes a un JFrame
+- =add(Component comp)=: Agrega el componente especificado al final de la
+    ventana.
+- =add(Component comp, int index)=: Agrega el componente especificado en el
+    índice especificado.
+- =add(Component comp, Object constraints)=: Agrega el componente especificado
+    con las restricciones especificadas.
+
+* Métodos para personalizar la apariencia de un JFrame
+- =setTitle()=: Establece el título de la ventana.
+- =setIconImage()=: Establece la imagen de icono de la ventana.
+- =setBackground()=: Establece el color de fondo de la ventana.
+- =setForeground()=: Establece el color de primer plano de la ventana.
+- =setFont()=: Establece la fuente de la ventana.
+- =setLayout()=: Establece el administrador de diseño de la ventana.
+
+* Métodos para personalizar el comportamiento de un JFrame
+- =setDefaultCloseOperation()=: Especifica qué sucede cuando el usuario cierra
+    la ventana.
+- =setResizable()=: Establece si la ventana se puede redimensionar.
+- =setUndecorated()=: Establece si la ventana tiene bordes.
+- =setAlwaysOnTop()=: Establece si la ventana siempre está en la parte superior
+    de otras ventanas.
+- =setFocusable()=: Establece si la ventana puede recibir el foco.
+- =setFocusableWindowState()=: Establece el estado de foco de la ventana.
+
+* Métodos para mostrar un JFrame
+- =setVisible()=: Muestra la ventana.
+- =pack()=: Ajusta el tamaño de la ventana para que quepan todos los componentes.
+- =toFront()=: Lleva la ventana a primer plano.
+- =toBack()=: Lleva la ventana a segundo plano.

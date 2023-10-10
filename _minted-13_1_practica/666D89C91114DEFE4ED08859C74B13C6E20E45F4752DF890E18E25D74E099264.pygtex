@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{     }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{mota\PYGZus{}table}
+\PYG{+w}{     }\PYG{k}{as}\PYG{+w}{ }\PYG{p}{(}\PYG{k}{select}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{grad\PYGZus{}candidates}\PYG{p}{);}
+\end{Verbatim}

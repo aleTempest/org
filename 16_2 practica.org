@@ -1,0 +1,113 @@
+#+title: Práctica: 16-1
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Terminología
+1. Confirma la existencia de los índices de la vista del diccionario de datos
+   =USER_INDEXES=
+
+   *Respuesta*: =confirming index=
+
+2. Objeto de esquema que acelera la recuperación de filas
+
+   *Respuesta*: =index=
+
+3. Hace referencia a una tabla con otro nombre para simplificar el acceso
+
+   *Respuesta*: =create public synonym=
+
+4. Índice que puede crear con varias columnas de una tabla
+
+   *Respuesta*: =composite index=
+
+5. El servidor de Oracle crea automáticamente este índice cuando se define
+   una restricción =PRIMARY KEY= o =UNIQUE KEY= en una columna de la tabla
+
+   *Respuesta*: =unique index=
+
+6. Almacena los valores indexados y utiliza el índice basado en una
+   sentencia =SELECT= para recuperar los datos
+
+   *Respuesta*: =function-based index=
+
+7. Elimina un índice Ofrece nombres alternativos para los objetos.
+
+   *Respuesta*: =drop index=
+
+8. Ofrece nombres alternativos para los objetos.
+
+   *Respuesta*: =synonym=
+
+* Inténtelo/Resuélvalo
+ 1. ¿Qué es un índice y para qué se utiliza?
+
+    Es un objeto de esquema que puede acelerar la recuperación de filas
+    mediante un puntero. Los índices se pueden crear explícita o
+    automáticamente.
+
+ 2. ¿Qué es un =ROWID= y cómo se utiliza?
+
+    Es una representación de cadena en base 64 de la dirección de fila que
+    contiene el identificador de bloque, la ubicación de la fila en el
+    bloque y el identificador de archivo de la base de datos.
+
+ 3. ¿Cuándo se crea un índice automáticamente?
+
+    Al crear una =primary key= o una restricción =unique=.
+
+ 4. Cree un índice no único (clave ajena) para la columna de DJs on Demand
+    (cd_number) en la tabla =D_TRACK_LISTINGS=. Utilice el explorador de datos
+    del Taller de SQL de Oracle Application Developer para confirmar que se
+    ha creado el índice.
+
+    #+begin_src sql
+    create index d_tlg_cd_number_fk_i
+    on d_track_listings (cd_number);
+    #+end_src
+ 
+ 5. Utilice la sentencia de unión para mostrar los índices y la unicidad que
+    existen en el diccionario de datos para la tabla D_SONGS de DJs on Demand.
+
+    #+begin_src sql
+    select uix.index_name as i, ucm.column_name as c,
+       ucm.column_position as p, uix.unique as u
+    from user_indexes uix
+        inner join user_ind_columns ucm on uix.index_name = ucm.index_name
+    where ucm.table_name = 'd_songs';
+    #+end_src
+
+ 6. Utilice una sentencia =SELECT= para mostrar =index_name=, =table_name= y la
+    unicidad del diccionario de datos =USER_INDEXES= para la tabla =D_EVENTS= de
+    DJs on Demand.
+
+    [[./resources/index_d_events.png]]
+
+ 7. Escriba una consulta para crear un sinónimo denominado =dj_tracks= para la
+    tabla =d_track_listings= de DJs on Demand.
+
+    #+begin_src sql
+    create synonym dj_tracks for d_track_listings;
+    #+end_src
+
+ 8. Cree un índice basado en funciones para la columna last_name de la tabla
+    =D_PARTNERS= de DJs on Demand que haga posible que no sea necesario poner
+    en mayúsculas el nombre de la tabla para las búsquedas. Escriba una
+    sentencia =SELECT= que utilice este índice.
+
+    #+begin_src sql
+    create index d_ptr_last_name_idx
+    on d_partners(last_name);
+    #+end_src
+
+ 9. Cree un sinónimo para la tabla =D_TRACK_LISTINGS=. Confirme que se ha
+    creado realizando una consulta en el diccionario de datos.
+
+    #+begin_src sql
+    create synonym dj_tracks2 for d_track_listings;
+    select * from user_synonyms where table_name = upper('d_track_listings');
+    #+end_src
+
+ 10. Borre el sinónimo que ha creado en el apartado 9.
+
+    #+begin_src sql
+    drop synonym dj_tracks2;
+    #+end_src

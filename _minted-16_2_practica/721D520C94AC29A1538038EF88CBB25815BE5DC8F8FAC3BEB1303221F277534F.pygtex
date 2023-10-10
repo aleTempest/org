@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{n}{synonym}\PYG{+w}{ }\PYG{n}{dj\PYGZus{}tracks2}\PYG{+w}{ }\PYG{k}{for}\PYG{+w}{ }\PYG{n}{d\PYGZus{}track\PYGZus{}listings}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{select}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{user\PYGZus{}synonyms}\PYG{+w}{ }\PYG{k}{where}\PYG{+w}{ }\PYG{k}{table\PYGZus{}name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{upper}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}d\PYGZus{}track\PYGZus{}listings\PYGZsq{}}\PYG{p}{);}
+\end{Verbatim}

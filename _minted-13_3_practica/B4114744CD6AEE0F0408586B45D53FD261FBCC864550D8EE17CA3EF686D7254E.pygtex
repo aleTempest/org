@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{alter}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{artists}
+\PYG{+w}{            }\PYG{k}{add}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{platform}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{));}
+
+\PYG{+w}{        }\PYG{k}{update}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{artists}
+\PYG{+w}{            }\PYG{k}{set}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{platform}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}spotify\PYGZsq{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{artist\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\end{Verbatim}

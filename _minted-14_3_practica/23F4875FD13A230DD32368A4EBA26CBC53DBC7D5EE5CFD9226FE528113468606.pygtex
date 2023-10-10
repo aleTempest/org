@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{alter}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}d\PYGZus{}events}
+\PYG{+w}{    }\PYG{k}{add}\PYG{+w}{ }\PYG{k}{constraint}\PYG{+w}{ }\PYG{n}{d\PYGZus{}events\PYGZus{}client\PYGZus{}number\PYGZus{}fk}
+\PYG{+w}{        }\PYG{k}{foreign}\PYG{+w}{ }\PYG{k}{key}\PYG{p}{(}\PYG{n}{client\PYGZus{}number}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{references}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}d\PYGZus{}clients}\PYG{p}{(}\PYG{n}{client\PYGZus{}number}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{enable}\PYG{p}{;}
+\end{Verbatim}

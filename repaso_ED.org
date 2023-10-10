@@ -1,0 +1,26 @@
+#+title: Repaso Ed
+
+* Notación
+- Notación de Leibniz: $\frac{dy}{dx}$ /Gottfried Wilhelm Leibniz/
+- Notación de primas: $y'''$ ó $y^{(n)}$
+
+* Tipos de ED
+** Ecuación Diferencial Ordinaria (EDO)
+Es la ecuación que contiene derivadas respecto a una sola variable
+independiente.
+
+$$\frac{dy}{dy}+y=\sin x$$
+
+$$y'''+5y'-3y=0$$
+
+** Ecuación Diferencial Parcial (EDP):
+Es la que contiene las derivadas parciales respecto a dos o más
+variables independientes.
+
+** Orden
+El orden de una ED es el de la derivada de mayor orden que hay en la
+ecuación.
+
+- $\frac{d^{2}y}{dx^2}+5y=\sin x$: Primer orden
+- $y'''+5y''-3y'+y=0$: Tercer orden
+- $y'+2y=\tan x$: Primer orden

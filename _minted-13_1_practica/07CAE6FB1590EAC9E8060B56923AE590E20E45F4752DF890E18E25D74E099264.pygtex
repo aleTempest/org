@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{     }\PYG{k}{select}\PYG{+w}{ }\PYG{k}{table\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{status}
+\PYG{+w}{     }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{user\PYGZus{}tables}\PYG{p}{;}
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{   }\PYG{k}{insert}\PYG{+w}{ }\PYG{k}{into}\PYG{+w}{ }\PYG{n}{animals}
+\PYG{+w}{       }\PYG{p}{(}\PYG{n}{animal\PYGZus{}id}\PYG{p}{,}\PYG{n}{name}\PYG{p}{,}\PYG{n}{license\PYGZus{}tag\PYGZus{}number}\PYG{p}{,}\PYG{n}{admit\PYGZus{}date}\PYG{p}{,}\PYG{n}{adoption\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{vaccination\PYGZus{}date}\PYG{p}{)}
+\PYG{+w}{   }\PYG{k}{values}
+\PYG{+w}{       }\PYG{p}{(}\PYG{l+m+mi}{101}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}Spot\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mi}{35540}\PYG{p}{,}\PYG{n}{to\PYGZus{}date}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}10\PYGZhy{}Oct\PYGZhy{}2004\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}DD\PYGZhy{}MM\PYGZhy{}YYYY\PYGZsq{}}\PYG{p}{),}\PYG{l+m+mi}{205}\PYG{p}{,}
+\PYG{+w}{           }\PYG{n}{to\PYGZus{}date}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}12\PYGZhy{}Oct\PYGZhy{}2004\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}DD\PYGZhy{}MM\PYGZhy{}YYYY\PYGZsq{}}\PYG{p}{));}
+\end{Verbatim}

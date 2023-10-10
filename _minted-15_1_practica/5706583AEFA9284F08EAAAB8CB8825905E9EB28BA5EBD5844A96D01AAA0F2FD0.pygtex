@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{view}\PYG{+w}{ }\PYG{n}{view\PYGZus{}d\PYGZus{}events}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{k}{select}
+\PYG{+w}{        }\PYG{n}{e}\PYG{p}{.}\PYG{n}{name}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}Evento\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{e}\PYG{p}{.}\PYG{n}{event\PYGZus{}date}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}Fecha\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{t}\PYG{p}{.}\PYG{n}{description}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}Descripción\PYGZdq{}}
+\PYG{+w}{    }\PYG{k}{from}
+\PYG{+w}{        }\PYG{n}{d\PYGZus{}events}\PYG{+w}{ }\PYG{n}{e}
+\PYG{+w}{        }\PYG{k}{inner}\PYG{+w}{ }\PYG{k}{join}\PYG{+w}{ }\PYG{n}{d\PYGZus{}themes}\PYG{+w}{ }\PYG{n}{t}\PYG{+w}{ }\PYG{k}{on}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{.}\PYG{n}{theme\PYGZus{}code}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{t}\PYG{p}{.}\PYG{n}{code}
+\PYG{+w}{    }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{.}\PYG{n}{event\PYGZus{}date}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{add\PYGZus{}months}\PYG{p}{(}\PYG{n}{sysdate}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\end{Verbatim}

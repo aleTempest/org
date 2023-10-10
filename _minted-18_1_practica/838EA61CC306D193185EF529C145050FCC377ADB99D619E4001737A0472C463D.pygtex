@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{start}\PYG{+w}{ }\PYG{k}{transaction}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{delete}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{d\PYGZus{}songs}\PYG{+w}{ }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{song\PYGZus{}name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}all these years\PYGZsq{}}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{insert}\PYG{+w}{ }\PYG{k}{into}\PYG{+w}{ }\PYG{n}{d\PYGZus{}songs}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{song\PYGZus{}id}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{song\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{artist}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{duration\PYGZus{}minutes}\PYG{p}{)}
+\PYG{+w}{        }\PYG{k}{values}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{60}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}happy birthday sunshine\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}the sunsets\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{4}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{commit}\PYG{p}{;}
+\end{Verbatim}

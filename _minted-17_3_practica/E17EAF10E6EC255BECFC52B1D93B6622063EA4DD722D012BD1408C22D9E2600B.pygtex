@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{update}\PYG{+w}{ }\PYG{n}{locations}
+\PYG{+w}{        }\PYG{k}{set}
+\PYG{+w}{    }\PYG{n}{street\PYGZus{}address}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{regexp\PYGZus{}replace}\PYG{p}{(}\PYG{n}{street\PYGZus{}address}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{);}
+\end{Verbatim}

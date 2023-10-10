@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{       }\PYG{k}{update}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}f\PYGZus{}staffs}
+\PYG{+w}{           }\PYG{k}{set}\PYG{+w}{ }\PYG{n}{salary}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}
+\PYG{+w}{       }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{12}\PYG{p}{;}
+\end{Verbatim}

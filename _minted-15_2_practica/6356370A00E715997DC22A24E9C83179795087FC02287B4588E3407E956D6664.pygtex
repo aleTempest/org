@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{insert}\PYG{+w}{ }\PYG{k}{into}\PYG{+w}{ }\PYG{n}{view\PYGZus{}copy\PYGZus{}d\PYGZus{}songs}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{id}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{title}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{duration}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{artist}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{type\PYGZus{}code}\PYG{p}{)}
+\PYG{+w}{        }\PYG{k}{values}\PYG{p}{(}\PYG{l+m+mi}{88}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}mello jello\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}2 min\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}the what\PYGZsq{}}\PYG{+w}{ }\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{);}
+\end{Verbatim}

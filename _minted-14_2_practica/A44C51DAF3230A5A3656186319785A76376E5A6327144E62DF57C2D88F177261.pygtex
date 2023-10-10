@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{   }\PYG{k}{alter}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{animals}
+\PYG{+w}{       }\PYG{k}{modify}\PYG{p}{(}\PYG{n}{adoption\PYGZus{}id}\PYG{+w}{ }\PYG{k}{constraint}\PYG{+w}{ }\PYG{n}{animals\PYGZus{}id\PYGZus{}fk}
+\PYG{+w}{                }\PYG{k}{references}\PYG{+w}{ }\PYG{n}{adoptions}\PYG{p}{(}\PYG{n}{id}\PYG{p}{));}
+
+\PYG{+w}{   }\PYG{k}{alter}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{animals}
+\PYG{+w}{       }\PYG{k}{add}\PYG{+w}{ }\PYG{k}{constraint}\PYG{+w}{ }\PYG{n}{animals\PYGZus{}id\PYGZus{}fk}\PYG{+w}{ }\PYG{n}{foreing}\PYG{+w}{ }\PYG{k}{key}\PYG{p}{(}\PYG{n}{adoption\PYGZus{}id}\PYG{p}{)}
+\PYG{+w}{                }\PYG{k}{references}\PYG{+w}{ }\PYG{n}{adoptions}\PYG{p}{(}\PYG{n}{id}\PYG{p}{);}
+\end{Verbatim}

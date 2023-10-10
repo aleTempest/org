@@ -1,0 +1,43 @@
+#+title: Práctica: 17-3
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Inténtelo/Resuélvalo
+1. Con la tabla employees y utilizando expresiones regulares, escriba una
+   consulta que devuelva los empleados cuyo nombre comience por una "S"
+   (mayúscula) seguida de una "t" (minúscula) o una "h"
+   (minúscula).
+
+   #+begin_src sql
+    select * from employees
+    where regexp_like(first_name, '^[ss][th]');
+   #+end_src
+
+2. Investigue la tabla =LOCATIONS=.
+
+   a. Describa la tabla.
+
+      1) =location_id=
+
+      2) =street_address=
+
+      3) =postal_code=
+
+      4) =city=
+
+      5) =state_province=
+
+      6) =country_id=
+
+   b. Ejecute una sentencia =SELECT= que devuelva todas las filas y todas las
+      columnas de esa tabla.
+
+      [[./resources/locations.png]]
+
+   c. Escriba una consulta utilizando expresiones regulares que elimine los
+      espacios de la columna =street_address= en la tabla =LOCATIONS=.
+
+    #+begin_src sql
+    update locations
+        set
+    street_address = regexp_replace(street_address, ' ', '');
+    #+end_src

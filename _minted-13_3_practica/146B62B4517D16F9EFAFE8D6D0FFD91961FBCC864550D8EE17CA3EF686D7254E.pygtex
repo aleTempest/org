@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{     }\PYG{k}{insert}\PYG{+w}{ }\PYG{k}{into}\PYG{+w}{ }\PYG{n}{artists}
+\PYG{+w}{         }\PYG{p}{(}\PYG{n}{first\PYGZus{}name}\PYG{p}{,}\PYG{n}{last\PYGZus{}name}\PYG{p}{,}\PYG{n}{group\PYGZus{}name}\PYG{p}{,}\PYG{n}{email}\PYG{p}{,}\PYG{n}{hourly\PYGZus{}rate}\PYG{p}{,}\PYG{n}{song\PYGZus{}id}\PYG{p}{)}
+\PYG{+w}{     }\PYG{k}{values}
+\PYG{+w}{         }\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}The hobbits\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{,}\PYG{l+m+mi}{100}\PYG{p}{,}\PYG{l+m+mi}{45}\PYG{p}{);}
+\end{Verbatim}

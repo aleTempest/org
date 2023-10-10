@@ -1,0 +1,74 @@
+#+title: Práctica: 17-2
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Inténtalo/Resuélvalo
+1. ¿Qué es un rol?
+
+   *Respuesta*: En Oracle Database, un rol es un objeto de seguridad que permite
+   agrupar un conjunto de privilegios y permisos y asignarlos a usuarios o a
+   otros roles. Los roles simplifican la administración de permisos al
+   agruparlos de manera lógica, lo que facilita la gestión de la seguridad
+   y los accesos en la base de datos.
+
+2. ¿Cuáles son las ventajas de un rol para un DBA?
+
+   - Facilitan la asignación y gestión de permisos, ya que los privilegios
+     se pueden asignar a roles y luego los usuarios se asignan a esos roles.
+
+   - Simplifican la administración de seguridad al agrupar permisos lógicamente.
+
+3. Conceda a otro usuario de su clase la capacidad de consultar una de sus
+   tablas. Concédale el derecho a permitir que otros alumnos tengan esa
+   capacidad.
+
+   - Concede el privilegio de consulta al otro usuario:
+      #+begin_src sql
+       grant select on tu_tabla to otro_usuario;
+      #+end_src
+
+   - Otorga el derecho de otorgar ese privilegio a otros usuarios:
+     #+begin_src sql
+       grant with grant option select on tu_tabla to otro_usuario;
+     #+end_src
+
+4. Es el DBA. Está creando varios usuarios que requieren los mismos
+   privilegios del sistema. ¿Qué debe utilizar para facilitar su trabajo?
+
+   *Respuesta*: Para facilitar la creación de varios usuarios con los mismos
+   privilegios del sistema, el DBA puede utilizar un perfil de usuario
+   predefinido.
+
+5. ¿Cuál es la sintaxis necesaria para realizar lo siguiente?
+   1. Crear un rol de jefe que tenga privilegios para seleccionar, insertar y
+      actualizar y suprimir de la tabla employees
+
+      #+begin_src sql
+        create role jefe;
+        grant select, insert, update, delete on employees to jefe;
+      #+end_src
+
+   2. Crear un rol de oficinista que solo tenga privilegios para seleccionar
+      e insertar en la tabla employees
+
+      #+begin_src sql
+        create role oficinista;
+        grant select, insert on employees to oficinista;
+      #+end_src
+
+   3. Otorgar el rol de jefe al usuario scott
+
+      #+begin_src sql
+        grant jefe to scott;
+      #+end_src
+
+   4. Revocar la capacidad de suprimir de la tabla employees desde el rol de jefe
+
+      #+begin_src sql
+        revoke delete on employees from jefe;
+      #+end_src
+
+6. ¿Cuál es la finalidad de un enlace de base de datos?
+
+   *Respuesta*: En Oracle permite a una base de datos acceder y realizar
+   operaciones en otra base de datos, incluso si están en servidores
+   diferentes.

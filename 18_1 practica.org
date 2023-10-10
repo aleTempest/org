@@ -1,0 +1,91 @@
+#+title: Práctica: 18-1
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Terminología
+1. Finaliza la transacción actual haciendo que todos los cambios de
+   datos pendientes sean permanentes.
+
+   *Respuesta*: =commit=
+
+2. Permite al usuario desechar los cambios realizados en la base
+   de datos
+
+   *Respuesta*: =rollback=
+
+3. Crea un marcador en una transacción, que divide la transacción
+   en varias partes más pequeñas
+
+   *Respuesta*: =savepoint=
+
+4. Garantiza una vista consistente de los datos para todos los
+   usuarios en todo momento
+
+   *Respuesta*: consistencia de lectura
+
+5. Mecanismos que evitan la interacción destructiva entre las
+   transacciones que acceden al mismo recurso que se puede
+   otorgar al usuario
+
+   *Respuesta*: =lock=
+
+6. Recopilación de sentencias DML que forman una unidad lógica
+   de trabajo
+
+   *Respuesta*: Transacción
+
+* Inténtalo/Resuélvelo
+1. Defina las sentencias =COMMIT=, =ROLLBACK= y =SAVEPOINT= y su relación con las
+   transacciones de datos.
+
+   1) =COMMIT=: La sentencia =COMMIT= se utiliza para confirmar y finalizar una
+     transacción en una base de datos.
+
+   2) =ROLLBACK=: La sentencia =ROLLBACK= se utiliza para deshacer una
+      transacción en caso de que ocurra un error o se detecte una
+      condición inesperada.
+
+   3) =SAVEPOINT=: La sentencia =SAVEPOINT= se utiliza para establecer un punto
+      de guardado (savepoint) dentro de una transacción.
+
+2. ¿Qué datos se confirman cuando se emiten las siguientes sentencias?
+   #+begin_src sql
+    INSERT INTO R values (5, 6);
+    SAVEPOINT my_savepoint_1;
+    INSERT INTO R values (7, 8);
+    SAVEPOINT my_savepoint_2;
+    INSERT INTO R values (9, 10);
+    ROLLBACK TO my_savepoint_1;
+    INSERT INTO R values (11, 12);
+    COMMIT;
+   #+end_src
+
+   *Respuesta*: después de ejecutar estas sentencias, los datos confirmados en
+   la tabla R serán (5, 6), (7, 8) y (9, 10).
+
+3. Cree una sentencia SQL para la tabla =D_SONGS= de DJs on Demand que suprima la
+   canción ¿All These Years? e inserte una nueva canción Country denominada
+   ¿Happy Birthday Sunshine? de ¿The Sunsets? con una duración de
+   4 minutos y un ID = 60. Asegúrese de que todos los datos se pueden
+   recuperar antes de que se realicen cambios en la tabla.
+
+   #+begin_src sql
+    start transaction;
+
+    delete from d_songs where song_name = 'all these years';
+
+    insert into d_songs (song_id, song_name, artist, duration_minutes)
+        values (60, 'happy birthday sunshine', 'the sunsets', 4);
+    commit;
+   #+end_src
+
+4. Escriba una sentencia SQL que emita una confirmación automática.
+
+   *Respuesta*: =create table=
+
+5. Proporcione dos ejemplos de negocios que no sean los bancos que se basen en
+   procesos de control de transacciones. Describa por qué cada negocio necesita
+   un control del procesamiento de transacciones.
+
+   a. Compañía de ventas en línea:
+
+   b. Compañía de envío y logístic

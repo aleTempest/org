@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{     }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{grad\PYGZus{}candidates}
+\PYG{+w}{         }\PYG{p}{(}\PYG{n}{student\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{number}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{),}
+\PYG{+w}{         }\PYG{n}{last\PYGZus{}name}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{30}\PYG{p}{),}
+\PYG{+w}{         }\PYG{n}{first\PYGZus{}name}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{30}\PYG{p}{),}
+\PYG{+w}{         }\PYG{n}{credits}\PYG{+w}{ }\PYG{n+nb}{number}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{),}
+\PYG{+w}{         }\PYG{n}{graduation\PYGZus{}date}\PYG{+w}{ }\PYG{n+nb}{date}\PYG{+w}{ }\PYG{k}{default}\PYG{+w}{ }\PYG{n}{sysdate}\PYG{p}{);}
+\end{Verbatim}

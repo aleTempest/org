@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{time\PYGZus{}ex3}
+\PYG{+w}{    }\PYG{p}{(}\PYG{n}{first\PYGZus{}column}\PYG{+w}{ }\PYG{k}{TIMESTAMP}\PYG{+w}{ }\PYG{k}{WITH}\PYG{+w}{ }\PYG{k}{TIME}\PYG{+w}{ }\PYG{k}{ZONE}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{second\PYGZus{}column}\PYG{+w}{ }\PYG{k}{TIMESTAMP}\PYG{+w}{ }\PYG{k}{WITH}\PYG{+w}{ }\PYG{k}{LOCAL}\PYG{+w}{ }\PYG{k}{TIME}\PYG{+w}{ }\PYG{k}{ZONE}\PYG{p}{);}
+\end{Verbatim}

@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}d\PYGZus{}songs}
+\PYG{+w}{    }\PYG{k}{as}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{k}{select}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{d\PYGZus{}songs}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}d\PYGZus{}events}
+\PYG{+w}{    }\PYG{k}{as}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{k}{select}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{d\PYGZus{}events}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}d\PYGZus{}cds}
+\PYG{+w}{    }\PYG{k}{as}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{k}{select}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{d\PYGZus{}cds}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}d\PYGZus{}clients}
+\PYG{+w}{    }\PYG{k}{as}\PYG{+w}{ }\PYG{p}{(}\PYG{+w}{ }\PYG{k}{select}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{d\PYGZus{}clients}\PYG{p}{);}
+\end{Verbatim}

@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{n}{sequence}\PYG{+w}{ }\PYG{n}{seq\PYGZus{}d\PYGZus{}songs\PYGZus{}seq}
+\PYG{+w}{        }\PYG{k}{increment}\PYG{+w}{ }\PYG{k}{by}\PYG{+w}{ }\PYG{l+m+mi}{2}
+\PYG{+w}{        }\PYG{k}{start}\PYG{+w}{ }\PYG{k}{with}\PYG{+w}{ }\PYG{l+m+mi}{100}
+\PYG{+w}{        }\PYG{k}{maxvalue}\PYG{+w}{ }\PYG{l+m+mi}{1000}
+\PYG{+w}{        }\PYG{n}{nocycle}
+\PYG{+w}{        }\PYG{n}{nocache}\PYG{p}{;}
+\end{Verbatim}

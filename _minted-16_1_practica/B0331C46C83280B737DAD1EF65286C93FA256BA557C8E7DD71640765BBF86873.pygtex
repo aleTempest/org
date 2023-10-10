@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{insert}\PYG{+w}{ }\PYG{k}{into}\PYG{+w}{ }\PYG{n}{seq\PYGZus{}d\PYGZus{}songs}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{id}\PYG{p}{,}\PYG{n}{title}\PYG{p}{,}\PYG{n}{duration}\PYG{p}{,}\PYG{n}{artist}\PYG{p}{,}\PYG{n}{type\PYGZus{}code}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{values}\PYG{p}{(}\PYG{n}{seq\PYGZus{}d\PYGZus{}songs\PYGZus{}seq}\PYG{p}{.}\PYG{n}{nextval}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}Surfing Summer\PYGZsq{}}\PYG{p}{,}\PYG{k}{null}\PYG{p}{,}\PYG{k}{null}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{insert}\PYG{+w}{ }\PYG{k}{into}\PYG{+w}{ }\PYG{n}{seq\PYGZus{}d\PYGZus{}songs}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{id}\PYG{p}{,}\PYG{n}{title}\PYG{p}{,}\PYG{n}{duration}\PYG{p}{,}\PYG{n}{artist}\PYG{p}{,}\PYG{n}{type\PYGZus{}code}\PYG{p}{)}
+\PYG{+w}{    }\PYG{k}{values}\PYG{p}{(}\PYG{n}{seq\PYGZus{}d\PYGZus{}songs\PYGZus{}seq}\PYG{p}{.}\PYG{n}{nextval}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}Victory Victory\PYGZsq{}}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}5 min\PYGZsq{}}\PYG{p}{,}\PYG{k}{null}\PYG{p}{,}\PYG{l+m+mi}{12}\PYG{p}{);}
+\end{Verbatim}

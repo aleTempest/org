@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{index}\PYG{+w}{ }\PYG{n}{d\PYGZus{}ptr\PYGZus{}last\PYGZus{}name\PYGZus{}idx}
+\PYG{+w}{    }\PYG{k}{on}\PYG{+w}{ }\PYG{n}{d\PYGZus{}partners}\PYG{p}{(}\PYG{n}{last\PYGZus{}name}\PYG{p}{);}
+\end{Verbatim}

@@ -1,0 +1,116 @@
+#+title: Práctica: 15-1
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Terminología
+1. Subjuego de datos de una o más tablas que se genera a partir de
+   una consulta y se almacena como una tabla virtual.
+
+   =view=
+
+2. Nombre de la vista.
+
+   =view_name=
+
+3. Crea una vista independientemente de si existen o no las tablas base.
+
+   =force=
+
+4. Deriva los datos de una tabla, no contiene funciones ni grupos, realiza
+   las operaciones DML mediante la vista.
+
+   *Vista simple*
+
+5. Crea la vista solo si existe la tabla base
+
+   =noforce=
+
+6. Sentencia utilizada para crear una nueva vista
+
+   =create view=
+
+7. Especifica un nombre para cada expresión seleccionada por la consulta
+   de la vista
+
+   =alias=
+
+8. Sentencia =SELECT= completa
+
+9. Deriva los datos de más de una tabla, contiene funciones o grupos de datos
+   y no siempre permite realizar operaciones DML mediante la vista
+
+   *Vista compleja*
+
+10. Vuelve a crear la vista si ya existe.
+
+    =or replace=
+
+* Inténtelo/Resuélvalo
+1. ¿Cuáles son los tres usos de una vista desde la perspectiva de un DBA?
+
+   1. Los usuarios pueden ver los mismos datos de distintas formas.
+   2. Las vistas proporcionan a los grupos de usuarios acceso a los datos
+      según unos permisos o criterios concretos.
+   3. El usuario de la vista no ve el código subyacente ni cómo crearlo.
+
+2. Cree una vista simple denominada =view_d_songs= que contenga el ID,
+   el título y el artista de la tabla =DJs on Demand= para cada código de
+   tipo "New Age". En la subconsulta, utilice el alias "Song Title" para
+   la columna del título.
+   #+begin_src sql
+    create view
+    view_d_songs as select s.id,
+            s.title, s.artist as "DJs on Demand"
+    from d_songs s
+        inner join d_types c on s.type_code = c.code
+    where c.description = 'New Age';
+   #+end_src
+
+3. =SELECT * FROM view_d_songs=
+   [[./resources/select_view_d_songs.png]]
+
+4. =REPLACE view_d_songs=. Agregue type_code a la lista de columnas. Utilice
+   alias para todas las columnas.
+   #+begin_src sql
+    create or replace view
+    view_d_songs as select s.id, s.title, s.artist as "DJs on Demand",
+        s.type_code
+    from d_songs s
+        inner join d_types c on s.type_code = c.code
+    where c.description = 'New Age';
+   #+end_src
+
+5. Jason Tsang, el DJ de DJs On Demand, necesita una lista de los eventos
+   pasados y de los previstos para los próximos meses, a fin de organizar
+   el equipo necesario para cada evento. Como jefe de la compañía, usted no
+   desea que tenga acceso al precio que han abonado los clientes por sus
+   eventos. Cree una vista para Jason que muestre el nombre del evento,
+   la fecha del evento y la descripción del tema. Utilice alias para cada
+   nombre de columna.
+   #+begin_src sql
+    create view view_d_events as select
+        e.name as "Evento",
+        e.event_date as "Fecha",
+        t.description as "Descripción"
+    from
+        d_events e
+        inner join d_themes t on e.theme_code = t.code
+    where e.event_date = add_months(sysdate,1);
+   #+end_src
+
+6. Es política de la compañía que solo se permitirá el acceso a los salarios
+   de los distintos empleados a la dirección de nivel superior. Sin embargo,
+   los jefes de los departamentos necesitan conocer los salarios mínimos,
+   máximos y medios, agrupados por departamento. Utilice la base de datos
+   Oracle para preparar una vista que muestre la información necesaria para
+   los jefes de los departamentos.
+   #+begin_src sql
+    create view view_salaries as select
+        d.department_id as "Dep. ID",
+        d.department_name as "Nombre del departamento",
+        max(nvl(e.salary,0)) as "Máx.",
+        avg(nvl(e.salary,0)) as "Media",
+        min(nvl(e.salary,0)) as "Min."
+    from departments d
+         inner join employees e on d.department_id = e.department_id
+    group by(d.department_id, d.department_name);
+   #+end_src

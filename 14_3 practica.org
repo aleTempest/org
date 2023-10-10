@@ -1,0 +1,137 @@
+#+title: Práctica: 14-3
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Terminología
+1. Desactiva una restricción de integridad.
+
+   *Respuesta*: =disable constraint=
+
+2. Desactiva las restricciones de integridad dependientes.
+
+   *Respuesta*: =disable constraint constraint_name cascade=
+
+3. Agrega, modifica o borra columnas de una tabla.
+
+   *Respuesta*: =alter table=
+
+4. Activa una restricción de integridad actualmente desactivada.
+
+   *Respuesta*: =enable constraint constraint_name=
+
+5. Elimina una restricción de una tabla.
+
+   *Respuesta*: =drop constraint constraint_name=
+
+6. Permite al usuario suprimir una columna de una tabla.
+
+   *Respuesta*: =drop(column name(s)) cascade constraints=
+
+7. Define las acciones que lleva a cabo el servidor de base de datos cuando
+   un usuario intenta suprimir o actualizar una clave a la que apuntan las
+   claves ajenas existentes.
+
+   *Respuesta*: =cascade constraints=
+
+* Inténtelo/Resuélvalo
+1. ¿Cuáles son las cuatro funciones que puede realizar una sentencia =ALTER=
+   en las restricciones?
+
+   1. =add=
+
+   2. =drop=
+
+   3. =rename=
+
+   4. =enable/disable=
+
+2. Dado que las tablas son copias de las tablas originales, las reglas de
+   integridad no se transfieren a las tablas nuevas; solo se conservan las
+   definiciones de tipo de dato de columna. Deberá agregar una restricción de
+   =PRIMARY KEY= a la tabla =copy_d_clients=. Asigne a la clave primaria el nombre
+   copy_d_clients_pk. ¿Cuál es la sintaxis que ha utilizado para crear la
+   restricción =PRIMARY KEY= en la tabla =copy_d_clients=?
+   #+begin_src sql
+    alter table copy_d_clients
+    add constraint copy_d_clients_pk primary key(client_number) enable;
+   #+end_src
+
+3. Cree una restricción =FOREIGN KEY= en la tabla =copy_d_events=. Denomine la
+   clave ajena =copy_d_events_fk=. Esta clave hace referencia a la columna
+   client_number de la tabla =copy_d_clients=. ¿Cuál es la sintaxis que ha
+   utilizado para crear la restricción =FOREIGN KEY= en la tabla
+   =copy_d_events=?
+   #+begin_src sql
+    alter table copy_d_events
+    add constraint d_events_client_number_fk
+        foreign key(client_number)
+    references copy_d_clients(client_number) enable;
+   #+end_src
+
+4. Utilice una sentencia =SELECT= para verificar los nombres de restricciones
+   de cada una de las tablas. Tenga en cuenta que los nombres de tabla deben
+   estar en mayúsculas.
+
+   a) El nombre de restricción para la clave primaria de la tabla
+      =copy_d_clients= es: =COPY_D_CLIENTS_PK=
+
+   b) El nombre de restricción para la clave ajena de la tabla
+      =copy_d_events= es: =COPY_D_EVE_CLIENT_NUMBER_FK=
+
+5. Borre la restricción =PRIMARY KEY= de la tabla =copy_d_clients=.
+   Explique su resultado.
+   #+begin_src sql
+    alter table copy_d_clients
+    drop constraint COPY_D_CLIENTS_PK cascade;
+   #+end_src
+
+   *Respuesta*: la tabla fue borrada correctamente por el comando =cascade=
+   ya que si no se indica, entonces da error.
+
+6. Agregue el siguiente evento a la tabla =copy_d_events=. Explique su
+   resultado.
+   #+begin_src sql
+    insert into copy_d_events
+        (id,name,event_date,description,cost,venue_id,package_code,
+         theme_code,client_number)
+    values
+        (140,'Cline Bas Mitzvah',to_date('15-Jul-2004','DD-MM-YYYY'),
+        'Church and Private Home formal',4500,105,87,77,7124);
+   #+end_src
+
+7. Cree una consulta ALTER TABLE para desactivar la clave primaria de la
+   tabla =copy_d_clients=. A continuación, agregue los valores del paso 6 a
+   la tabla =copy_d_events=. Explique su resultado.
+   #+begin_src sql
+    alter table copy_d_clients
+    disable constraint COPY_D_CLIENTS_PK;
+   #+end_src
+
+8. Repita la pregunta 6: Inserte los nuevos valores en la tabla
+   =copy_d_events=. Explique su resultado. Active la restricción de clave
+   primaria en la tabla =copy_d_clients=. Explique su resultado.
+
+   a) Suponiendo que la constraint está activada, el resultado de
+      esta sentencia será correcto. Esta sentencia permite deshabilitar la
+      constraint (nombre sacado de la tabla user_constraints) de la tabla
+      =copy_d_clients=.
+
+   b) Como ahora la restricción esta desactivada, entonces al volver a
+      activar la restricción el resultado será correcto.
+
+9. Si quisiera activar la columna de clave externa y restablecer la
+   integridad referencial entre estas dos tablas, ¿qué debería hacer?
+
+10. ¿Por qué desearía desactivar y, a continuación, volver a activar una
+    restricción?
+
+    1. Al cargar grandes cantidades de datos en una tabla.
+
+    2. Al ejecutar operaciones por lotes que realizan cambios masivos en
+       una tabla.
+
+11. Consulte en el diccionario de datos algunas de las restricciones que
+    ha creado. ¿Cómo identifica el diccionario de datos cada tipo de
+    restricción?
+
+    *Respuesta*: Identifica los tipos de restricciones con letras.
+    =P= para =primary key=, R para =references=, C para =check=.

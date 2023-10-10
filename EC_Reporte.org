@@ -1,0 +1,78 @@
+#+title: Reporte: Ecuaciones Diferenciales Unidad 1
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+
+* Problema
+Un ingeniero, que anteriormente confiaba en ventiladores como sistema de enfriamiento para su computadora, se ha visto obligado a buscar una solución más eficiente debido a los problemas de temperatura. Por lo tanto, ha decidido implementar un sistema de refrigeración líquida. El ingeniero no colocó bien el tapón del fondo y ahora el liquido ha empezado a drenarse. Si el cilindro tiene una profundidad de $9cm en $t = 0$ (en minutos) y despues de 1 minuto la profundidad del agua ha disminuido a $4cm$, ¿Cuanto tiempo tardara en drenarse?
+
+* Solución del problema
+Usando la ley de Toricelli $A\frac{dy}{dt}=-k\sqrt{y}$ donde $A$ es una
+constante, según los datos del problema tenemos que $y(0)=9$ y $y(1)=4$.
+
+** Usando variables separables:
+
+- Separar las variables.
+
+\begin{equation}\label{cambio}
+    A\frac{dy}{dt}=-k\sqrt{y}\rightarrow\frac{dy}{\sqrt{y}}=-\frac{k}{A}dt
+\end{equation}
+
+\begin{equation} \label{ecuacion}
+    \int\frac{dy}{\sqrt{y}}=-\int\frac{k}{A}dt \rightarrow
+    2\sqrt{y}=-\frac{k}{A}t+c \rightarrow
+    \sqrt{y}=-\frac{k}{2A}t+c
+\end{equation}
+
+*** Sustituyendo:
+
+$$\sqrt{y}=-\frac{k}{2A}t+c$$
+
+- Donde $y(0) = 9$
+
+\begin{equation} \label{valor_c}
+    \sqrt{9}=-\frac{k}{A}(0)+c \rightarrow
+    3=c
+\end{equation}
+
+- Donde $y(1)=4$
+
+\begin{equation} \label{valor_kA}
+    \sqrt{4}=-\frac{k}{A}(1)+c \rightarrow
+    2=-\frac{k}{A}+3 \rightarrow
+    \frac{k}{A}=1
+\end{equation}
+
+Ahora con los valores $c=3$ y $\frac{k}{A}=1$, podemos obtener la
+solución:
+
+\begin{equation} \label{solucion}
+   \sqrt{y}=\frac{k}{2A}t+c\rightarrow y(t)=(3-t)^2
+\end{equation}
+
+*** Solución de la ecuación
+El cilindro se vacía en $y(t)=0$:
+
+$$y(t)=(3-t)^2$$
+
+$$(3-t)^2=0 \rightarrow
+\sqrt{(3-t)^2}=\sqrt{0}$$
+
+$$3-t=0 \rightarrow -t=-3 \rightarrow \frac{-t}{-1}=\frac{-3}{-1} \rightarrow t=3$$
+
+Entonces el cilindro del sistema de refrigeración se drenará por completo
+al pasar 3 minutos causando que la computadora deje de enfriarse y la
+temperatura aumentará.
+
+** Comprobación
+- Ecuación\ref{ecuacion}:
+   [[./resources/eq1_pt1.png]]
+   [[./resources/eq1_pt2.png]]
+- Ecuación\ref{valor_c}
+   [[./resources/eq3.png]]
+- Ecuación\ref{valor_kA}
+   [[./resources/eq4.png]]
+- Ecuación\ref{solucion}
+   [[./resources/eq5.png]]
+
+* Gráfico
+[[./resources/graph.png]]

@@ -1,0 +1,140 @@
+#+title: Práctica: 15-2
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Terminología
+1. Pseudocolumna que asigna un valor secuencial que comienza en 1 para cada
+   fila devuelta de la subconsulta
+
+    *Respuesta*: =rownum=
+
+2. Especifica que los =INSERTS= y =UPDATES= realizados mediante la vista no
+   pueden crear filas que no pueda seleccionar la vista
+
+   *Respuesta*: =with check option=
+
+3. Garantiza que no se pueda realizar ninguna operación DML en esta vista
+
+   *Respuesta*: =with reade only=
+
+* Inténtalo/Resúelvelo
+Utilice la sentencia =DESCRIBE= para verificar que tiene las tablas denominadas
+copy_d_songs, copy_d_events, =copy_d_cds= y =copy_d_clients= en su esquema.
+Si no las tiene, escriba una consulta para crear una copia de cada una de
+ellas.
+
+#+begin_src sql
+    create table copy_d_songs
+    as ( select * from d_songs);
+    create table copy_d_events
+    as ( select * from d_events);
+    create table copy_d_cds
+    as ( select * from d_cds);
+    create table copy_d_clients
+    as ( select * from d_clients);
+#+end_src
+
+1. Consulte el diccionario de datos =USER_UPDATABLE_COLUMNS= para asegurarse
+   de que las columnas de las tablas base permitirán realizar =UPDATE=,
+   =INSERT= o =DELETE=. Utilice una sentencia =SELECT= o la función Browse Data
+   Dictionary de HTML DB. Todos los nombres del diccionario de datos se
+   almacenan en mayúsculas.
+
+   1) =copy_d_songs=
+      [[./resources/user_updatetables_copy_d_songs.png]]
+
+   2) =copy_d_events=
+      [[./resources/user_updatetables_copy_d_events.png]]
+
+   3) =copy_d_cds=
+      [[./resources/user_updatetables_copy_d_cds.png]]
+
+   4) =copy_d_cds=
+      [[./resources/user_updatetables_copy_d_clients.png]]
+
+2. Utilice la opción =CREATE= o =REPLACE= para crear una vista de todas las
+   columnas de la tabla =copy_d_songs= denominada =view_copy_d_songs=.
+
+   #+begin_src sql
+    create or replace view view_copy_d_songs as
+        select * from copy_d_songs;
+   #+end_src
+
+3. Utilice =view_copy_d_songs= para insertar los siguientes datos en la tabla
+   =copy_d_songs= subyacente. Ejecute =SELECT= * desde =copy_d_songs= para verificar
+   su comando DML.
+
+   #+begin_src sql
+    insert into view_copy_d_songs (id, title, duration, artist, type_code)
+        values(88, 'mello jello', '2 min', 'the what' ,4);
+   #+end_src
+
+4. Cree una vista basada en la tabla =COPY_D_CDS= de =DJs on Demand=.
+   Asigne a la vista el nombre =read_copy_d_cds=. Seleccione todas las columnas
+   que se incluirán en la vista. Agregue una cláusula =WHERE= para
+   restringir el año a 2000. Agregue la opción =WITH READ ONLY=.
+
+   #+begin_src sql
+    create or replace view read_copy_d_cds as
+        select * from copy_d_cds
+    where year = '2000' with read only ;
+   #+end_src
+
+5. Utilizando la vista =read_copy_d_cds=, ejecute
+   =DELETE FROM read_copy_d_cds WHERE cd_number = 90;=
+
+   #+begin_src sql
+    delete from read_copy_d_cds where cd_number = 90;
+   #+end_src
+
+   [[./resources/err_dml_view.png]]
+
+6. Utilice =REPLACE= para modificar =read_copy_d_cds=. Sustituya la opción
+   =READ ONLY= por =WITH CHECK OPTION CONSTRAINT ck_read_copy_d_cds=. Ejecute
+   una sentencia =SELECT *= para verificar que la vista existe.
+
+   #+begin_src sql
+    create or replace view read_copy_d_cds as
+        select * from copy_d_cds
+    where year = '2000' with check option constraint ck_read_copy_d_cds;
+   #+end_src
+
+7. Utilice la vista =read_copy_d_cds= para suprimir cualquier CD del año 2000
+   de la tabla =copy_d_cds= subyacente.
+
+   #+begin_src sql
+    delete from read_copy_d_cds where year = '2000';
+   #+end_src
+
+8. Utilice la vista =read_copy_d_cds= para suprimir =cd_number= 90 de la tabla
+   =copy_d_cds= subyacente.
+
+   #+begin_src sql
+    delete from read_copy_d_cds where cd_number = 90;
+   #+end_src
+
+9. Utilice la vista =read_copy_d_cds= para suprimir los registros del año 2001.
+
+   #+begin_src sql
+    delete from read_copy_d_cds where year = '2001';
+   #+end_src
+
+10. Ejecute una sentencia =SELECT *= para la tabla base 0copy_d_cds=.
+    ¿Qué filas se han suprimido?
+
+    [[./resources/select_copy_d_songs_supr.png]]
+
+11. ¿Cuáles son las restricciones de la modificación de datos a través de
+    una vista?
+
+    *Respuesta*: Todos los DMLs
+
+12. ¿Qué es la ley de Moore? ¿Considera que se seguirá aplicando
+    indefinidamente? Apoye su opinión con investigación en Internet.
+
+    La Ley de Moore es una observación empírica y una predicción hecha por
+    Gordon Moore, uno de los cofundadores de Intel Corporation, en 1965.
+    Esta ley sostiene que el número de transistores que se pueden integrar
+    en un chip de circuito integrado (microprocesador) se duplicará
+    aproximadamente cada dos años, lo que lleva a un aumento constante en
+    la capacidad de procesamiento y la velocidad de las computadoras, al
+    tiempo que reduce los costos por transistor.

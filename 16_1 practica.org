@@ -1,0 +1,127 @@
+#+title: Práctica: 16-1
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Terminología
+1. Comando que genera automáticamente números secuenciales
+
+   *Respuesta*: =create sequence=
+
+2. Genera un valor numérico
+
+   *Respuesta*: =secuence=
+
+3. Devuelve el siguiente valor de secuencia disponible
+
+   *Respuesta*: =nextval=
+
+4. Especifica el intervalo entre números de secuencia
+
+   *Respuesta*: =increment by=
+
+5. Especifica un valor máximo de $10^27$ para una secuencia ascendente
+   y de -1 para una secuencia descendente (por defecto)
+
+   *Respuesta*: =nomaxvalue=
+
+6. Devuelve el valor de secuencia actual
+
+   *Respuesta*: =currval=
+
+7. Especifica el valor mínimo de secuencia
+
+   *Respuesta*: minvalue
+
+8. Especifica si la secuencia sigue generando valores después de alcanzar
+   su valor máximo o mínimo
+
+   *Respuesta*: =cycle=
+
+9. Especifica un valor máximo de 1 para una secuencia ascendente y de
+   $-(10^26)$ para una secuencia descendente (por defecto)
+
+   *Respuesta*: =nominvalue=
+
+10. Especifica un valor máximo o por defecto que puede generar la secuencia
+
+    *Respuesta*: =maxvalue=
+
+11. Especifica el primer número de secuencia que se va a generar
+
+    *Respuesta*: start with
+
+12. Especifica cuántos valores asigna previamente y mantiene en la
+
+    *Respuesta*: =cache=
+
+* Inténtalo/Resuélvalo
+1. Utilizando la sintaxis de subconsulta CREATE TABLE AS, cree una tabla
+   =seq_d_songs= de todas las columnas de la tabla =d_songs= de la base de datos
+   DJs on Demand. Utilice =SELECT *= en la subconsulta para asegurarse de que
+   ha copiado todas las columnas.
+
+   #+begin_src sql
+    create table seq_d_songs
+    as (select * from d_songs);
+   #+end_src
+
+   [[./resources/select_seq_d_songs.png]]
+
+2. Debido a que está utilizando copias de las tablas originales, las
+   únicas restricciones que se han mantenido han sido las restricciones
+   =NOT NULL=. Cree una secuencia para utilizarla con la columna de
+   clave primaria de la tabla =seq_d_songs=. Para evitar la asignación
+   de números de clave primaria en estas tablas que ya existen, la
+   secuencia debe empezar por 100 y tener un valor máximo de 1000. Haga
+   que la secuencia aplique incrementos de 2 y que tenga =NOCACHE= y =NOCYCLE=.
+   Asigne el nombre =seq_d_songs_seq= a la secuencia.
+
+   #+begin_src sql
+    create sequence seq_d_songs_seq
+        increment by 2
+        start with 100
+        maxvalue 1000
+        nocycle
+        nocache;
+   #+end_src
+
+3. Consulte el diccionario de datos =USER_SEQUENCES= para verificar la
+   configuración de la =SECUENCIA= =seq_d_songs_seq=.
+
+   [[./resources/select_seq_d_songs_seq.png]]
+
+4. Inserte dos filas en la tabla seq_d_songs. Asegúrese de utilizar la
+   secuencia que ha creado para la columna ID. Agregue las dos canciones
+   que aparecen en el gráfico.
+
+   #+begin_src sql
+    insert into seq_d_songs (id,title,duration,artist,type_code)
+    values(seq_d_songs_seq.nextval,'Surfing Summer',null,null,12);
+    insert into seq_d_songs (id,title,duration,artist,type_code)
+    values(seq_d_songs_seq.nextval,'Victory Victory','5 min',null,12);
+   #+end_src
+
+5. Escriba la sintaxis de seq_d_songs_seq para ver el valor actual de la
+   secuencia. Utilice la tabla DUAL. (Oracle Application Express no
+   ejecutará esta consulta.)
+
+6. ¿Cuáles son las tres ventajas de utilizar secuencias (=SEQUENCE=)?
+
+   1. Rendimiento
+
+   2. Generación de valores únicos
+
+   3. Los números de secuencia se almacenan y generan independientemente
+      de las tablas
+
+7. ¿Cuáles son las ventajas del almacenamiento en caché de los valores
+   de secuencia?
+
+   *Respuesta*: Mejor rendimiento
+
+8. Nombre tres motivos por los que se pueden producir intervalos en una
+   secuencia.
+
+    1. Cambiar el orden de la instrucción que hace uso de la secuencia.
+    2. Experimentar bloqueos del sistema cuando se almacenan valores de
+       secuencia en la memoria caché.
+    3. Utilizar una secuencia común en varias tablas diferentes.

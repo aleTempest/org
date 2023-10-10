@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{INSERT}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{R}\PYG{+w}{ }\PYG{k}{values}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{6}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{SAVEPOINT}\PYG{+w}{ }\PYG{n}{my\PYGZus{}savepoint\PYGZus{}1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{INSERT}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{R}\PYG{+w}{ }\PYG{k}{values}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{8}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{SAVEPOINT}\PYG{+w}{ }\PYG{n}{my\PYGZus{}savepoint\PYGZus{}2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{INSERT}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{R}\PYG{+w}{ }\PYG{k}{values}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{9}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{ROLLBACK}\PYG{+w}{ }\PYG{k}{TO}\PYG{+w}{ }\PYG{n}{my\PYGZus{}savepoint\PYGZus{}1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{INSERT}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{R}\PYG{+w}{ }\PYG{k}{values}\PYG{+w}{ }\PYG{p}{(}\PYG{l+m+mi}{11}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{12}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{COMMIT}\PYG{p}{;}
+\end{Verbatim}

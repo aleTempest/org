@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{select}\PYG{+w}{ }\PYG{o}{*}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{employees}
+\PYG{+w}{    }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{regexp\PYGZus{}like}\PYG{p}{(}\PYG{n}{first\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}\PYGZca{}[ss][th]\PYGZsq{}}\PYG{p}{);}
+\end{Verbatim}

@@ -1,0 +1,131 @@
+#+title: Práctica: 14-2
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+
+* Terminología
+1. Permite que se pueda suprimir una fila de clave ajena que hace
+   referencia a una fila de clave primaria
+
+   *Repuesta*: =on delete cascade=
+
+2. Define explícitamente una condición que se debe cumplir
+
+   *Repuesta*: restricción =check=
+
+3. Columna o juego de columnas que identifica de forma única cada fila
+   de una tabla
+
+   *Respuesta*: =primary key=
+
+4. Restricción que garantiza que la columna no contiene ningún valor
+   nulo
+
+   *Respuesta*: =not null=
+
+5. Permite que un fila secundaria permanezca en una tabla con valores
+   nulos cuando se suprime un registro principal
+
+   *Respuesta*: =on delete set null=
+
+6. Establece una relación entre la columna de clave ajena y una clave
+   primaria o clave única de la misma tabla o de una tabla diferente
+
+   *Respuesta*: =foreing key=
+
+* Inténtelo Resuélvalo
+1. Indique cuál es la finalidad de:
+
+   a. =PRIMARY KEY=
+
+    *Respuesta*: una restricción que identifica una columna como única.
+
+   b. =FOREIGN KEY=
+
+    *Respuesta*: designan una columna o una combinación de columnas como una
+    clave ajena.
+
+   c. =CHECK CONSTRAINT=
+
+    *Respuesta*:  define explícitamente una condición que se debe cumplir.
+
+2. Utilizando la información de las columnas de la tabla animals
+   siguiente, nombre las restricciones donde sea aplicable a nivel de tabla;
+   de lo contario, nómbrelas a nivel de columna. Defina la clave primaria
+   (animal_id). license_tag_number debe ser único. Las columnas
+   admit_date y vaccination_date no pueden contener valores nulos.
+
+   - =animal_id number(6) primary key=
+
+   - =license_tag_number unique=
+
+   - =admit_date not null=
+
+   - =vaccination_date not null=
+
+3. Cree la tabla animals. Escriba la sintaxis que se va a utilizar para crear
+   la tabla.
+   #+begin_src sql
+    create table animals
+        (animal_id number(6) constraint animals_animal_id_pk primary key,
+         name varchar2(25),
+         license_tag_number number(10),
+         admit_date date constraint animals_admit_date_nn not null,
+         adoption_id number(5),
+         vaccination_date date constraint animals_vaccination_date_nn
+         not null);
+   #+end_src
+
+4. Introduzca una fila en la tabla.
+   #+begin_src sql
+   insert into animals
+       (animal_id,name,license_tag_number,admit_date,adoption_id,
+            vaccination_date)
+   values
+       (101,'Spot',35540,to_date('10-Oct-2004','DD-MM-YYYY'),205,
+           to_date('12-Oct-2004','DD-MM-YYYY'));
+   #+end_src
+
+   #+CAPTION: Tabla animals
+   [[./resources/select_from_animals.png]]
+
+5. Escriba la sintaxis para crear una clave ajena (adoption_id) en la tabla
+   animals que tiene su correspondiente referencia a una clave primaria en
+   la tabla adoptions. Muestre la sintaxis tanto a nivel de columna como a
+   nivel de tabla. Tenga en cuenta que, dado que en realidad no ha creado
+   una tabla adoptions, no existe ninguna clave primaria adoption_id, de
+   manera que la clave ajena no se puede agregar a la tabla animals.
+   #+begin_src sql
+   alter table animals
+       modify(adoption_id constraint animals_id_fk
+                references adoptions(id));
+
+   alter table animals
+       add constraint animals_id_fk foreing key(adoption_id)
+                references adoptions(id);
+   #+end_src
+
+6. Indique qué efecto tiene definir la clave ajena en la tabla ANIMAL como:
+
+   a. =ON DELETE CASCADE=
+
+    *Respuesta*: significa que si una fila en la tabla referenciada se elimina,
+    entonces todas las filas en la tabla que contiene la clave ajena que
+    hacen referencia a la fila eliminada también se eliminarán
+    automáticamente.
+
+   b. =ON DELETE SET NULL=
+
+      *Respuesta*: significa que si una fila en la tabla referenciada se
+      elimina, las filas en la tabla que contiene la clave ajena que hacen
+      referencia a la fila eliminada tendrán sus valores de clave ajena
+      establecidos en NULL automáticamente.
+
+7. ¿Cuáles son las restricciones de la definición de una restricción CHECK?
+
+   a. Puede hacer referencia a cualquier columna de la tabla especificada,
+      pero no a columnas de otras tablas.
+
+   b. Se debe definir en el nivel de tabla.
+
+   c. No se puede utilizar en consultas que hacen referencia a valores de
+      otras filas.

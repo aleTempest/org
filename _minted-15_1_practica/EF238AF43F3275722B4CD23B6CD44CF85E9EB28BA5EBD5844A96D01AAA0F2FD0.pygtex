@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{view}\PYG{+w}{ }\PYG{n}{view\PYGZus{}salaries}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{k}{select}
+\PYG{+w}{        }\PYG{n}{d}\PYG{p}{.}\PYG{n}{department\PYGZus{}id}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}Dep. ID\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{d}\PYG{p}{.}\PYG{n}{department\PYGZus{}name}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}Nombre del departamento\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{k}{max}\PYG{p}{(}\PYG{n}{nvl}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{salary}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{))}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}Máx.\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{k}{avg}\PYG{p}{(}\PYG{n}{nvl}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{salary}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{))}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}Media\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{k}{min}\PYG{p}{(}\PYG{n}{nvl}\PYG{p}{(}\PYG{n}{e}\PYG{p}{.}\PYG{n}{salary}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{))}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}Min.\PYGZdq{}}
+\PYG{+w}{    }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{departments}\PYG{+w}{ }\PYG{n}{d}
+\PYG{+w}{         }\PYG{k}{inner}\PYG{+w}{ }\PYG{k}{join}\PYG{+w}{ }\PYG{n}{employees}\PYG{+w}{ }\PYG{n}{e}\PYG{+w}{ }\PYG{k}{on}\PYG{+w}{ }\PYG{n}{d}\PYG{p}{.}\PYG{n}{department\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{e}\PYG{p}{.}\PYG{n}{department\PYGZus{}id}
+\PYG{+w}{    }\PYG{k}{group}\PYG{+w}{ }\PYG{k}{by}\PYG{p}{(}\PYG{n}{d}\PYG{p}{.}\PYG{n}{department\PYGZus{}id}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{d}\PYG{p}{.}\PYG{n}{department\PYGZus{}name}\PYG{p}{);}
+\end{Verbatim}

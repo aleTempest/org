@@ -1,0 +1,59 @@
+#+title: Práctica: 17-1
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Inténtelo/Resuélvalo
+1. ¿De qué se ocupan los privilegios del sistema?
+
+   *Respuesta*: Determinan lo que el usuario puede hacer a nivel de base de datos. Les
+   preocupa el derecho a realizar una acción sobre cualquier objeto de
+   un determinado tipo
+
+2. ¿De qué se ocupan los privilegios de objeto?
+
+   *Respuesta*: Estos tienen que ver con el derecho a realizar una acción particular en
+   un objeto o acceder al objeto de otro usuario
+   (tabla, vista, índice, etc.). El propietario del objeto tiene todos
+   los privilegios para este objeto y no puede ser revocado.
+
+3. ¿De qué otra manera se denomina la seguridad de los objetos?
+
+   *Respuesta*: Seguridad de datos
+
+4. ¿Qué comandos son necesarios para permitir que Scott tenga acceso a la
+   base de datos con la contraseña tiger?
+
+   *Respuesta*: =grant create sessiontoscott=
+
+5. ¿Cuúles son los comandos necesarios para permitir que Scott pueda
+   seleccionar (SELECT) en la tabla d_clients y actualizarla (UPDATE)?
+
+   *Respuesta*: =grant select, update on d_clientstoscott=;
+
+6. ¿Cuál es el comando necesario para permitir que todos puedan ver la
+   tabla d_songs?
+
+   *Respuesta*: =grant select on user.d_songs public;=
+
+7. Consulte el diccionario de datos para ver los privilegios de objeto que
+   se le han otorgado como usuario.
+
+   *Respuesta*: =select * from user_tab_privs_recd;=
+
+8. ¿Qué privilegio se le debe a otorgar a un usuario para crear tablas?
+
+   *Respuesta*: =create table= ó =create any table=
+
+9. Si crea una tabla, ¿cómo puede transferir privilegios a otros usuarios
+   solo para que vean su tabla?
+
+   *Respuesta*: =GRANT SELECT ON d_songs a user1, user2, user3;=
+
+10. ¿Qué sintaxis utilizará para otorgar a otro usuario acceso a su tabla
+    copy_employees?
+
+    *Respuesta*: =grant all on d_copy_employees to user1, user2, user3;=
+
+11. ¿Cómo puede saber qué privilegios tiene otorgados en las columnas de las
+    tablas pertenecientes a otros?
+
+    *respuesta*: =select * from user_col_privs_recd;=

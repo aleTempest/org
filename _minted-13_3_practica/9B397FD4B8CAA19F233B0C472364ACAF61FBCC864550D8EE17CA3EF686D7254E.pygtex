@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{   }\PYG{k}{truncate}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{cp\PYGZus{}artists}\PYG{p}{;}
+\end{Verbatim}

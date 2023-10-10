@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{      }\PYG{k}{select}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{first\PYGZus{}name}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{last\PYGZus{}name}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}name\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{          }\PYG{n}{versions\PYGZus{}operation}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}operation\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{          }\PYG{n}{versions\PYGZus{}starttime}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}start\PYGZus{}date\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{          }\PYG{n}{versions\PYGZus{}endtime}\PYG{+w}{ }\PYG{k}{as}\PYG{+w}{ }\PYG{l+s+ss}{\PYGZdq{}end\PYGZus{}date\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{salary}
+\PYG{+w}{      }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{copy\PYGZus{}f\PYGZus{}staffs}
+\PYG{+w}{          }\PYG{k}{versions}\PYG{+w}{ }\PYG{k}{between}\PYG{+w}{ }\PYG{n}{scn}\PYG{+w}{ }\PYG{k}{minvalue}\PYG{+w}{ }\PYG{k}{and}\PYG{+w}{ }\PYG{k}{maxvalue}
+\PYG{+w}{      }\PYG{k}{where}\PYG{+w}{ }\PYG{n}{employee\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{12}\PYG{p}{;}
+\end{Verbatim}

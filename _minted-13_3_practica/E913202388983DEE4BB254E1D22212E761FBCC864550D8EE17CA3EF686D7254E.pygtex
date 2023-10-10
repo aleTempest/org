@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{comment}\PYG{+w}{ }\PYG{k}{on}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{cp\PYGZus{}artists}
+\PYG{+w}{            }\PYG{k}{is}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}esta es una copia de artists\PYGZsq{}}\PYG{p}{;}
+\end{Verbatim}

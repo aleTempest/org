@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{   }\PYG{k}{alter}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{o\PYGZus{}employees}
+\PYG{+w}{       }\PYG{k}{add}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{termination}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{default}\PYG{+w}{ }\PYG{n}{to\PYGZus{}char}\PYG{p}{(}\PYG{n}{sysdate}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}Month DDth,YYYY\PYGZsq{}}\PYG{p}{));}
+\end{Verbatim}

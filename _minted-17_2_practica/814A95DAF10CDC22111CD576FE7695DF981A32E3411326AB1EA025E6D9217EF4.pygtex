@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{revoke}\PYG{+w}{ }\PYG{k}{delete}\PYG{+w}{ }\PYG{k}{on}\PYG{+w}{ }\PYG{n}{employees}\PYG{+w}{ }\PYG{k}{from}\PYG{+w}{ }\PYG{n}{jefe}\PYG{p}{;}
+\end{Verbatim}
