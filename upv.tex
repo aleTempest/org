@@ -1,0 +1,228 @@
+% Created 2023-11-10 Fri 12:34
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{upv}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={upv},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Programación Orientada a Objetos}
+\label{sec:orgba7a88a}
+
+\subsection{Generar un projecto de javafx con maven}
+\label{sec:orgf6a5f9d}
+\href{https:openjfx.io/openjfx-docs/\#maven}{Getting Started with JavaFX: Run HelloWorld using Maven}
+
+\begin{verbatim}
+mvn archetype:generate \
+        -DarchetypeGroupId=org.openjfx \
+        -DarchetypeArtifactId=javafx-archetype-simple \
+        -DarchetypeVersion=0.0.3 \
+        -DgroupId=$group-id \
+        -DartifactId=$name \
+        -Dversion=1.0.0 \
+        -Djavafx-version=21.0.1
+\end{verbatim}
+\subsection{{\bfseries\sffamily DONE} Colores}
+\label{sec:org4eaf204}
+Aplicación con botones que representen coloresy un objeto en medio. Al
+presionar un botón el objeto se colorea del color respectivo.
+\subsection{{\bfseries\sffamily DONE} Eventos de interaz}
+\label{sec:orgaffaee5}
+Aplicación que implemente eventos y sus respectivos métodos.
+\subsection{{\bfseries\sffamily DONE} Generador de contraseñas}
+\label{sec:org3a3dd28}
+Fuentes:
+\begin{itemize}
+\item \href{https:stackoverflow.com/questions/31260512/generate-a-secure-random-password-in-java-with-minimum-special-character-require}{Generate a Secure Random Password in Java with Minimum Special Character
+Requirements}
+\end{itemize}
+\begin{quote}
+El boton generara una contraseña aleatoria
+nosotros le daremos click en generar contraseña y se generara aleatoria y
+la contraseña se mostrara en el textil
+
+Definir un ancho o tamaño total de contraseña
+
+Cuantos bytes: max 10 bytes
+
+La contraseña uncluye todas las letras del abecedario, simbolos y signos,
+caracteres
+\end{quote}
+\subsection{{\bfseries\sffamily DONE} Entregar actividad de pase de lista}
+\label{sec:org9dbd0a6}
+\subsection{{\bfseries\sffamily DONE} Números perfectos}
+\label{sec:orge2187d3}
+Aplicación para generar números perfectos de 4-5.
+\subsection{{\bfseries\sffamily DONE} Snake}
+\label{sec:org907cddc}
+Un juego de la serpiente dentro de una matriz de 50x50.
+\subsection{{\bfseries\sffamily DONE} Notas}
+\label{sec:org8f509b0}
+Aplicación para guardar notas
+SCHEDULED: \textit{<2023-10-13 Fri>}
+\subsection{{\bfseries\sffamily DONE} Galería de imagenes}
+\label{sec:orgd178174}
+Mostrar un carrusel de imagenes, la central va a ser la más grande y las
+demás (al lado) serán más chicas. Con un rollbar, seleccionar el tiempo
+con el que se va a cambiar la imagen. 10 imagenes
+\subsection{{\bfseries\sffamily NO} Aplicación Feria}
+\label{sec:orgc5f94b5}
+\subsubsection{Notas}
+\label{sec:orgd04101d}
+\begin{itemize}
+\item[{$\square$}] Excepciones para la validación de los campos
+\begin{itemize}
+\item[{$\square$}] Validar Email
+\item[{$\boxtimes$}] Validar usuario o email duplicados
+\item[{$\square$}] Validar contraseña
+\end{itemize}
+\item[{$\square$}] Crear nueva branch y eliminar cambios de la demo
+\end{itemize}
+\subsubsection{{\bfseries\sffamily DONE} DEMO Login funcional y Pantallas [6/6]}
+\label{sec:orga113f91}
+\begin{itemize}
+\item[{$\boxtimes$}] Login
+\item[{$\boxtimes$}] Registro
+\item[{$\boxtimes$}] Pantalla principal
+\item[{$\boxtimes$}] Eventos
+\item[{$\boxtimes$}] Entradas
+\item[{$\boxtimes$}] Comida
+\end{itemize}
+SCHEDULED: \textit{<2023-10-20 Fri>}
+\subsection{{\bfseries\sffamily DONE} Login con BD}
+\label{sec:org8abadde}
+Login básico con usuario y contraseña
+\subsubsection{Base de datos del login}
+\label{sec:org8e02f81}
+\begin{enumerate}
+\item Script
+\label{sec:orgf691ca2}
+\begin{verbatim}
+CREATE TABLE users (
+       id           number primary key,
+       first_name     varchar(30),
+       last_name     varchar(40),
+       email     varchar(40),
+       phone_number     varchar(30)
+);
+
+INSERT INTO users VALUES (1,'user1','123');
+INSERT INTO users VALUES (2,'user2','123');
+INSERT INTO users VALUES (3,'user3','123');
+INSERT INTO users VALUES (4,'user4','123');
+\end{verbatim}
+\end{enumerate}
+\subsection{{\bfseries\sffamily NO} Evaluación Segunda Unidad}
+\label{sec:org65fe474}
+\subsection{Unida 3 Trabajo 1}
+\label{sec:orgc312c61}
+\section{Base de datos}
+\label{sec:orgdf95749}
+\url{https://oracleacademysolved.blogspot.com/}
+\subsection{{\bfseries\sffamily DONE} Bloque 1 [3/3]}
+\label{sec:orgea7fa97}
+SCHEDULED: \textit{<2023-10-20 Fri>}
+\begin{itemize}
+\item[{$\boxtimes$}] Práctica 1-1
+\item[{$\boxtimes$}] Práctica 1-2
+\item[{$\boxtimes$}] Práctica 1-3
+\end{itemize}
+\subsection{{\bfseries\sffamily DONE} Bloque 2 [3/3]}
+\label{sec:org79a87db}
+\begin{itemize}
+\item[{$\boxtimes$}] Práctica 2-1
+\item[{$\boxtimes$}] Práctica 2-2
+\item[{$\boxtimes$}] Práctica 2-3
+\item[{$\boxtimes$}] Práctica 2-4
+\end{itemize}
+\subsubsection{{\bfseries\sffamily DONE} Práctica 2-6}
+\label{sec:org8a94d33}
+\subsubsection{{\bfseries\sffamily DONE} Práctica 2-7}
+\label{sec:org700ce95}
+\subsubsection{{\bfseries\sffamily DONE} QUIZ}
+\label{sec:org258b02a}
+\subsection{{\bfseries\sffamily DONE} Bloque 3}
+\label{sec:org2ddc4ff}
+\subsubsection{{\bfseries\sffamily DONE} Práctica 3-1}
+\label{sec:orgfadcf0d}
+\subsubsection{{\bfseries\sffamily DONE} Práctica 3-2}
+\label{sec:orgb2cfad2}
+\subsubsection{{\bfseries\sffamily DONE} Práctica 3-3}
+\label{sec:org94db5e3}
+\subsubsection{{\bfseries\sffamily DONE} Práctica 3-4}
+\label{sec:org31a03c0}
+\subsubsection{{\bfseries\sffamily DONE} Quizz Bloque 3}
+\label{sec:orgda94008}
+\subsection{{\bfseries\sffamily TODO} Bloque 4}
+\label{sec:org9780baa}
+\begin{itemize}
+\item[{$\square$}] Practice PL/SQL 4-1
+\item[{$\square$}] Practice PL/SQL 4-2
+\item[{$\square$}] Practice PL/SQL 4-3
+\item[{$\square$}] Practice PL/SQL 4-4
+\item[{$\square$}] Practice PL/SQL 4-5
+\end{itemize}
+\section{Ecuaciones Diferenciales}
+\label{sec:org7ceffb5}
+\subsection{{\bfseries\sffamily DONE} Formulario de ED}
+\label{sec:orgbec7b1c}
+\subsection{{\bfseries\sffamily NO} Actividad 1: Método de reducción}
+\label{sec:org0cd3c36}
+:SCORE: 0
+\subsection{{\bfseries\sffamily DONE} Actividad 2}
+\label{sec:orgb660a9d}
+CLOSED: \textit{<2023-10-20 Fri>}
+:SCORE: 1
+\subsection{{\bfseries\sffamily DONE} Actividad 3}
+\label{sec:org851411b}
+:SCORE: 1
+SCHEDULED: \textit{<2023-10-16 Mon>}
+CLOSED: \textit{<2023-10-16 Mon>}
+\subsection{{\bfseries\sffamily DONE} Actividad 4}
+\label{sec:org5f65adf}
+:SCORE: 1
+SCHEDULED: \textit{<2023-10-18 Wed>}
+\subsection{{\bfseries\sffamily NO} Actividad 5}
+\label{sec:orgc0d29fc}
+\subsection{{\bfseries\sffamily DONE} Reporte}
+\label{sec:orgf570d63}
+\subsection{{\bfseries\sffamily DONE} Actividad en equipo}
+\label{sec:org856f051}
+\subsection{{\bfseries\sffamily DONE} Examen Mate Unidad 2}
+\label{sec:org473fe0b}
+\subsection{{\bfseries\sffamily NO} Actividad 1 Unidad 3}
+\label{sec:orgd0d81c2}
+:SCORE: 0
+\subsection{{\bfseries\sffamily TODO} Actividad 2 Unidad 3}
+\label{sec:orgc9b8cae}
+:SCORE:
+\section{Inglés}
+\label{sec:org897bba9}
+\subsection{{\bfseries\sffamily DONE} Presentación Unidad 2}
+\label{sec:orga8e90bd}
+CLOSED: \textit{<2023-10-17 Tue>}
+\subsection{{\bfseries\sffamily DONE} Examen Unidad 2}
+\label{sec:org6df2052}
+\end{document}

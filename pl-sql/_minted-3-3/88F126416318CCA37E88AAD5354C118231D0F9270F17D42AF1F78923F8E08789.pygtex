@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{DECLARE}
+\PYG{+w}{        }\PYG{n}{v\PYGZus{}max\PYGZus{}deptno}\PYG{+w}{ }\PYG{n}{new\PYGZus{}depts}\PYG{p}{.}\PYG{n}{department\PYGZus{}id}\PYG{o}{\PYGZpc{}}\PYG{k}{TYPE}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{v\PYGZus{}dept\PYGZus{}name}\PYG{+w}{ }\PYG{n}{new\PYGZus{}depts}\PYG{p}{.}\PYG{n}{department\PYGZus{}name}\PYG{o}{\PYGZpc{}}\PYG{k}{TYPE}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}A New Department\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{v\PYGZus{}dept\PYGZus{}id}\PYG{+w}{ }\PYG{n}{new\PYGZus{}depts}\PYG{p}{.}\PYG{n}{department\PYGZus{}id}\PYG{o}{\PYGZpc{}}\PYG{k}{TYPE}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{BEGIN}
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{MAX}\PYG{p}{(}\PYG{n}{department\PYGZus{}id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{v\PYGZus{}max\PYGZus{}deptno}\PYG{+w}{ }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{new\PYGZus{}depts}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The maximum department id is: \PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{v\PYGZus{}max\PYGZus{}deptno}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{v\PYGZus{}dept\PYGZus{}id}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{v\PYGZus{}max\PYGZus{}deptno}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{10}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}v\PYGZus{}dept\PYGZus{}id: \PYGZsq{}}\PYG{o}{||}\PYG{+w}{ }\PYG{n}{v\PYGZus{}dept\PYGZus{}id}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

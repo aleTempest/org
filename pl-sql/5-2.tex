@@ -1,0 +1,162 @@
+% Created 2023-11-26 Sun 20:39
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{Practice PL/SQL 5-2}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={Practice PL/SQL 5-2},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vocabulary}
+\label{sec:orgb8fa6ff}
+\begin{enumerate}
+\item Collection
+\item INDEX BY TABLE
+\item INDEX BY table of records
+\end{enumerate}
+\section{Try/Solve It}
+\label{sec:orgb6d28a8}
+\begin{enumerate}
+\item PL/SQL Collections
+\begin{enumerate}
+\item is a named set of many occurrences of the same kind of data stored as a variable.
+\item Collections
+\begin{enumerate}
+\item A list of all employees.
+\item The population of all countries in Europe.
+\item All the data stored in the employees table about specific employees.
+\end{enumerate}
+\item An INDEX BY table is based on a single field or a column of a table.
+\item A INDEX BY table uses a TYPE to populate and an INDEX BY table of records uses
+a composite TYPE.
+\item The difference between t\textsubscript{pops} and v\textsubscript{pops}\textsubscript{tab} is that t\textsubscript{pops} is a TYPE and v\textsubscript{pops}\textsubscript{tab}
+is a variable from that type. And v\textsubscript{pops}\textsubscript{tab} is a INDEX BY table because it's only
+a column based field and not a composite TYPE.
+\end{enumerate}
+\item INDEX BY tables of countries in South America
+\begin{enumerate}
+\item INDEX BY table of countries in South America
+\begin{verbatim}
+DECLARE
+    TYPE t_country_rec IS TABLE OF WF_COUNTRIES.COUNTRY_NAME%TYPE
+        INDEX BY BINARY_INTEGER;
+    v_country_rec_tab t_country_rec;
+    v_count_id  BINARY_INTEGER := 0;
+BEGIN
+    FOR country_rec IN (
+        SELECT country_id,country_name FROM WF_COUNTRIES
+        WHERE region_id = 5 ORDER BY country_id)
+        LOOP
+        v_count_id := v_count_id + 1;
+            v_country_rec_tab(v_count_id) := country_rec.COUNTRY_NAME;
+        END LOOP;
+
+END;
+\end{verbatim}
+\item Display de contents of de INDEX BY table
+\begin{verbatim}
+DECLARE
+    TYPE t_country_rec IS TABLE OF WF_COUNTRIES.COUNTRY_NAME%TYPE
+        INDEX BY BINARY_INTEGER;
+    v_country_rec_tab t_country_rec;
+    v_count_id  BINARY_INTEGER := 0;
+    v_count BINARY_INTEGER := 0;
+BEGIN
+    FOR country_rec IN (
+        SELECT country_id,country_name FROM WF_COUNTRIES
+        WHERE region_id = 5 ORDER BY country_id)
+        LOOP
+        v_count_id := v_count_id + 1;
+            v_country_rec_tab(v_count_id) := country_rec.COUNTRY_NAME;
+        END LOOP;
+
+    v_count := v_country_rec_tab.FIRST;
+    LOOP
+        IF v_country_rec_tab.EXISTS(v_count) THEN
+            DBMS_OUTPUT.PUT_LINE(v_country_rec_tab(v_count));
+            v_count := v_count + 1;
+            EXIT WHEN v_count = v_country_rec_tab.LAST;
+        END IF;
+    end loop;
+END;
+\end{verbatim}
+\item Only display the first and last elements of the INDEX BY table
+\begin{verbatim}
+DECLARE
+    TYPE t_country_rec IS TABLE OF WF_COUNTRIES.COUNTRY_NAME%TYPE
+        INDEX BY BINARY_INTEGER;
+    v_country_rec_tab t_country_rec;
+    v_count_id  BINARY_INTEGER := 0;
+BEGIN
+    FOR country_rec IN (
+        SELECT country_id,country_name FROM WF_COUNTRIES
+        WHERE region_id = 5 ORDER BY country_id)
+        LOOP
+        v_count_id := v_count_id + 1;
+            v_country_rec_tab(v_count_id) := country_rec.COUNTRY_NAME;
+        END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('First element: ' || v_country_rec_tab(v_country_rec_tab.FIRST));
+    DBMS_OUTPUT.PUT_LINE('Last element: ' || v_country_rec_tab(v_country_rec_tab.LAST));
+\end{verbatim}
+\end{enumerate}
+\item INDEX BY table of records
+\begin{enumerate}
+\item Populate an INDEX BY table of records with EMPLOYEES data.
+\begin{verbatim}
+DECLARE
+    TYPE t_emp_reg IS TABLE OF EMPLOYEES%ROWTYPE
+        INDEX BY BINARY_INTEGER;
+    v_emp_rec_tab t_emp_reg;
+BEGIN
+    FOR emp_reg IN (SELECT * FROM EMPLOYEES ORDER BY employee_id) LOOP
+        v_emp_rec_tab(emp_reg.employee_id) := emp_reg;
+    END LOOP;
+END;
+\end{verbatim}
+
+\item Display the contends of the INDEX BY table of records
+\end{enumerate}
+\end{enumerate}
+\begin{verbatim}
+DECLARE
+    TYPE t_emp_reg IS TABLE OF EMPLOYEES%ROWTYPE
+        INDEX BY BINARY_INTEGER;
+    v_emp_rec_tab t_emp_reg;
+    v_count BINARY_INTEGER := 0;
+BEGIN
+    FOR emp_reg IN (SELECT * FROM EMPLOYEES ORDER BY employee_id) LOOP
+        v_emp_rec_tab(emp_reg.employee_id) := emp_reg;
+    END LOOP;
+    v_count := v_emp_rec_tab.FIRST;
+    LOOP
+        IF v_emp_rec_tab.EXISTS(v_count) THEN
+            DBMS_OUTPUT.PUT_LINE(v_emp_rec_tab(v_count).LAST_NAME);
+        END IF;
+        v_count := v_count + 1;
+        EXIT WHEN v_count = v_emp_rec_tab.LAST;
+    END LOOP;
+END;
+\end{verbatim}
+\end{document}

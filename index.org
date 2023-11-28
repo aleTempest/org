@@ -1,0 +1,229 @@
+#+title: index
+#+author: Agustín Alejandro Mota Hinojosa
+
+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
+MOHA021003HTSTNGA2
+
+* ela
+** Libros
+*** DONE Mistborn: El imperio Final
+CLOSED: <2023-10-10 mar.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2006
+:language: Español
+:END:
+*** DONE Mistborn: El Pozo de la Ascensión
+CLOSED: <2022-10-29 sáb.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2007
+:language: Español
+:END:
+*** DONE Mistborn: El Heroe de las Eras
+CLOSED: <2022-11-07 lun.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2008
+:language: Español
+:END:
+*** DONE Mistborn: Aleación de ley
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2011
+:language: Español
+:END:
+*** DONE Archivo de las Tormentas: El camino de los reyes
+CLOSED: <2023-01-10 mar.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2010
+:language: Español
+:END:
+*** DONE Archivo de las Tormentas: Palabras Radiantes
+CLOSED: <2023-06-07 mié.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2014
+:language: Español
+:END:
+*** DONE Archivo de las Tormentas: Juramentada
+CLOSED: <2023-07-20 jue.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2017
+:language: Español
+:END:
+*** DONE Archivo de las Tormentas: El Ritmo de la Guerra
+CLOSED: <2023-08-31 jue.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2022
+:language: Español
+:END:
+*** DONE Danzante del Filo
+CLOSED: <2023-05-28 dom.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2016
+:language: Español
+:END:
+*** DONE El Aliento de los Dioses
+CLOSED: <2023-05-16 mar.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2009
+:language: Español
+:END:
+*** DONE Asesino de Reyes: El Nombre del Viento
+
+*** DONE Asesino de Reyes: El Temor de un Hombre Sabio
+
+*** DONE Mistborn 3.5: Historia Secreta
+CLOSED: <2023-09-12 mar.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2016
+:language: Español
+:END:
+
+*** DONE Esquirla del amanecer
+CLOSED: <2023-08-01 mar.>
+:PROPERTIES:
+:author: Brandon Sanderson
+:published: 2021
+:language: Español
+:END:
+*** La música del Silencio
+:PROPERTIES:
+:author: Patrick Rothfuss
+:published: 2016
+:language: Español
+:END:
+
+*** Hobbit
+:PROPERTIES:
+:author: J.R.R. Tolkien
+:language: Español
+:END:
+
+*** El señor de los anillos: La comunidad del anillo
+:PROPERTIES:
+:author: J.R.R. Tolkien
+:language: Español
+:END:
+
+*** El señor de los anillos: Las dos torres
+:PROPERTIES:
+:author: J.R.R. Tolkien
+:language: Español
+:END:
+
+*** El señor de los anillos: El retorno del rey
+:PROPERTIES:
+:author: J.R.R. Tolkien
+:language: Español
+:END:
+
+*** DONE Mistborn 5: Sombras de Identidad
+CLOSED: <2023-10-04 mié. 09:24 AM>
+:author: Brandon Sanderson
+:published: 2015
+:language: Español
+:END:
+
+*** Mistborn 6: Brazales de Duelo
+:author: Brandon Sanderson
+:published: 2016
+:language: Español
+:END:
+
+*** Mistborn 7: El Metal Perdido
+:author: Brandon Sanderson
+:published: 202
+:language: Español
+:END:
+
+*** ¡Guardias! ¡Guardias!
+
+*** Mort
+
+** Org things
+- Opciones de latex para modificar como se compilan los documentos
+  - Fuentes:
+    - [[https:https://orgmode.org/manual/LaTeX-header-and-sectioning.html][orgmode manual latex header]]
+    - [[https:emacs.stackexchange.com/questions/7996/is-there-a-way-to-resize-margins-when-exporting-pdf-in-org-mode][Is there a way to resize margins when exporting PDF in org-mode?]]
+      Cambiar dimensiones del documento usando =#+LATEX_HEADER=
+      #+begin_src latex
+        \usepackage[0.5in]{geometry}
+      #+end_src
+- Exportar hightlight de sintaxis a pdf con pygments y minted
+  - Fuentes:
+    - [[https:emacs.stackexchange.com/questions/27154/exporting-highlighted-source-code-to-pdf-in-org-mode][Exporting highlighted source code to pdf in Org-Mode]]
+
+      Instalar pygments: =pip install pygments=
+
+      En la configuración de emacs:
+      #+begin_src elisp
+    (require 'org)
+    (require 'ox-latex)
+    (add-to-list 'org-latex-packages-alist '("" "minted"))
+    (setq org-latex-listings 'minted)
+
+    (setq org-latex-pdf-process
+          '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+            "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+            "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+    (setq org-src-fontify-natively t)
+
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((R . t)
+       (latex . t)))
+      #+end_src
+- Fechas (=scheduled= y =deadline=)
+  Existen 2 tipos de propiedades para una tarea en org mode, =SCHEDULED= y/o
+  =DEADLINE=. En este [[https:members.optusnet.com.au/~charles57/GTD/org_dates/][ejemplo]] se explica muy bien:
+
+  #+begin_quote
+  Scheduled dates and Deadlines can both be supplied for an entry. The
+  earliest day of the month I can pay my credit card is the 21st of the
+  month, however the payment is due by the last day of the month.
+  Therefore I can enhance the entry with a deadline.
+  #+end_quote
+
+  [[./resources/schedule2.png]]
+
+** Openbox
+*** Rice
+- [-] Tema: Nord
+  - [X] GTK
+  - [X] Openbox
+  - [X] Emacs
+  - [X] VSCode
+  - [ ] Vim
+  - [X] Firefox
+    - [ ] Restaurar configuración
+  - [X] Rofi
+  - [X] Kitty
+  - [X] Spotify
+- [-] Keybinds
+  - [X] Recargar la configuración
+  - [X] Incrementar y decrementar el brillo de la pantalla
+  - [X] Incrementar y decrementar el volumen
+  - [X] Mutear volumen
+  - [X] Programas básicos
+  - [ ] Scroll natural en el touchpad
+    /SOLUCIÓN: [[https:bbs.archlinux.org/viewtopic.php?id=255471][[SOLVED] libinput: enabling touchpad natural scrolling affects mouse]]/
+- [X] Compositor: Picom
+  - [X] Tearing
+  - [X] Sombras
+    - [X] Sombras en rofi interfieren
+    - [X] Sombras en firefox interfieren
+      SOLUCIÓN: [[https:www.reddit.com/r/FirefoxCSS/comments/nr5mqb/how_to_remove_the_blur_that_picom_adds_around/][Reddit:How to remove the blur that picom adds around firefox menus?]]
+- [ ] Scripts: Rofi
+  - [ ] No carga la fuente JetBrains
+
+** Ideas
+- importar lista de canciones a spotify, verificación con la api. _Servicio_

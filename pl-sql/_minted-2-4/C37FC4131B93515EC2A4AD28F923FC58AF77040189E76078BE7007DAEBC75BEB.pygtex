@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{DECLARE}
+\PYG{+w}{            }\PYG{n}{number\PYGZus{}of\PYGZus{}students}\PYG{+w}{ }\PYG{n}{PLS\PYGZus{}INTEGER}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{student\PYGZus{}name}\PYG{+w}{ }\PYG{n}{VARCHAR2}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Johnson\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{stu\PYGZus{}per\PYGZus{}class}\PYG{+w}{ }\PYG{n}{CONSTANT}\PYG{+w}{ }\PYG{n+nb}{NUMBER}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{today}\PYG{+w}{ }\PYG{n+nb}{DATE}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{SYSDATE}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{BEGIN}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{+w}{ }\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The number of students is:\PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{number\PYGZus{}of\PYGZus{}students}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{+w}{ }\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The name of the students is:\PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{student\PYGZus{}name}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{+w}{ }\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The number of students per class is:\PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{stu\PYGZus{}per\PYGZus{}class}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{+w}{ }\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Tomorrows date is: \PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{today}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{END}
+\end{Verbatim}

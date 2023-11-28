@@ -1,0 +1,74 @@
+#+title: 3-4: Using Transaction Control Statements
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Vocabulary
+1. An inseparable list of database operations, which must be executed either in its entirety or not at all.
+
+   *Transaction*
+
+2. Used for discarding any changes that were made to the database after the last COMMIT.
+
+   *Rollback*
+
+3. Used toollbackn intermediate point in transaction processing.
+
+   *Savepoint*
+
+4. Keyword used to signal the end of a PL/SQL block, not the end of a transaction.
+
+   *END*
+
+5. Statement used to make database changes permanent.
+
+   *Commit*
+* Try It / Solve It
+1. How many transactions are shown in the following code? Explain your reasoning.
+    #+begin_src sql
+    begin
+        insert into my_savings (account_id, amount) values (10377, 200);
+        insert into my_checking (account_id, amount) values (10378, 100);
+    end;
+    #+end_src
+
+2. Create the endangered species table by running the following statement in Application Express:
+   #+begin_src sql
+    create table endangered_species (
+     (species_id number(4) constraint es_spec_pk primary key,
+     common_name varchar2(30) constraint es_com_name_nn not null,
+     scientific_name varchar2(30) constraint es_sci_name_nn not null));
+   #+end_src
+
+   [[./resources/2023-10-28_21-47.png]]
+
+3. Examine the following block of code. If you were to run this block, what data do you think would be saved in the database?
+   #+begin_src sql
+    begin
+        insert into endangered_species values (100, 'polar bear', 'ursus maritimus');
+        savepoint sp_100;
+        insert into endangered_species values (200, 'spotted owl', 'strix occidentalis');
+        savepoint sp_200;
+        insert into endangered_species values (300, 'asiatic black bear', 'ursus thibetanus');
+        rollback to sp_100;
+        commit;
+    end;
+   #+end_src
+
+   =100, 'Polar Bear','Ursus maritimus'=
+
+4. Run the block above to test your theory. Confirm your projected data was added.
+
+   [[./resources/select_ensp.png]]
+
+5. Examine the following block. If you were to run this block, what data do you think would be saved in the database? Run the block to test your theory.
+   #+begin_src sql
+    begin
+        insert into endangered_species values (400, 'blue gound beetle', 'carabus intricatus');
+        savepoint sp_400;
+        insert into endangered_species values (500, 'little spotted cat', 'leopardus tigrinus');
+        rollback;
+        insert into endangered_species values (600, 'veined tongue-fern', 'elaphoglossum nervosum');
+        rollback to sp_400;
+    end;
+    #+end_src
+
+    No data will be saved.

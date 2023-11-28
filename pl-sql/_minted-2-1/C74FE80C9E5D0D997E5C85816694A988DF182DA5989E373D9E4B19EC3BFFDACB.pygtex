@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{       }\PYG{k}{DECLARE}
+\PYG{+w}{           }\PYG{n}{v\PYGZus{}length\PYGZus{}of\PYGZus{}string}\PYG{+w}{ }\PYG{n+nb}{INTEGER}\PYG{p}{;}
+\PYG{+w}{       }\PYG{k}{BEGIN}
+\PYG{+w}{           }\PYG{n}{v\PYGZus{}length\PYGZus{}of\PYGZus{}string}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{num\PYGZus{}characters}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Oracle Corporation\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{           }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{n}{v\PYGZus{}length\PYGZus{}of\PYGZus{}string}\PYG{p}{);}
+\PYG{+w}{       }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

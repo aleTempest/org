@@ -1,0 +1,4 @@
+#+title: Transformadas de Laplace
+#+LATEX_HEADER: \usepackage{amsmath}
+
+- \mathscr{L}

@@ -1,0 +1,314 @@
+#+title: upv
+
+* Programación Orientada a Objetos
+** DONE Colores
+SCHEDULED: <2023-10-11 Wed>
+Aplicación con botones que representen coloresy un objeto en medio. Al
+presionar un botón el objeto se colorea del color respectivo.
+
+** DONE Eventos de interaz
+SCHEDULED: <2023-10-12 Thu>
+Aplicación que implemente eventos y sus respectivos métodos.
+
+** DONE Generador de contraseñas
+DEADLINE: <2023-10-11 Wed>
+Fuentes:
+- [[https:stackoverflow.com/questions/31260512/generate-a-secure-random-password-in-java-with-minimum-special-character-require][Generate a Secure Random Password in Java with Minimum Special Character
+  Requirements]]
+#+begin_quote Abraham
+El boton generara una contraseña aleatoria
+nosotros le daremos click en generar contraseña y se generara aleatoria y
+la contraseña se mostrara en el textil
+
+Definir un ancho o tamaño total de contraseña
+
+Cuantos bytes: max 10 bytes
+
+La contraseña uncluye todas las letras del abecedario, simbolos y signos,
+caracteres
+#+end_quote
+
+** DONE Entregar actividad de pase de lista
+SCHEDULED: <2023-10-11 Wed>
+
+** DONE Números perfectos
+SCHEDULED: <2023-10-11 Wed>
+Aplicación para generar números perfectos de 4-5.
+
+** DONE Snake
+SCHEDULED: <2023-10-17 Tue>
+Un juego de la serpiente dentro de una matriz de 50x50.
+
+** DONE Notas
+Aplicación para guardar notas
+SCHEDULED: <2023-10-13 Fri>
+
+** DONE Galería de imagenes
+SCHEDULED: <2023-10-17 Tue>
+Mostrar un carrusel de imagenes, la central va a ser la más grande y las
+demás (al lado) serán más chicas. Con un rollbar, seleccionar el tiempo
+con el que se va a cambiar la imagen. 10 imagenes
+
+** NO Aplicación Feria
+SCHEDULED: <2023-10-25 mié>
+*** Notas
+- [ ] Excepciones para la validación de los campos
+  - [ ] Validar Email
+  - [X] Validar usuario o email duplicados
+  - [ ] Validar contraseña
+- [ ] Crear nueva branch y eliminar cambios de la demo
+*** DONE DEMO Login funcional y Pantallas [6/6]
+- [X] Login
+- [X] Registro
+- [X] Pantalla principal
+- [X] Eventos
+- [X] Entradas
+- [X] Comida
+SCHEDULED: <2023-10-20 vie>
+
+** DONE Login con BD
+SCHEDULED: <2023-10-31 mar>
+Login básico con usuario y contraseña
+
+*** Base de datos del login
+**** Script
+#+begin_src sql
+CREATE TABLE users (
+       id           number primary key,
+       first_name     varchar(30),
+       last_name     varchar(40),
+       email     varchar(40),
+       phone_number     varchar(30)
+);
+
+INSERT INTO users VALUES (1,'user1','123');
+INSERT INTO users VALUES (2,'user2','123');
+INSERT INTO users VALUES (3,'user3','123');
+INSERT INTO users VALUES (4,'user4','123');
+#+end_src
+
+** NO Evaluación Segunda Unidad
+SCHEDULED: <2023-11-07 Tue>
+
+** DONE Unidad 3 Trabajo 1
+SCHEDULED: <2023-11-10 Fri>
+
+** DONE Unidad 3 Trabajo 2
+SCHEDULED: <2023-11-16 Thu>
+
+** TODO Unidad 3 Trabajo 3: Gestor de Tareas Concurrentes
+
+* Base de datos
+https://oracleacademysolved.blogspot.com/
+** Unidad 2
+*** DONE Bloque 1 [3/3]
+CLOSED: <2023-10-18 mié 16:05>
+SCHEDULED: <2023-10-20 Fri>
+- [X] Práctica 1-1
+- [X] Práctica 1-2
+- [X] Práctica 1-3
+
+*** DONE Bloque 2 [3/3]
+SCHEDULED: <2023-10-20 vie>
+- [X] Práctica 2-1
+- [X] Práctica 2-2
+- [X] Práctica 2-3
+- [X] Práctica 2-4
+**** DONE Práctica 2-6
+SCHEDULED: <2023-10-24 mar>
+**** DONE Práctica 2-7
+SCHEDULED: <2023-10-23 lun>
+**** DONE QUIZ
+SCHEDULED: <2023-10-18 mié>
+
+*** DONE Bloque 3
+**** DONE Práctica 3-1
+SCHEDULED: <2023-10-25 mié>
+**** DONE Práctica 3-2
+SCHEDULED: <2023-10-25 mié>
+**** DONE Práctica 3-3
+SCHEDULED: <2023-10-28 sáb>
+**** DONE Práctica 3-4
+SCHEDULED: <2023-10-28 sáb>
+**** DONE Quizz Bloque 3
+SCHEDULED: <2023-10-30 lun>
+
+*** DONE Bloque 4
+SCHEDULED: <2023-11-10 vie>
+- [X] Practice PL/SQL 4-1
+- [X] Practice PL/SQL 4-2
+- [X] Practice PL/SQL 4-3
+- [X] Practice PL/SQL 4-4
+- [X] Practice PL/SQL 4-5
+
+** Unidad 3
+*** DONE Bloque 5
+SCHEDULED: <2023-11-26 Sun>
+- [X] Practice PL/SQL 5-1:
+- [X] Practice PL/SQL 5-2
+**** DONE QUIZZ
+SCHEDULED: <2023-11-12 Sun>
+:PROPERTIES:
+:SCORE: 86.67/100
+:TRIES: 2
+:END:
+*** DONE Bloque 6
+SCHEDULED: <2023-11-26 Sun>
+- [X] Practice PL/SQL 6-1
+- [X] Practice PL/SQL 6-2
+- [X] Practice PL/SQL 6-3
+- [X] Practice PL/SQL 6-4
+- [X] Practice PL/SQL 6-5
+- [X] Practice PL/SQL 6-6
+*** TODO Bloque 7
+SCHEDULED: <2023-11-26 Sun>
+- [ ] Practice PL/SQL 7-1
+- [ ] Practice PL/SQL 7-2
+- [ ] Practice PL/SQL 7-3
+- [ ] Practice PL/SQL 7-4
+
+* Ecuaciones Diferenciales
+** DONE Formulario de ED
+SCHEDULED: <2023-10-16 Mon>
+
+** NO Actividad 1: Método de reducción
+SCHEDULED: <2023-10-10 Tue>
+:SCORE: 0
+
+** DONE Actividad 2
+SCHEDULED: <2023-10-20 Fri>
+CLOSED: <2023-10-20 Fri>
+:SCORE: 1
+
+** DONE Actividad 3
+:SCORE: 1
+SCHEDULED: <2023-10-16 Mon>
+CLOSED: <2023-10-16 Mon>
+
+** DONE Actividad 4
+:SCORE: 1
+SCHEDULED: <2023-10-18 mié>
+
+** NO Actividad 5
+SCHEDULED: <2023-10-24 mar>
+
+** DONE Reporte
+SCHEDULED: <2023-10-26 jue>
+
+** DONE Actividad en equipo
+SCHEDULED: <2023-10-30 lun>
+
+** DONE Examen Mate Unidad 2
+SCHEDULED: <2023-10-27 vie>
+
+** NO Actividad 1 Unidad 3
+SCHEDULED: <2023-11-06 Mon>
+:SCORE: 0
+
+** DONE Actividad 2 Unidad 3
+SCHEDULED: <2023-11-09 jue>
+:PROPERTIES:
+:SCORE: 1
+:END:
+** DONE Actividad 3 Unidad 3
+SCHEDULED: <2023-11-09 jue>
+:PROPERTIES:
+:SCORE: 1
+:END:
+** DONE Actividad 4 Unidad 3
+SCHEDULED: <2023-11-09 jue>
+:PROPERTIES:
+:SCORE: 1
+:END:
+** DONE Actividad 5 Unidad 3
+SCHEDULED: <2023-11-09 jue>
+:PROPERTIES:
+:SCORE: 1
+:END:
+** DONE Actividad 6 Unidad 3
+SCHEDULED: <2023-11-09 jue>
+:PROPERTIES:
+:SCORE: 1
+:END:
+** DONE Actividad 7 Unidad 3
+SCHEDULED: <2023-11-24 Fri>
+:PROPERTIES:
+:SCORE: 1
+:END:
+** TODO Actividad 8 Unidad 3
+SCHEDULED: <2023-11-27 Mon>
+
+** TODO Reporte Unidad 3
+SCHEDULED: <2023-11-28 Tue>
+** TODO Examen Unidad 3
+SCHEDULED: <2023-11-29 Wed>
+- TEMAS:
+  - [ ] Definición de Transformadas de laplace
+  - [ ] Transformadas de laplace
+  - [ ] Inversas de la transformada de laplace
+  - [ ] Teoremas de traslación
+    - [ ] Primer teorema
+    - [ ] Segundo teorema
+  - [ ] Transformadas de derivadas
+** TODO Recuperación
+*** Unidad 1
+SCHEDULED: <2023-11-30 Thu>
+- TEMAS:
+  - [ ] Integración
+  - [ ] Derivadas
+  - [ ] EC
+  - [ ] EC separables
+  - [ ] EC homogéneas/sustitución
+  - [ ] EC exactas
+  - [ ] EC lineales
+*** Unidad 2
+SCHEDULED: <2023-12-01 Fri>
+- TEMAS:
+  - [ ] Reducción de orden
+  - [ ] EC Lineales homogéneas/no homo
+    - [ ] División sintética
+    - [ ] Operador anulador
+  - [ ] Variación de parámetros
+* Inglés
+** DONE Presentación Unidad 2
+SCHEDULED: <2023-10-17 Tue>
+CLOSED: <2023-10-17 Tue>
+
+** DONE Examen Unidad 2
+SCHEDULED: <2023-10-25 Wed>
+** TODO Presentación Unidad 3
+SCHEDULED: <2023-11-27 Mon>
+** TODO Examen Unidad 3
+SCHEDULED: <2023-12-01 Fri>
+* TODO Entregar certificado del CBTis
+SCHEDULED: <2023-12-08 Fri>
+#+begin_quote
+Estimado alumno(a):
+
+Buen día, te comunicamos que debes entregar el siguiente documento:
+4 COPIAS POR AMBOS LADOS DEL CERTIFICADO DE BACHILLERATO (la impresión que entregaste solo es de la parte frontal de tu certificado, se requiere por ambos lados)
+Debes acudir a este Departamento a entregar tu documentación, para que tu expediente de alumno esté completo. Horario de recepción de documentos: 9:00 am a 2:00 pm.
+
+Fecha límite para entregar documentos: 08 de diciembre de 2023.
+
+Saludos cordiales!
+#+end_quote
+
+* TODO Estancias
+** TODO Encontrar empresa
+** TODO Entregar documentación
+- [ ] Seguro médico del IMSS
+- [ ] Carta de aceptación
+** TODO Bitácoras
+** TODO Reporte
+
+* Proyecto de redes
+** Entrega del proyecto
+SCHEDULED: <2023-12-01 Fri>
+- [ ] Reporte
+- [ ] Archivo de packet tracer
+** Presentación
+SCHEDULED: <2023-12-04 Mon>
+Presentación de diapositivas explicando todo.
+
+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

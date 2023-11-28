@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{n}{v\PYGZus{}dept\PYGZus{}name}\PYG{+w}{    }\PYG{n}{new\PYGZus{}depts}\PYG{p}{.}\PYG{n}{department\PYGZus{}name}\PYG{o}{\PYGZpc{}}\PYG{k}{TYPE}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}A New Department\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{v\PYGZus{}dept\PYGZus{}id}
+\PYG{+w}{    }\PYG{n}{new\PYGZus{}depts}\PYG{p}{.}\PYG{n}{department\PYGZus{}id}\PYG{o}{\PYGZpc{}}\PYG{k}{TYPE}\PYG{p}{;}
+\end{Verbatim}

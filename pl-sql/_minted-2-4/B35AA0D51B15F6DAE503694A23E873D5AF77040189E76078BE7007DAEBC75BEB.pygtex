@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{BEGIN}
+\PYG{+w}{        }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Hello World\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

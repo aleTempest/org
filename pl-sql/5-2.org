@@ -1,0 +1,121 @@
+#+title: Practice PL/SQL 5-2
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Vocabulary
+1. Collection
+2. INDEX BY TABLE
+3. INDEX BY table of records
+
+* Try/Solve It
+1. PL/SQL Collections
+   A. is a named set of many occurrences of the same kind of data stored as a variable.
+   B. Collections
+      1. A list of all employees.
+      2. The population of all countries in Europe.
+      3. All the data stored in the employees table about specific employees.
+   C. An INDEX BY table is based on a single field or a column of a table.
+   D. A INDEX BY table uses a TYPE to populate and an INDEX BY table of records uses
+      a composite TYPE.
+   E. The difference between t_pops and v_pops_tab is that t_pops is a TYPE and v_pops_tab
+      is a variable from that type. And v_pops_tab is a INDEX BY table because it's only
+      a column based field and not a composite TYPE.
+2. INDEX BY tables of countries in South America
+   A. INDEX BY table of countries in South America
+    #+begin_src sql
+DECLARE
+    TYPE t_country_rec IS TABLE OF WF_COUNTRIES.COUNTRY_NAME%TYPE
+        INDEX BY BINARY_INTEGER;
+    v_country_rec_tab t_country_rec;
+    v_count_id  BINARY_INTEGER := 0;
+BEGIN
+    FOR country_rec IN (
+        SELECT country_id,country_name FROM WF_COUNTRIES
+        WHERE region_id = 5 ORDER BY country_id)
+        LOOP
+        v_count_id := v_count_id + 1;
+            v_country_rec_tab(v_count_id) := country_rec.COUNTRY_NAME;
+        END LOOP;
+
+END;
+    #+end_src
+   B. Display de contents of de INDEX BY table
+      #+begin_src sql
+DECLARE
+    TYPE t_country_rec IS TABLE OF WF_COUNTRIES.COUNTRY_NAME%TYPE
+        INDEX BY BINARY_INTEGER;
+    v_country_rec_tab t_country_rec;
+    v_count_id  BINARY_INTEGER := 0;
+    v_count BINARY_INTEGER := 0;
+BEGIN
+    FOR country_rec IN (
+        SELECT country_id,country_name FROM WF_COUNTRIES
+        WHERE region_id = 5 ORDER BY country_id)
+        LOOP
+        v_count_id := v_count_id + 1;
+            v_country_rec_tab(v_count_id) := country_rec.COUNTRY_NAME;
+        END LOOP;
+
+    v_count := v_country_rec_tab.FIRST;
+    LOOP
+        IF v_country_rec_tab.EXISTS(v_count) THEN
+            DBMS_OUTPUT.PUT_LINE(v_country_rec_tab(v_count));
+            v_count := v_count + 1;
+            EXIT WHEN v_count = v_country_rec_tab.LAST;
+        END IF;
+    end loop;
+END;
+      #+end_src
+   C. Only display the first and last elements of the INDEX BY table
+      #+begin_src sql
+DECLARE
+    TYPE t_country_rec IS TABLE OF WF_COUNTRIES.COUNTRY_NAME%TYPE
+        INDEX BY BINARY_INTEGER;
+    v_country_rec_tab t_country_rec;
+    v_count_id  BINARY_INTEGER := 0;
+BEGIN
+    FOR country_rec IN (
+        SELECT country_id,country_name FROM WF_COUNTRIES
+        WHERE region_id = 5 ORDER BY country_id)
+        LOOP
+        v_count_id := v_count_id + 1;
+            v_country_rec_tab(v_count_id) := country_rec.COUNTRY_NAME;
+        END LOOP;
+
+    DBMS_OUTPUT.PUT_LINE('First element: ' || v_country_rec_tab(v_country_rec_tab.FIRST));
+    DBMS_OUTPUT.PUT_LINE('Last element: ' || v_country_rec_tab(v_country_rec_tab.LAST));
+      #+end_src
+3. INDEX BY table of records
+   A. Populate an INDEX BY table of records with EMPLOYEES data.
+      #+begin_src sql
+DECLARE
+    TYPE t_emp_reg IS TABLE OF EMPLOYEES%ROWTYPE
+        INDEX BY BINARY_INTEGER;
+    v_emp_rec_tab t_emp_reg;
+BEGIN
+    FOR emp_reg IN (SELECT * FROM EMPLOYEES ORDER BY employee_id) LOOP
+        v_emp_rec_tab(emp_reg.employee_id) := emp_reg;
+    END LOOP;
+END;
+      #+end_src
+
+   B. Display the contends of the INDEX BY table of records
+#+begin_src sql
+DECLARE
+    TYPE t_emp_reg IS TABLE OF EMPLOYEES%ROWTYPE
+        INDEX BY BINARY_INTEGER;
+    v_emp_rec_tab t_emp_reg;
+    v_count BINARY_INTEGER := 0;
+BEGIN
+    FOR emp_reg IN (SELECT * FROM EMPLOYEES ORDER BY employee_id) LOOP
+        v_emp_rec_tab(emp_reg.employee_id) := emp_reg;
+    END LOOP;
+    v_count := v_emp_rec_tab.FIRST;
+    LOOP
+        IF v_emp_rec_tab.EXISTS(v_count) THEN
+            DBMS_OUTPUT.PUT_LINE(v_emp_rec_tab(v_count).LAST_NAME);
+        END IF;
+        v_count := v_count + 1;
+        EXIT WHEN v_count = v_emp_rec_tab.LAST;
+    END LOOP;
+END;
+#+end_src

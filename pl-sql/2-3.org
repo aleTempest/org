@@ -1,0 +1,111 @@
+#+title: 2-3 Recognizing Data Types
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+
+* Vocabulary
+1. Store large blocks of single-byte or fixed-width multi-byte NCHAR data in the database.
+
+   *NCLOB*
+
+2. Hold values, called locators, that specify the location of large objects (such as graphic images) that are stored out of line.
+
+   *LOB*
+
+3. Hold a single value with no internal components.
+
+   *Scalar*
+
+4. Store large unstructured or structured binary objects.
+
+   *BLOB*
+
+5. Contain internal elements that are either scalar (record) or composite (record and table).
+
+   *Composite*
+
+6. Store large binary files outside of the database.
+
+   *BFILE*
+
+7. Hold values, called pointers, that point to a storage location.
+
+   *Reference*
+
+8. A schema object with a name, attributes, and methods.
+
+   *Object*
+
+9. Store large blocks of character data in the database.
+
+   *CLOB*
+
+* Try It / Solve It
+1. In your own words, describe what a data type is and explain why it is important.
+
+   A data type is a classification or category that specifies which type of value a variable or column can hold. It defines the format and the operations that can be performed on the data.
+
+2. Identify the three data type categories covered in this course.
+
+   1. LOB
+   2. Scalar
+   3. Composite
+
+3. Identify three data types covered in the Database Programming with SQL course.
+   1. Number
+   2. Date
+   3. Varchar2
+
+4. What data type can be used in PL/SQL, but can’t be used to define a table column?
+
+   *Boolean*
+
+5. Which data type indicates a large data object that is stored outside of the database?
+
+   *BFILE*
+
+6. Identify the data type category (LOB, Scalar, or Composite) for each data type. Each category may be used more than once.
+  | Data Type   | Data Type Category |
+  |-------------+--------------------|
+  | CLOB        | LOB                |
+  | VARCHAR2    | Scalar             |
+  | BLOB        | LOB                |
+  | NUMBER      | Scalar             |
+  | BFILE       | LOB                |
+  | TIMESTAMP   | Scalar             |
+  | NCLOB       | LOB                |
+  | RECORD      | Composite          |
+  | PLS_INTEGER | Scalar             |
+  | LONG        | Scalar             |
+  | TABLE       | Composite          |
+  | BOOLEAN     | Scalar             |
+
+7. Enter the data type category and the data type for each value.
+   1. ‘Switzerland’
+      Scalar =VARCHAR2=
+   2. Text of a resume
+      Scalar =VARCHAR2=
+   3. 100.20
+      Scalar =NUMBER=
+   4. A picture
+      =LOB BLOB=
+   5. 1053
+      Scalar =NUMBER=
+   6. 11-Jun-2016
+      Scalar =DATE=
+   7. ‘Computer science is the science of the 21 st century.’
+      Scalar =VARCHAR2=
+   8. Following table:
+    | Index | Last_name |
+    |-------+-----------|
+    |     1 | 'Newman'  |
+    |     2 | 'Raman'   |
+    |     3 | 'Han'     |
+
+    Composite Table
+
+   9. A movie
+      =LOB BFILE=
+   10. A sound byte
+       =LOB BFILE=
+   11. FALSE
+       Scalar =BLOB=

@@ -1,0 +1,126 @@
+% Created 2023-10-20 vie 22:18
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[spanish, english]{babel}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{2-1 Using Variables in PL/SQL}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={2-1 Using Variables in PL/SQL},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vocabulary}
+\label{sec:org8265613}
+\begin{enumerate}
+\item Used for storage of data and manipulation of stored values.
+
+\textbf{Variables}
+
+\item Values passed to a program by a user or by another program to customize
+the program.
+
+\textbf{Parameters}
+\end{enumerate}
+\section{Try It / Solve It}
+\label{sec:org0a22489}
+\begin{enumerate}
+\item Fill in the blanks.
+\begin{enumerate}
+\item Variables can be assigned to the output of a \textbf{query}
+\item Variables can be assigned values in the \textbf{DECLARE} section of a PL/SQL block.
+\item Variables can be passed as \textbf{parameters} to subprograms.
+\end{enumerate}
+
+\item Identify valid and invalid variable declaration and initialization:
+\begin{minted}[]{sql}
+    number_of_copies PLS_INTEGER; -- valid
+    printer_name CONSTANT VARCHAR2(10); -- valid
+    by_when DATE := SYSDATE+1;
+\end{minted}
+
+The statement:
+\begin{minted}[]{sql}
+    deliver_to VARCHAR2(10) := Johnson; -- invalid
+\end{minted}
+is invalid, the correct statement should look like this:
+
+\begin{minted}[]{sql}
+    deliver_to VARCHAR2(10) := 'Johnson'; -- valid
+\end{minted}
+
+\item Examine the following anonymous block and choose the appropriate statement.
+\begin{minted}[]{sql}
+    DECLARE
+        fname VARCHAR2(25);
+        lname VARCHAR2(25) DEFAULT 'fernandez';
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE(fname || ' ' || lname);
+    END;
+\end{minted}
+
+\textbf{B. The block will give an error because the fname variable is used without initializing.}
+
+\item In Application Express:
+\begin{enumerate}
+\item Create the following function:
+\begin{minted}[]{sql}
+        CREATE FUNCTION num_characters (p_string IN VARCHAR2)
+        RETURN INTEGER AS
+            v_num_characters INTEGER;
+        BEGIN
+        SELECT LENGTH(p_string) INTO v_num_characters
+            FROM dual;
+        RETURN v_num_characters;
+        END;
+\end{minted}
+\item Create and execute the following anonymous block:
+\begin{minted}[]{sql}
+       DECLARE
+           v_length_of_string INTEGER;
+       BEGIN
+           v_length_of_string := num_characters('Oracle Corporation');
+           DBMS_OUTPUT.PUT_LINE(v_length_of_string);
+       END;
+\end{minted}
+\end{enumerate}
+\item Write an anonymous block that uses a country name as input and prints
+the highest and lowest elevations for that country. Use the COUNTRIES
+table. Execute your block three times using Unit- ed States of America,
+French Republic, and Japan.
+\begin{minted}[]{sql}
+    DECLARE
+        v_country_name VARCHAR2(100) := 'United States of America';
+        v_highest_elevation NUMBER;
+        v_lowest_elevation NUMBER;
+    BEGIN
+        SELECT MAX(ELEVATION), MIN(ELEVATION)
+        INTO v_highest_elevation, v_lowest_elevation
+        FROM COUNTRIES
+    WHERE COUNTRY_NAME = v_country_name;
+        DBMS_OUTPUT.PUT_LINE('Highest Elevation: ' || v_highest_elevation);
+        DBMS_OUTPUT.PUT_LINE('Lowest Elevation: ' || v_lowest_elevation);
+    END;
+\end{minted}
+\end{enumerate}
+\end{document}

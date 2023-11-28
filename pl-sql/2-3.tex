@@ -1,0 +1,159 @@
+% Created 2023-10-20 vie 22:52
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[spanish, english]{babel}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{2-3 Recognizing Data Types}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={2-3 Recognizing Data Types},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vocabulary}
+\label{sec:orgec26e06}
+\begin{enumerate}
+\item Store large blocks of single-byte or fixed-width multi-byte NCHAR data in the database.
+
+\textbf{NCLOB}
+
+\item Hold values, called locators, that specify the location of large objects (such as graphic images) that are stored out of line.
+
+\textbf{LOB}
+
+\item Hold a single value with no internal components.
+
+\textbf{Scalar}
+
+\item Store large unstructured or structured binary objects.
+
+\textbf{BLOB}
+
+\item Contain internal elements that are either scalar (record) or composite (record and table).
+
+\textbf{Composite}
+
+\item Store large binary files outside of the database.
+
+\textbf{BFILE}
+
+\item Hold values, called pointers, that point to a storage location.
+
+\textbf{Reference}
+
+\item A schema object with a name, attributes, and methods.
+
+\textbf{Object}
+
+\item Store large blocks of character data in the database.
+
+\textbf{CLOB}
+\end{enumerate}
+\section{Try It / Solve It}
+\label{sec:org4d6bf98}
+\begin{enumerate}
+\item In your own words, describe what a data type is and explain why it is important.
+
+A data type is a classification or category that specifies which type of value a variable or column can hold. It defines the format and the operations that can be performed on the data.
+
+\item Identify the three data type categories covered in this course.
+
+\begin{enumerate}
+\item LOB
+\item Scalar
+\item Composite
+\end{enumerate}
+
+\item Identify three data types covered in the Database Programming with SQL course.
+\begin{enumerate}
+\item Number
+\item Date
+\item Varchar2
+\end{enumerate}
+
+\item What data type can be used in PL/SQL, but can’t be used to define a table column?
+
+\textbf{Boolean}
+
+\item Which data type indicates a large data object that is stored outside of the database?
+
+\textbf{BFILE}
+
+\item Identify the data type category (LOB, Scalar, or Composite) for each data type. Each category may be used more than once.
+\begin{center}
+\begin{tabular}{ll}
+Data Type & Data Type Category\\[0pt]
+\hline
+CLOB & LOB\\[0pt]
+VARCHAR2 & Scalar\\[0pt]
+BLOB & LOB\\[0pt]
+NUMBER & Scalar\\[0pt]
+BFILE & LOB\\[0pt]
+TIMESTAMP & Scalar\\[0pt]
+NCLOB & LOB\\[0pt]
+RECORD & Composite\\[0pt]
+PLS\textsubscript{INTEGER} & Scalar\\[0pt]
+LONG & Scalar\\[0pt]
+TABLE & Composite\\[0pt]
+BOOLEAN & Scalar\\[0pt]
+\end{tabular}
+\end{center}
+
+\item Enter the data type category and the data type for each value.
+\begin{enumerate}
+\item ‘Switzerland’
+Scalar \texttt{VARCHAR2}
+\item Text of a resume
+Scalar \texttt{VARCHAR2}
+\item 100.20
+Scalar \texttt{NUMBER}
+\item A picture
+\texttt{LOB BLOB}
+\item 1053
+Scalar \texttt{NUMBER}
+\item 11-Jun-2016
+Scalar \texttt{DATE}
+\item ‘Computer science is the science of the 21 st century.’
+Scalar \texttt{VARCHAR2}
+\item Following table:
+\begin{center}
+\begin{tabular}{rl}
+Index & Last\textsubscript{name}\\[0pt]
+\hline
+1 & 'Newman'\\[0pt]
+2 & 'Raman'\\[0pt]
+3 & 'Han'\\[0pt]
+\end{tabular}
+\end{center}
+
+Composite Table
+
+\item A movie
+\texttt{LOB BFILE}
+\item A sound byte
+\texttt{LOB BFILE}
+\item FALSE
+Scalar \texttt{BLOB}
+\end{enumerate}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,92 @@
+#+title: 1-3 Creating PL/SQL Blocks
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+
+* Vocabulary
+1. Unnamed blocks of code not stored in the database and do not exist after
+   they are executed
+
+   *Anonymous Blocks*
+
+2. A program that computes and returns a single value
+
+   *Subprogram declared as a function*
+
+3. Named PL/SQL blocks that are stored in the database and can be declared as
+   procedures or functions
+
+   *Subprogram*
+
+4. Software that checks and translates programs written in high-level
+   programming languages into binary code to execute
+
+   *Compiler*
+
+5. A program that performs an action, but does not have to return a value
+
+   *Subprogram declared as a procedure*
+
+* Try / Solve it
+1. Complete the following chart defining the syntactical requirements for a
+   PL/SQL block:
+   |           | Optional or Mandatory? | Describe                                |
+   |-----------+------------------------+-----------------------------------------|
+   | =DECLARE=   | optional               | Contains declarations of all variables, |
+   |           |                        | constants, cursors, and user-defined    |
+   |           |                        | exceptions that are referenced in the   |
+   |           |                        | executable and exception sections.      |
+   | =BEGIN=     | mandatory              | Contains SQL statements to retrieve     |
+   |           |                        | data from the database and PL/SQL       |
+   |           |                        | statements to manipulate data in the    |
+   |           |                        | block.                                  |
+   | =EXCEPTION= | optional               | Specifies the actions to perform when   |
+   |           |                        | errors and abnormal conditions arise in |
+   |           |                        | the executable section.                 |
+   | =END;=      | mandatory              | Ends a =BEGIN= statement                  |
+
+2. Which of the following PL/SQL blocks executes successfully? For the blocks
+   that fail, explain why they fail
+
+   *Option D executes correctly without any problems*
+
+   #+begin_src sql
+    DECLARE
+        amount NUMBER(10);
+    BEGIN
+       DBMS_OUTPUT.PUT_LINE(amount);
+    END;
+   #+end_src
+
+3. Fill in the blanks:
+
+   a. PL/SQL blocks that have no names are called *anonymous*
+
+   b. =FUNCTION= and =PROCEDURE= are named blocks and are stored in the database.
+
+4. In Application Express, create and execute a simple anonymous block that
+   outputs “Hello World.”
+   #+begin_src sql
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('Hello World');
+    END;
+   #+end_src
+
+5. Create and execute a simple anonymous block that does the following:
+   1. Declares a variable of datatype DATE and populates it with the date
+      that is six months from today
+
+      #+begin_src sql
+        DECLARE
+            six_months_from_today date;
+        BEGIN
+            six_months_from_today := add_months(sysdate,6);
+        END;
+      #+end_src
+
+   2. Outputs “In six months, the date will be: <insert date>.”
+      #+begin_src sql
+        BEGIN
+            DBMS_OUTPUT.PUT_LINE('In six months, the date will be ' ||
+                                     six_months_from_today);
+        END;
+      #+end_src

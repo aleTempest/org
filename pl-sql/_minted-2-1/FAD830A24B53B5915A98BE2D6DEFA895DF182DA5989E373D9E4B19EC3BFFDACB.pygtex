@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{DECLARE}
+\PYG{+w}{        }\PYG{n}{fname}\PYG{+w}{ }\PYG{n}{VARCHAR2}\PYG{p}{(}\PYG{l+m+mi}{25}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{lname}\PYG{+w}{ }\PYG{n}{VARCHAR2}\PYG{p}{(}\PYG{l+m+mi}{25}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{DEFAULT}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}fernandez\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{BEGIN}
+\PYG{+w}{        }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{n}{fname}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{lname}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

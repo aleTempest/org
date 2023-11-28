@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{DECLARE}
+\PYG{+w}{        }\PYG{n}{amount}\PYG{+w}{ }\PYG{n+nb}{NUMBER}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{BEGIN}
+\PYG{+w}{       }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{n}{amount}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

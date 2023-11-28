@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{FUNCTION}\PYG{+w}{ }\PYG{n}{num\PYGZus{}characters}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{p\PYGZus{}string}\PYG{+w}{ }\PYG{k}{IN}\PYG{+w}{ }\PYG{n}{VARCHAR2}\PYG{p}{)}
+\PYG{+w}{        }\PYG{k}{RETURN}\PYG{+w}{ }\PYG{n+nb}{INTEGER}\PYG{+w}{ }\PYG{k}{AS}
+\PYG{+w}{            }\PYG{n}{v\PYGZus{}num\PYGZus{}characters}\PYG{+w}{ }\PYG{n+nb}{INTEGER}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{BEGIN}
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{k}{LENGTH}\PYG{p}{(}\PYG{n}{p\PYGZus{}string}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{v\PYGZus{}num\PYGZus{}characters}
+\PYG{+w}{            }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{dual}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{RETURN}\PYG{+w}{ }\PYG{n}{v\PYGZus{}num\PYGZus{}characters}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

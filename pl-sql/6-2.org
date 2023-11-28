@@ -1,0 +1,56 @@
+#+title: PL/SQL 6-2
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+
+* Vocabulary
+
+CURSOR Declared by the programmer for queries that return more than one row
+RECORD An attribute that processes an exact number of rows or counts the number of rows fetched in a loop
+CLOSE Disables a cursor, releases the context area, and undefines the active set
+
+* Try It / Solve It
+
+1. In your own words, explain the advantage of using %ROWTYPE to declare a record structure based on a cursor declaration.
+
+   It's like a cursor that contains all the columns of a table.
+
+2. Write a PL/SQL block to read through rows in the countries table for all countries in region 5 (South America region). For each selected country, display the country_name, national_holiday_date, and national_holiday_name. Use a record structure to hold all the columns selected from the countries table.
+   #+begin_src sql
+DECLARE
+    TYPE t_country_reg IS TABLE OF WF_COUNTRIES%ROWTYPE
+        INDEX BY BINARY_INTEGER;
+BEGIN
+    FOR country_rec IN (SELECT * FROM WF_COUNTRIES) LOOP
+        DBMS_OUTPUT.PUT_LINE(country_rec.COUNTRY_NAME || ' ' || country_rec.COUNTRY_NAME ||
+                             ' ' || country_rec.NATIONAL_HOLIDAY_DATE || ' ' || country_rec.NATIONAL_HOLIDAY_NAME);
+    END LOOP;
+END;
+   #+end_src
+
+3. For this exercise, you use the employees table. Create a PL/SQL block that fetches and displays the six employees with the highest salary. For each of these employees, display the first name, last name, job id, and salary. Order your output so that the employee with the highest salary is displayed first. Use %ROWTYPE and the explicit cursor attribute %ROWCOUNT.
+   #+begin_src sql
+DECLARE
+    TYPE t_emp_reg IS TABLE OF EMPLOYEES%ROWTYPE
+        INDEX BY BINARY_INTEGER;
+BEGIN
+    FOR emp_rec IN (SELECT * FROM EMPLOYEES ORDER BY salary FETCH FIRST 6 ROWS ONLY) LOOP
+        DBMS_OUTPUT.PUT_LINE(emp_rec.FIRST_NAME || ' ' || emp_rec.LAST_NAME || ' ' || emp_rec.SALARY);
+    END LOOP;
+END;
+   #+end_src
+
+4. Look again at the block you created in question 3. What if you wanted to display 21 employees instead of 6? There are only 20 rows in the employees table. What do you think would happen?
+
+   You would need to modify the number of rows directly.
+
+5. In real life we would not know how many rows the table contained. Modify your block from question 3 so that it will exit from the loop when either 21 rows have been fetched and displayed, or when there are no more rows to fetch. Test the block again.
+   #+begin_src sql
+DECLARE
+    TYPE t_emp_reg IS TABLE OF EMPLOYEES%ROWTYPE
+        INDEX BY BINARY_INTEGER;
+BEGIN
+    FOR emp_rec IN (SELECT * FROM EMPLOYEES ORDER BY salary) LOOP
+        DBMS_OUTPUT.PUT_LINE(emp_rec.FIRST_NAME || ' ' || emp_rec.LAST_NAME || ' ' || emp_rec.SALARY);
+    END LOOP;
+END;
+   #+end_src

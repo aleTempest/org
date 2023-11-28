@@ -1,0 +1,358 @@
+#+title: Database Programming with PL/SQL
+
+
+
+* Vocabulary
+
+Statement that enables PL/SQL to perform actions selectively based on conditions.
+
+*IF*
+
+Control structures – Repetition statements that enable you to execute statements in a PL/SQL block repeatedly.
+
+*LOOP*
+
+An expression with a TRUE or FALSE value that is used to make a decision.
+
+*Condition*
+
+An expression that determines a course of action based on conditions and can be used outside a PL/SQL block in a SQL statement.
+
+*CASE*
+
+
+* Try it / solve it
+
+1. What is the purpose of a conditional control structure in PL/SQL?
+
+
+The purpose of a conditional control structure is to analyse variables and choose a direction in which to go based on given parameters.
+
+1. List the three categories of control structures in PL/SQL.
+
+   - =IF= conditional constructors
+   - =CASE= expressions
+   - =LOOP= control structures
+
+2. List the keywords that can be part of an IF statement.
+
+- =IF=
+- =END IF=
+- =ELSIF=
+- =ELSE=
+- =THEN=
+
+4. List the keywords that are a required part of an IF statement.
+
+- =IF=
+- =THEN=
+- =END IF=
+
+5. Write a PL/SQL block to find the population of a given country in the countries table. Display a
+
+- message indicating whether the population is greater than or less than 1 billion (1,000,000,000).
+- Test your block twice using India (country_id = 91) and United Kingdom (country_id = 44). India’s
+- population should be greater than 1 billion, while United Kingdom’s should be less than 1 billion.
+
+
+#+begin_src sql
+declare
+  v_populatie wf_countries.population%TYPE;
+begin
+  select population into v_populatie
+  from wf_countries
+  where country_id=91;
+
+  dbms_output.put_line(v_populatie);
+
+  if v_populatie > 1000000000 then
+    dbms_output.put_line('Mai mare de 1 miliard');
+  else
+    dbms_output.put_line('Mai mica de 1 miliard');
+  end if;
+
+  select population into v_populatie
+  from wf_countries
+  where country_id=44;
+
+  dbms_output.put_line(v_populatie);
+
+  if v_populatie > 1000000000 then
+    dbms_output.put_line('Mai mare de 1 miliard');
+  else
+    dbms_output.put_line('Mai mica de 1 miliard');
+  end if;
+end;
+
+#+end_src
+
+1. Modify the code from the previous exercise so that it handles all the following cases:
+
+   A. Population is greater than 1 billion.
+
+   B. Population is greater than 0.
+
+   C. Population is 0.
+
+2. Population is null. (Display: No data for this country.)
+
+Run your code using the following country ids. Confirm the indicated results.
+
+ - China (country_id = 86): Population is greater than 1 billion.
+
+ - United Kingdom (country_id = 44): Population is greater than 0.
+
+ - Antarctica (country_id = 672): Population is 0.
+
+ - Europa Island (country_id = 15): No data for this country.
+
+
+#+begin_src sql
+declare
+  v_populatie wf_countries.population%TYPE;
+
+begin
+  select population into v_populatie
+  from wf_countries
+  where country_id=86;
+
+  dbms_output.put_line(v_populatie);
+
+  if v_populatie > 1000000000 then
+    dbms_output.put_line('Population is greater than 1 billion');
+  elsif v_populatie = 0 then
+    dbms_output.put_line('Population is 0');
+  elsif v_populatie <= 1000000000 then
+    dbms_output.put_line('Population is greater than 0');
+  else
+    dbms_output.put_line('Population is null');
+  end if;
+
+  select population into v_populatie
+  from wf_countries
+  where country_id=44;
+
+  dbms_output.put_line(v_populatie);
+
+  if v_populatie > 1000000000 then
+    dbms_output.put_line('Population is greater than 1 billion');
+  elsif v_populatie = 0 then
+    dbms_output.put_line('Population is 0');
+  elsif v_populatie <= 1000000000 then
+    dbms_output.put_line('Population is greater than 0');
+  else
+    dbms_output.put_line('Population is null');
+  end if;
+
+  select population into v_populatie
+  from wf_countries
+  where country_id=672;
+
+  dbms_output.put_line(v_populatie);
+
+  if v_populatie > 1000000000 then
+    dbms_output.put_line('Population is greater than 1 billion');
+  elsif v_populatie = 0 then
+    dbms_output.put_line('Population is 0');
+  elsif v_populatie <= 1000000000 then
+    dbms_output.put_line('Population is greater than 0');
+  else
+    dbms_output.put_line('Population is null');
+  end if;
+
+  select population into v_populatie
+  from wf_countries
+  where country_id=15;
+
+  dbms_output.put_line(v_populatie);
+
+  if v_populatie > 1000000000 then
+    dbms_output.put_line('Population is greater than 1 billion');
+  elsif v_populatie = 0 then
+    dbms_output.put_line('Population is 0');
+  elsif v_populatie <= 1000000000 then
+    dbms_output.put_line('Population is greater than 0');
+  else
+    dbms_output.put_line('Population is null');
+  end if;
+end;
+#+end_src
+
+
+7. Examine the following code:
+
+#+begin_src sql
+DECLARE
+  v_country_id countries.country_name%TYPE := 'ABC';
+  v_ind_date countries.date_of_independence%TYPE;
+  v_natl_holiday countries.national_holiday_date%TYPE;
+BEGIN
+  SELECT date_of_independence, national_holiday_date
+  INTO v_ind_date, v_natl_holiday
+  FROM countries
+  WHERE country_id = v_country_id;
+
+  IF v_ind_date IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('A');
+  ELSIF v_natl_holiday IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('B');
+  ELSIF v_natl_holiday IS NULL AND v_ind_date IS NULL THEN
+    DBMS_OUTPUT.PUT_LINE('C');
+  END IF;
+END;
+#+end_src
+
+A. What would print if the country has an independence date equaling NULL and a national
+
+    *holiday date equaling NULL?*
+
+B. What would print if the country has an independence date equaling NULL and a national
+
+    *holiday date containing a value?*
+
+C. What would print if the country has an independence date equaling a value and a national
+
+    *holiday date equaling NULL?*
+
+D. Run a SELECT statement against the COUNTRIES table to determine whether the following
+
+- countries have independence dates or national holiday dates, or both. Predict the output of
+- running the anonymous block found at the beginning of this question.
+- Country - Country_ID - IndependenceDate - National Holiday Date - Output should be
+- Antarctica - 672 - NO - NO - C
+- Iraq - 964 - Yes - No - A
+- Spain - 34 - NO - Yes - B
+- United States - 1 - Yes - No - A
+
+E. Finally, run the anonymous block found at the beginning of this question using each of the
+above country ids as input. Check whether your output answers are correct.
+
+#+begin_src sql
+DECLARE
+  v_ind_date wf_countries.date_of_independence%TYPE;
+  v_natl_holiday wf_countries.national_holiday_date%TYPE;
+BEGIN
+  SELECT date_of_independence, national_holiday_date
+  INTO v_ind_date, v_natl_holiday
+  FROM wf_countries
+  WHERE country_id = 672;
+
+  IF v_ind_date IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('Have independence Date');
+    DBMS_OUTPUT.PUT_LINE('No national holiday date');
+    DBMS_OUTPUT.PUT_LINE('A');
+  ELSIF v_natl_holiday IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('No independence Date');
+    DBMS_OUTPUT.PUT_LINE('Have national holiday date');
+    DBMS_OUTPUT.PUT_LINE('B');
+  ELSIF v_natl_holiday IS NULL AND v_ind_date IS NULL THEN
+    DBMS_OUTPUT.PUT_LINE('No independence Date');
+    DBMS_OUTPUT.PUT_LINE('No national holiday date');
+    DBMS_OUTPUT.PUT_LINE('C');
+  END IF;
+
+  SELECT date_of_independence, national_holiday_date
+  INTO v_ind_date, v_natl_holiday
+  FROM wf_countries
+  WHERE country_id = 964;
+
+  IF v_ind_date IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('Have independence Date');
+    DBMS_OUTPUT.PUT_LINE('No national holiday date');
+    DBMS_OUTPUT.PUT_LINE('A');
+  ELSIF v_natl_holiday IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('No independence Date');
+    DBMS_OUTPUT.PUT_LINE('Have national holiday date');
+    DBMS_OUTPUT.PUT_LINE('B');
+  ELSIF v_natl_holiday IS NULL AND v_ind_date IS NULL THEN
+    DBMS_OUTPUT.PUT_LINE('No independence Date');
+    DBMS_OUTPUT.PUT_LINE('No national holiday date');
+    DBMS_OUTPUT.PUT_LINE('C');
+  END IF;
+
+  SELECT date_of_independence, national_holiday_date
+  INTO v_ind_date, v_natl_holiday
+  FROM wf_countries
+  WHERE country_id = 34;
+
+  IF v_ind_date IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('Have independence Date');
+    DBMS_OUTPUT.PUT_LINE('No national holiday date');
+    DBMS_OUTPUT.PUT_LINE('A');
+  ELSIF v_natl_holiday IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('No independence Date');
+    DBMS_OUTPUT.PUT_LINE('Have national holiday date');
+    DBMS_OUTPUT.PUT_LINE('B');
+  ELSIF v_natl_holiday IS NULL AND v_ind_date IS NULL THEN
+    DBMS_OUTPUT.PUT_LINE('No independence Date');
+    DBMS_OUTPUT.PUT_LINE('No national holiday date');
+    DBMS_OUTPUT.PUT_LINE('C');
+  END IF;
+
+  SELECT date_of_independence, national_holiday_date
+  INTO v_ind_date, v_natl_holiday
+  FROM wf_countries
+  WHERE country_id = 1;
+
+  IF v_ind_date IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('Have independence Date');
+    DBMS_OUTPUT.PUT_LINE('No national holiday date');
+    DBMS_OUTPUT.PUT_LINE('A');
+  ELSIF v_natl_holiday IS NOT NULL THEN
+    DBMS_OUTPUT.PUT_LINE('No independence Date');
+    DBMS_OUTPUT.PUT_LINE('Have national holiday date');
+    DBMS_OUTPUT.PUT_LINE('B');
+  ELSIF v_natl_holiday IS NULL AND v_ind_date IS NULL THEN
+    DBMS_OUTPUT.PUT_LINE('No independence Date');
+    DBMS_OUTPUT.PUT_LINE('No national holiday date');
+    DBMS_OUTPUT.PUT_LINE('C');
+  END IF;
+END;
+#+end_src
+
+8. Examine the following code. What output do you think it will produce?
+
+   #+begin_src sql
+DECLARE
+  v_num1 NUMBER(3) := 123;
+  v_num2 NUMBER;
+BEGIN
+  IF v_num1 <> v_num2 THEN
+    DBMS_OUTPUT.PUT_LINE('The two numbers are not equal');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('The two numbers are equal');
+  END IF;
+END;
+
+#+end_src
+
+9. Write a PL/SQL block to accept a year and check whether it is a leap year. For example, if the
+year entered is 1990, the output should be “1990 is not a leap year.”
+Hint: A leap year should be exactly divisible by 4, but not exactly divisible by 100. However, any
+year exactly divisible by 400 is a leap year.
+Test your solution with the following years:
+
+Year Result Should Be
+
+- 1990 Not a leap year
+- 2000 Leap year
+- 1996 Leap year
+- 1900 Not a leap year
+- 2016 Leap year
+- 1884 Leap year
+
+  #+begin_src sql
+DECLARE
+  v_year NUMBER(20) := 1990;
+BEGIN
+  IF MOD(v_year, TO_NUMBER(400)) = 0 THEN
+    DBMS_OUTPUT.PUT_LINE('Leap year');
+  ELSIF MOD(v_year, TO_NUMBER(100)) = 0 THEN
+    DBMS_OUTPUT.PUT_LINE('Not a leap year');
+  ELSIF MOD(v_year, TO_NUMBER(4)) = 0 THEN
+    DBMS_OUTPUT.PUT_LINE('Leap year');
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Not a leap year');
+  END IF;
+END;
+  #+end_src

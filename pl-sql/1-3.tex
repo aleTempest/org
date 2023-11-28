@@ -1,0 +1,134 @@
+% Created 2023-10-18 mié 15:57
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[spanish, english]{babel}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{1-3 Creating PL/SQL Blocks}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={1-3 Creating PL/SQL Blocks},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vocabulary}
+\label{sec:orge6e193d}
+\begin{enumerate}
+\item Unnamed blocks of code not stored in the database and do not exist after
+they are executed
+
+\textbf{Anonymous Blocks}
+
+\item A program that computes and returns a single value
+
+\textbf{Subprogram declared as a function}
+
+\item Named PL/SQL blocks that are stored in the database and can be declared as
+procedures or functions
+
+\textbf{Subprogram}
+
+\item Software that checks and translates programs written in high-level
+programming languages into binary code to execute
+
+\textbf{Compiler}
+
+\item A program that performs an action, but does not have to return a value
+
+\textbf{Subprogram declared as a procedure}
+\end{enumerate}
+\section{Try / Solve it}
+\label{sec:org113d4ae}
+\begin{enumerate}
+\item Complete the following chart defining the syntactical requirements for a
+PL/SQL block:
+\begin{center}
+\begin{tabular}{lll}
+ & Optional or Mandatory? & Describe\\[0pt]
+\hline
+\texttt{DECLARE} & optional & Contains declarations of all variables,\\[0pt]
+ &  & constants, cursors, and user-defined\\[0pt]
+ &  & exceptions that are referenced in the\\[0pt]
+ &  & executable and exception sections.\\[0pt]
+\texttt{BEGIN} & mandatory & Contains SQL statements to retrieve\\[0pt]
+ &  & data from the database and PL/SQL\\[0pt]
+ &  & statements to manipulate data in the\\[0pt]
+ &  & block.\\[0pt]
+\texttt{EXCEPTION} & optional & Specifies the actions to perform when\\[0pt]
+ &  & errors and abnormal conditions arise in\\[0pt]
+ &  & the executable section.\\[0pt]
+\texttt{END;} & mandatory & Ends a \texttt{BEGIN} statement\\[0pt]
+\end{tabular}
+\end{center}
+
+\item Which of the following PL/SQL blocks executes successfully? For the blocks
+that fail, explain why they fail
+
+\textbf{Option D executes correctly without any problems}
+
+\begin{minted}[]{sql}
+    DECLARE
+        amount NUMBER(10);
+    BEGIN
+       DBMS_OUTPUT.PUT_LINE(amount);
+    END;
+\end{minted}
+
+\item Fill in the blanks:
+
+\begin{enumerate}
+\item PL/SQL blocks that have no names are called \textbf{anonymous}
+
+\item \texttt{FUNCTION} and \texttt{PROCEDURE} are named blocks and are stored in the database.
+\end{enumerate}
+
+\item In Application Express, create and execute a simple anonymous block that
+outputs “Hello World.”
+\begin{minted}[]{sql}
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('Hello World');
+    END;
+\end{minted}
+
+\item Create and execute a simple anonymous block that does the following:
+\begin{enumerate}
+\item Declares a variable of datatype DATE and populates it with the date
+that is six months from today
+
+\begin{minted}[]{sql}
+        DECLARE
+            six_months_from_today date;
+        BEGIN
+            six_months_from_today := add_months(sysdate,6);
+        END;
+\end{minted}
+
+\item Outputs “In six months, the date will be: <insert date>.”
+\begin{minted}[]{sql}
+        BEGIN
+            DBMS_OUTPUT.PUT_LINE('In six months, the date will be ' ||
+                                     six_months_from_today);
+        END;
+\end{minted}
+\end{enumerate}
+\end{enumerate}
+\end{document}

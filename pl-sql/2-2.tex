@@ -1,0 +1,125 @@
+% Created 2023-10-20 vie 22:35
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[spanish, english]{babel}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{2-2 Recognizing PL/SQL Lexical Units}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={2-2 Recognizing PL/SQL Lexical Units},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vocabulary}
+\label{sec:org3bedc90}
+\begin{enumerate}
+\item An explicit numeric, character string, date, or Boolean value that is not
+represented by an identifier.
+
+\textbf{Literal}
+
+\item Symbols that have special meaning to an Oracle database.
+
+\textbf{Escape characters}
+
+\item Words that have special meaning to an Oracle database and cannot be used
+as identifiers.
+
+\textbf{Reserved Words}
+
+\item Describe the purpose and use of each code segment and are ignored by
+PL/SQL.
+
+\textbf{Comments}
+
+\item Building blocks of any PL/SQL block and are sequences of characters
+including letters, digits, tabs, returns, and symbols.
+
+\textbf{Identifiers}
+
+\item A name, up to 30 characters in length, given to a PL/SQL object.
+
+\textbf{Identifiers}
+\end{enumerate}
+\section{Try It / Solve It Questions}
+\label{sec:orge504f3a}
+\begin{enumerate}
+\item Identify each of the following identifiers as valid or invalid. If invalid,
+specify why.
+\begin{enumerate}
+\item \texttt{Today}
+Invalid (Identifiers cannot start with or contain equal signs).
+\item \texttt{Last name}
+Invalid (Identifiers cannot contain spaces).
+\item \texttt{today’s\_date}
+Invalid (Identifiers cannot contain apostrophes).
+\item \texttt{number\_of\_days\_in\_february\_this\_}
+Invalid (Identifiers cannot end with an underscore followed by an equal sign).
+\item \texttt{year}
+Valid
+\item \texttt{Isleap\$year}
+Valid
+\item \texttt{\#number}
+Invalid (Identifiers cannot start with a pound sign).
+\item \texttt{NUMBER\#}
+Invalid (Identifiers cannot contain pound signs).
+\item \texttt{Number1to7}
+Valid
+\end{enumerate}
+
+\item Identify the reserved words in the following list.
+\begin{center}
+\begin{tabular}{ll}
+Word & Reserved\\[0pt]
+\hline
+create & X\\[0pt]
+make & \\[0pt]
+table & X\\[0pt]
+seat & \\[0pt]
+alter & X\\[0pt]
+rename & X\\[0pt]
+row & \\[0pt]
+number & \\[0pt]
+web & \\[0pt]
+\end{tabular}
+\end{center}
+\item What kind of lexical unit (for example Reserved word, Delimiter, Literal,
+Comment) is each of the following?
+\begin{center}
+\begin{tabular}{ll}
+Value & Lexical Unit\\[0pt]
+\hline
+\texttt{SELECT} & Reserved Word\\[0pt]
+\texttt{:=} & Delimeter\\[0pt]
+\texttt{'TEST'} & Literal\\[0pt]
+\texttt{FALSE} & Literal\\[0pt]
+\texttt{-{}-{} new process} & Comment\\[0pt]
+\texttt{FROM} & Reserved Word\\[0pt]
+/* select the country with the high- & Comment\\[0pt]
+est elevation */ & \\[0pt]
+\texttt{v\_test} & Identifier\\[0pt]
+\texttt{4.09} & Literal\\[0pt]
+\end{tabular}
+\end{center}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,115 @@
+#+title: PL/SQL 6-4
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+
+* Try It / Solve It
+
+1. Describe the benefit of using one or more parameters with a cursor.
+
+   You can parse custom values to the cursor
+
+2. Write a PL/SQL block to display the country name and the area of each country in a chosen region. The region_id should be passed to the cursor as a parameter. Test your block using two region_ids: 5 (South America) and 30 (Eastern Asia). Do not use a cursor FOR loop.
+   #+begin_src sql
+DECLARE
+    CURSOR cur_countries (p_regionid NUMBER) IS
+        SELECT country_name, area FROM wf_countries
+        WHERE region_id = p_regionid;
+    v_countries_rec cur_countries%ROWTYPE;
+    v_region_id NUMBER;
+BEGIN
+    v_region_id := 5;
+    OPEN cur_countries(v_region_id);
+    LOOP
+        FETCH cur_countries INTO v_countries_rec;
+        EXIT WHEN cur_countries%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_countries_rec.country_name || ' ' || v_countries_rec.area);
+    END LOOP;
+    CLOSE cur_countries;
+    v_region_id := 30;
+    OPEN cur_countries(v_region_id);
+    LOOP
+        FETCH cur_countries INTO v_countries_rec;
+        EXIT WHEN cur_countries%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_countries_rec.country_name || ' ' || v_countries_rec.area);
+    END LOOP;
+    CLOSE cur_countries;
+END;
+   #+end_src
+
+3. Modify your answer to question 2 to use a cursor FOR loop. You must still declare the cursor explicitly in the DECLARE section. Test it again using regions 5 and 30.
+   #+begin_src sql
+DECLARE
+    CURSOR cur_countries (p_region_id NUMBER) IS (
+        SELECT country_name,area
+            FROM WF_COUNTRIES
+        WHERE region_id = p_region_id
+    );
+    v_region_id NUMBER;
+BEGIN
+    v_region_id := 5;
+    FOR rec IN cur_countries(v_region_id) LOOP
+        DBMS_OUTPUT.PUT_LINE(rec.country_name || ' ' || rec.area);
+    END LOOP;
+
+    v_region_id := 30;
+    FOR rec IN cur_countries(v_region_id) LOOP
+        DBMS_OUTPUT.PUT_LINE(rec.country_name || ' ' || rec.area);
+    END LOOP;
+END;
+   #+end_src
+
+4. Modify your answer to question 3 to display the country_name and area of each country in a chosen region that has an area greater than a specific value. The region_id and specific area should be passed to the cursor as two parameters. Test your block twice using region_id 5 (South America): the first time with area = 200000 and the second time with area = 1000000.
+   #+begin_src sql
+DECLARE
+    CURSOR cur_countries (p_region_id NUMBER, p_area NUMBER) IS (
+        SELECT country_name,area
+            FROM WF_COUNTRIES
+        WHERE region_id = p_region_id AND area > p_area
+    );
+    v_region_id NUMBER;
+    v_area NUMBER;
+BEGIN
+    v_region_id := 5;
+    v_area := 200000;
+    FOR rec IN cur_countries(v_region_id,v_area) LOOP
+        DBMS_OUTPUT.PUT_LINE(rec.country_name || ' ' || rec.area);
+    END LOOP;
+
+    v_region_id := 30;
+    v_area := 1000000;
+    FOR rec IN cur_countries(v_region_id,v_area) LOOP
+        DBMS_OUTPUT.PUT_LINE(rec.country_name || ' ' || rec.area);
+    END LOOP;
+END;
+   #+end_src
+
+5. Modify your answer to question 4 to fetch and display two sets of countries in a single execution of the block. You should open and close the cursor twice, passing different parameter values to it each time. Before each set of output rows, display the message “Region: <region_id> Minimum Area: <area>”., for example “Region: 5 Minimum Area: 200000”. Test your changes using (5, 200000) and (30, 500000).
+   #+begin_src sql
+DECLARE
+    CURSOR cur_countries (p_regionid NUMBER, p_area NUMBER) IS
+        SELECT country_name, area FROM wf_countries
+        WHERE region_id = p_regionid AND area > p_area;
+    v_countries_rec cur_countries%ROWTYPE;
+    v_region_id NUMBER;
+    v_area NUMBER;
+BEGIN
+    v_region_id := 5;
+    v_area := 200000;
+    OPEN cur_countries(v_region_id,v_area);
+    LOOP
+        FETCH cur_countries INTO v_countries_rec;
+        EXIT WHEN cur_countries%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_countries_rec.country_name || ' ' || v_countries_rec.area);
+    END LOOP;
+    CLOSE cur_countries;
+    v_region_id := 30;
+    v_area := 500000;
+    OPEN cur_countries(v_region_id,v_area);
+    LOOP
+        FETCH cur_countries INTO v_countries_rec;
+        EXIT WHEN cur_countries%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_countries_rec.country_name || ' ' || v_countries_rec.area);
+    END LOOP;
+    CLOSE cur_countries;
+END;
+   #+end_src

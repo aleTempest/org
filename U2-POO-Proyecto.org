@@ -1,0 +1,253 @@
+#+title: Poo Proyecto: Unidad 2
+
+* INTEGRANTES:
+- Efren Emanuel García
+- Abraham Isai Cantú Sanchez
+- Gabriel
+- Agustín Alejandro Mota Hinojosa
+
+* TODO Diagrama de clases
+#+begin_src plantuml
+@startuml
+abstract class User {
+        # UUID : Integer
+        # firstName : String
+        # lastName : String
+        # phoneNumber : String
+        # address1 : String
+        # address2 : String
+        # zipcode : String
+        # username : String
+        # password : String
+}
+
+abstract class Staff {
+        # degree : String
+        # salary : Float
+        # field : String
+        # CURP : final String
+        # RFC : final String
+        # area : String
+}
+
+class Appointment {
+        - dueDate : LocalDate
+        - doctorId : Integer
+        - description : String
+}
+
+class Prescription {
+        - description : String
+        - medicine : ArrayList<Medicine>
+}
+
+class Medicine {
+        - grams : Float
+        - name : String
+        - expDate : LocalDate
+}
+
+class Patient {
+        - appointments : ArrayList<Appointment>
+        - medicalConditions : ArrayList<String>
+        - prescriptions : ArrayList<Prescription>
+}
+
+class Doctor {
+        - patients : ArrayList<Patient>
+}
+
+class VBoxTemplate {
+        - title : Label
+        - logo : Label
+        - backBtn : Button
+        - fieldsEmpty(ArrayList<Node<T>> fields) : boolean
+        - goToMain(int index) : void
+        # {abstract} saveEvent : EventHandler<ActionListener>
+        + VBoxTemplate(MainFrame mainFrame)
+}
+
+class LoginScene {
+        - usernameTxtField : TextField
+        - passwordTxtField : TextField
+        - saveBtn : Button
+        - link : Hyperlink
+        + LoginScene(MainFrame mainFrame)
+}
+
+class RegisterScene {
+        - usernameTxtField : TextField
+        - passwordTxtField : TextField
+        - firstNameTextField : TextField
+        - lastNameTextField : TextField
+        - phoneNumberTextField : TextField
+        - address1TextField : TextField
+        - address2TextField : TextField
+        - zipcodeTextField : TextField
+        - saveBtn : Button
+        - link : Hyperlink
+        + RegisterScene(MainFrame mainFrame)
+}
+
+class EditUserScene {
+        EditUserScene(MainFrame mainFrame)
+        - {static} toggleVisbility() : void
+}
+
+interface factoryTools {
+        - createUser : <extends User>
+}
+
+User <|--- Staff
+User <|--- Patient
+Staff <|--- Doctor
+Patient -- Appointment
+Patient -- Prescription
+Prescription -- Medicine
+VBoxTemplate <|-- LoginScene
+VBoxTemplate <|-- RegisterScene
+VBoxTemplate <|-- EditUserScene
+@enduml
+#+end_src
+
+#+RESULTS:
+[[file:/tmp/babel-nAGPqA/plantuml-glYMK3.png]]
+
+
+* TODO Diseño de la base de datos
+** DONE Script de creación
+#+begin_src sql
+-- Crear tabla para personas
+CREATE TABLE PERSON (
+    UUID INT PRIMARY KEY,
+    FIRST_NAME VARCHAR(255),
+    LAST_NAME VARCHAR(255),
+    PHONE_NUMBER VARCHAR(20),
+    ADDRESS1 VARCHAR(255),
+    ADDRESS2 VARCHAR(255),
+    ZIPCODE VARCHAR(10),
+    USER_ID INT,  -- Nuevo campo para la relación con Usuario
+    FOREIGN KEY (USER_ID) REFERENCES USER(UUID)
+);
+
+-- Crear tabla para usuarios
+CREATE TABLE USER (
+    UUID INT PRIMARY KEY,
+    USERNAME VARCHAR(50) UNIQUE,
+    PASSWORD VARCHAR(255),
+);
+
+-- Crear tabla para el personal médico y de apoyo
+CREATE TABLE STAFF (
+    UUID INT PRIMARY KEY,
+    DEGREE VARCHAR(255),
+    SALARY DECIMAL(10, 2),
+    FIELD VARCHAR(255),
+    CURP CHAR(18),
+    RFC CHAR(13),
+    AREA VARCHAR(255),
+);
+
+-- Crear tabla para citas médicas
+CREATE TABLE APPOINTMENT (
+    ID INT PRIMARY KEY,
+    DUE_DATE DATE,
+    DESCRIPTION TEXT,
+    DOCTOR_ID INT,
+    FOREIGN KEY (DOCTOR_ID) REFERENCES STAFF(UUID)
+);
+
+-- Crear tabla para recetas médicas
+CREATE TABLE PRESCRIPTION (
+    ID INT PRIMARY KEY,
+    DESCRIPTION TEXT,
+    PATIENT_ID INT,
+    FOREIGN KEY (PATIENT_ID) REFERENCES PERSON(UUID)
+);
+
+-- Crear tabla para pacientes
+CREATE TABLE PATIENT (
+    UUID INT PRIMARY KEY,
+    MEDICAL_CONDITIONS TEXT,
+    FOREIGN KEY (UUID) REFERENCES PERSON(UUID)
+);
+
+-- Crear tabla para médicos
+CREATE TABLE DOCTOR (
+    UUID INT PRIMARY KEY,
+    FOREIGN KEY (UUID) REFERENCES STAFF(UUID)
+);
+#+end_src
+
+
+
+* TODO Módulos
+** TODO Módulo 1 Gestión de Pacientes:
+- [ ] Registrar pacientes con datos personales.
+- [ ] Asignar un ID único a cada paciente.
+- [ ] Permitir la edición de información del paciente.
+- [ ] Capacidad de eliminar pacientes del sistema.
+- [ ] Visualizar el historial médico de un paciente.
+- [ ] Habilitar la búsqueda de pacientes por nombre, ID, o fecha de
+  registro.
+
+** TODO Módulo 2 Citas y Agenda:
+- [ ] Programar citas para pacientes con fecha, hora y médico.
+- [ ] Permitir reprogramación de citas.
+- [ ] Notificar a los pacientes sobre sus citas programadas.
+- [ ] Generar recordatorios
+- [ ] Mostrar la agenda de citas para cada médico
+
+** TODO Módulo 3 Historial Médico:
+- [ ] Mantener un registro detallado de los tratamientos, diagnósticos,
+  y procedimientos médicos realizados.
+- [ ] Agregar notas sobre el progreso del paciente y resultados de pruebas
+  médicas.
+- [ ] Facilitar la consulta del historial médico por parte de los médicos.
+- [ ] Permitir a los médicos agregar archivos adjuntos como radiografías,
+  informes de laboratorio, etc.
+
+** TODO Módulo 4 Administración de Médicos y Personal:
+- [ ] Registrar médicos, enfermeras y personal administrativo.
+- [ ] Asignar especialidades a los médicos.
+- [ ] Gestión de horarios y disponibilidad de los médicos.
+- [ ] Permitir asignar tareas y responsabilidades al personal.
+
+** TODO Módulo 5 Farmacia y Stock de Medicamentos:
+- [ ] Registrar y mantener un inventario de medicamentos disponibles.
+- [ ] Realizar pedidos de medicamentos agotados.
+- [ ] Administrar la cantidad de medicamentos disponibles en el inventario.
+- [ ] Generar alertas de reabastecimiento.
+
+** TODO Módulo 5 Facturación y Pagos:
+- [ ] Crear facturas detalladas por servicios médicos o medicamentos
+  recetados.
+- [ ] Permitir métodos de pago como efectivo, tarjeta, o seguro médico.
+- [ ] Generar informes financieros mensuales o anuales.
+- [ ] Registrar pagos realizados por los pacientes.
+
+** TODO Módulo 6 Seguridad y Privacidad:
+- [ ] Implementar medidas de seguridad para proteger la información del
+  paciente.
+- [ ] Restringir el acceso a ciertas secciones basado en roles
+  (administrador, médico, recepcionista, etc.).
+- [ ] Cumplir con los estándares de privacidad y protección de datos.
+
+** TODO Módulo 7 Consulta y Diagnóstico:
+- [ ] Permitir a los médicos realizar consultas con los pacientes.
+- [ ] Registrar el diagnóstico, tratamiento y prescripciones médicas.
+- [ ] Visualizar el historial de consultas de cada paciente.
+
+** TODO Módulo 8 Estadísticas y Reportes:
+- [ ] Generar informes estadísticos sobre el número de pacientes atendidos.
+- [ ] Estadísticas sobre tipos de diagnósticos y tratamientos más comunes.
+
+** TODO Módulo 9 Historial de Pagos y Facturación:
+- [ ] Registrar y visualizar el historial de pagos realizados por cada
+  paciente.
+- [ ] Generar facturas detalladas para servicios médicos y tratamientos.
+
+** TODO Módulo 10 Gestión de Equipos y Suministros Médicos:
+- [ ] Llevar un registro del inventario de equipos y suministros médicos.
+- [ ] Notificar sobre el agotamiento o necesidad de equipos médicos o
+  medicinas.

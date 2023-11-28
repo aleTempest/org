@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{     }\PYG{k}{DECLARE}
+\PYG{+w}{         }\PYG{n}{country\PYGZus{}name}\PYG{+w}{ }\PYG{n}{VARCHAR2}\PYG{p}{(}\PYG{l+m+mi}{50}\PYG{p}{);}
+\PYG{+w}{         }\PYG{n}{median\PYGZus{}age}\PYG{+w}{  }\PYG{n+nb}{NUMBER}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{+w}{     }\PYG{k}{BEGIN}
+\PYG{+w}{     }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{country\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{median\PYGZus{}age}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{country\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{median\PYGZus{}age}
+\PYG{+w}{         }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{countries}
+\PYG{+w}{     }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{country\PYGZus{}name}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}Japan\PYGZsq{}}\PYG{p}{;}
+\PYG{+w}{         }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The median age in \PYGZsq{}}\PYG{o}{||}\PYG{+w}{ }\PYG{n}{country\PYGZus{}name}
+\PYG{+w}{                                   }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{} is \PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{median\PYGZus{}age}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{     }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

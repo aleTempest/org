@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{create}\PYG{+w}{ }\PYG{k}{table}\PYG{+w}{ }\PYG{n}{endangered\PYGZus{}species}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{     }\PYG{p}{(}\PYG{n}{species\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{number}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{constraint}\PYG{+w}{ }\PYG{n}{es\PYGZus{}spec\PYGZus{}pk}\PYG{+w}{ }\PYG{k}{primary}\PYG{+w}{ }\PYG{k}{key}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{common\PYGZus{}name}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{30}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{constraint}\PYG{+w}{ }\PYG{n}{es\PYGZus{}com\PYGZus{}name\PYGZus{}nn}\PYG{+w}{ }\PYG{k}{not}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{,}
+\PYG{+w}{     }\PYG{n}{scientific\PYGZus{}name}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{30}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{constraint}\PYG{+w}{ }\PYG{n}{es\PYGZus{}sci\PYGZus{}name\PYGZus{}nn}\PYG{+w}{ }\PYG{k}{not}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{));}
+\end{Verbatim}

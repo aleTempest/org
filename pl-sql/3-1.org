@@ -1,0 +1,22 @@
+#+title: 3 1
+
+* Vocabulary
+1. delete
+2. insert
+3. merge
+4. update
+5. ddl
+6. dml
+* Try It / Solve It
+1. delete all rows from students
+2. does an explicit insert
+3. sql statement:
+#+begin_src sql
+create table grocery_items(
+       product_id number PRIMARY KEY,
+       brand VARCHAR2(20),
+       description VARCHAR2(20));
+#+end_src
+11. 1
+12. 2
+13. A

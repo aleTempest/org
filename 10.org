@@ -1,0 +1,40 @@
+#+title: 10
+
+¿Qué es cpd?
+CISCO DISCOVERY PROTOCOL
+Se utiliza para recopilar información sobre los dispositivos Cisco que
+comparten el mismo enlace de datos
+
+- Habilitar cdp en todas las interfaces disponibles: =cdp run=
+- Para habilitar CDP en una interfaz específica: =cdp enable=
+- Mostrar una lista de vecinos, use el comando =show cdp neighbors=
+  - =show cdp neighbors detail=: para conocer la ip
+- Para mostrar las interfaces que están habilitadas: =show cdp interface=
+
+¿Qué es lldp?
+Link layer discovery protocol
+protocolo trabaja con dispositivos de red, como routers, switches y
+puntos de acceso inalámbricos LAN, en dispositivos de varios fabricantes
+
+- =lldp transmite=
+- =lldp recive=
+- los vecinos de dispositivo se pueden detectar mediante el comando
+  =show lldp neighbors= ó con =detail= también
+
+¿Qué es ntp?
+Network time protocol
+- =show clock detail= para verificar ntp
+- =show ntp associations= ó =status= para verificar si un dispositivo está
+  sincronizado.
+
+¿Qués es snmp?
+Simple Network Management Protocol
+
+Emergencia	Nivel 0	El sistema no se puede usar.
+Alerta	Nivel 1	Se necesita una acción inmediata.
+Crítico	Nivel 2	Condición crítica.
+Error	Nivel 3	Condición de error.
+Advertencia	Nivel 4	Condición de advertencia.
+Notificación	Nivel 5	Condición normal pero importante.
+Informativo	Nivel 6	Mensaje informativo.
+Depuración	Nivel 7	Mensaje de depuración.

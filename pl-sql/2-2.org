@@ -1,0 +1,81 @@
+#+title: 2-2 Recognizing PL/SQL Lexical Units
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+#+LATEX_HEADER: \usepackage[spanish]{babel}
+
+* Vocabulary
+1. An explicit numeric, character string, date, or Boolean value that is not
+   represented by an identifier.
+
+   *Literal*
+
+2. Symbols that have special meaning to an Oracle database.
+
+   *Escape characters*
+
+3. Words that have special meaning to an Oracle database and cannot be used
+   as identifiers.
+
+   *Reserved Words*
+
+4. Describe the purpose and use of each code segment and are ignored by
+   PL/SQL.
+
+   *Comments*
+
+5. Building blocks of any PL/SQL block and are sequences of characters
+   including letters, digits, tabs, returns, and symbols.
+
+   *Identifiers*
+
+6. A name, up to 30 characters in length, given to a PL/SQL object.
+
+   *Identifiers*
+
+* Try It / Solve It Questions
+1. Identify each of the following identifiers as valid or invalid. If invalid,
+   specify why.
+   1. =Today=
+      Invalid (Identifiers cannot start with or contain equal signs).
+   2. =Last name=
+      Invalid (Identifiers cannot contain spaces).
+   3. =today’s_date=
+      Invalid (Identifiers cannot contain apostrophes).
+   4. =number_of_days_in_february_this_=
+      Invalid (Identifiers cannot end with an underscore followed by an equal sign).
+   5. =year=
+      Valid
+   6. =Isleap$year=
+      Valid
+   7. =#number=
+      Invalid (Identifiers cannot start with a pound sign).
+   8. =NUMBER#=
+      Invalid (Identifiers cannot contain pound signs).
+   9. =Number1to7=
+      Valid
+
+2. Identify the reserved words in the following list.
+   | Word   | Reserved |
+   |--------+----------|
+   | create | X        |
+   | make   |          |
+   | table  | X        |
+   | seat   |          |
+   | alter  | X        |
+   | rename | X        |
+   | row    |          |
+   | number |          |
+   | web    |          |
+3. What kind of lexical unit (for example Reserved word, Delimiter, Literal,
+   Comment) is each of the following?
+   | Value                                | Lexical Unit  |
+   |--------------------------------------+---------------|
+   | =SELECT=                               | Reserved Word |
+   | ~:=~                                   | Delimeter     |
+   | ='TEST'=                               | Literal       |
+   | =FALSE=                                | Literal       |
+   | =-- new process=                       | Comment       |
+   | =FROM=                                 | Reserved Word |
+   | /* select the country with the high- | Comment       |
+   | est elevation */                     |               |
+   | =v_test=                               | Identifier    |
+   | =4.09=                                 | Literal       |

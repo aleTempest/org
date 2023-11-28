@@ -1,0 +1,86 @@
+#+title: PL/SQL 6-5
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Vocabulary
+
+FOR UPDATE Declares that each row is locked as it is being fetched so other users cannot modify the rows while the cursor is open
+NOWAIT A keyword used to tell the Oracle server not to wait if the requested rows have already been locked by another user
+
+* Try It / Solve It
+In this Practice you will INSERT and later UPDATE rows in a new table: PROPOSED_RAISES, which will store details of salary increases proposed for suitable employees. Create this table by executing the following SQL statement:
+
+#+begin_src sql
+CREATE TABLE proposed_raises
+(date_proposed DATE,
+date_approved DATE,
+employee_id NUMBER(6),
+department_id NUMBER(4),
+original_salary NUMBER(8,2),
+proposed_new_salary NUMBER(8,2));
+#+end_src
+ 1. Write a PL/SQL block that inserts a row into PROPOSED_RAISES for each eligible employee. The eligible employees are those whose salary is below a chosen value. The salary value is passed as a parameter to the cursor. For each eligible employee, insert a row into PROPOSED_RAISES with date_proposed = today’s date, date_appoved null, and proposed_new_salary 5% greater than the current salary. The cursor should LOCK the employees rows so that no one can modify the employee data while the cursor is open. Test your code using a chosen salary value of 5000.
+    #+begin_src sql
+DECLARE
+    CURSOR cur_emp (chosen_salary NUMBER) IS (
+        SELECT employee_id,salary,department_id FROM employees WHERE salary < chosen_salary
+    );
+    v_value NUMBER;
+BEGIN
+    v_value := 5000;
+    FOR rec IN cur_emp(v_value) LOOP
+        INSERT INTO proposed_raises
+            (date_proposed, date_approved, employee_id, department_id,
+                            original_salary, proposed_new_salary)
+        VALUES
+            (SYSDATE,null,rec.employee_id,rec.department_id,rec.salary,rec.salary * 1.5);
+    END LOOP;
+END;
+    #+end_src
+ 2. SELECT from the PROPOSED_RAISES table to see the results of your INSERT statements. There should be 15 rows. If you run your block in question 1 more than once, make sure the PROPOSED_RAISES table is empty before each test.
+    #+begin_src sql
+ SELECT * FROM proposed_raises;
+ DELETE FROM proposed_raises; -- to clear all rows from the table
+    #+end_src
+
+    [[./resources/prop_sal_tab1.png]]
+
+ 1. Imagine these proposed salary increases have been approved by company management.
+    1. Write and execute a PL/SQL block to read each row from the =PROPOSED_RAISES= table. For each row, UPDATE the =date_approved= column with today’s date. Use the WHERE CURRENT OF... syntax to UPDATE each row. After running your code, SELECT from the =PROPOSED_RAISES= table to view the updated data.
+       #+begin_src sql
+DECLARE
+    CURSOR cur_emp IS
+        SELECT * FROM proposed_raises FOR UPDATE NOWAIT;
+    v_emp_rec cur_emp%ROWTYPE;
+BEGIN
+    OPEN cur_emp;
+    LOOP
+        FETCH cur_emp INTO v_emp_rec;
+        EXIT WHEN cur_emp%NOTFOUND;
+        UPDATE proposed_raises
+            SET date_approved = SYSDATE
+        WHERE CURRENT OF cur_emp;
+    END LOOP;
+    CLOSE cur_emp;
+END;
+       #+end_src
+
+       [[./resources/prop_sal_tab2.png]]
+
+    2. Management has now decided that employees in department 50 cannot have a salary increase after all. Modify your code from question 3 to DELETE employees in department 50 from =PROPOSED_RAISES=. This could be done by a simple DML statement (DELETE FROM =proposed_raises= WHERE =department_id= = 50;), but we want to do it using a FOR UPDATE cursor. Test your code, and view the =PROPOSED_RAISES= table again to check that the rows have been deleted.
+       #+begin_src sql
+DECLARE
+    CURSOR cur_emp IS
+        SELECT *
+            FROM proposed_raises
+        WHERE department_id = 50 FOR UPDATE NOWAIT;
+    v_emp_rec cur_emp%ROWTYPE;
+BEGIN
+    OPEN cur_emp;
+    LOOP
+        FETCH cur_emp INTO v_emp_rec;
+        EXIT WHEN cur_emp%NOTFOUND;
+        DELETE FROm proposed_raises WHERE CURRENT OF cur_emp;
+    END LOOP;
+    CLOSE cur_emp;
+END;
+       #+end_src

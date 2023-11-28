@@ -1,0 +1,41 @@
+#+title: PL/SQL: 2-6
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Vocabulary
+1. Block label
+2. Scope
+3. Visibility
+
+* Try It / Solve It
+1.
+   a) 2
+   b) Western Europe
+   c) 601
+   d) Producto is in stock
+   e) =new_locn= is not in scope at position 2
+2.
+   1. Because the inner block declares its own variables with the same names
+      =v_employee_id= and =v_job=.
+   2. Despite having the same names, do not
+      affect the outer block's variables since they have separate scopes.
+   3. The code as follows:
+      #+begin_src sql
+    DECLARE
+        v_employee_id employees.employee_id%TYPE;
+        v_job employees.job_id%TYPE;
+    BEGIN
+        SELECT employee_id, job_id INTO v_employee_id, v_job
+        FROM employees
+        WHERE employee_id = 100;
+    END;
+/
+
+    DECLARE inner_block;
+    BEGIN
+        SELECT employee_id, job_id INTO v_employee_id, v_job
+        FROM employees
+        WHERE employee_id = 103;
+        DBMS_OUTPUT.PUT_LINE(v_employee_id || ' is a(n) ' || v_job);
+    END inner_block;
+    DBMS_OUTPUT.PUT_LINE(v_employee_id || ' is a(n) ' || v_job);
+      #+end_src

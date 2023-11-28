@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{k}{DECLARE}
+\PYG{+w}{        }\PYG{n}{v\PYGZus{}first\PYGZus{}name}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{40}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} variable declaration}
+\PYG{+w}{        }\PYG{n}{v\PYGZus{}last\PYGZus{}name}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{40}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} variable declaration}
+\PYG{+w}{        }\PYG{n}{v\PYGZus{}first\PYGZus{}letter}\PYG{+w}{ }\PYG{n}{varchar2}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} variable declaration}
+\PYG{+w}{    }\PYG{k}{BEGIN}
+\PYG{+w}{        }\PYG{k}{SELECT}\PYG{+w}{ }\PYG{n}{first\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{last\PYGZus{}name}\PYG{+w}{ }\PYG{k}{INTO}\PYG{+w}{ }\PYG{n}{v\PYGZus{}first\PYGZus{}name}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{v\PYGZus{}last\PYGZus{}name}
+\PYG{+w}{            }\PYG{k}{FROM}\PYG{+w}{ }\PYG{n}{students}
+\PYG{+w}{            }\PYG{k}{WHERE}\PYG{+w}{ }\PYG{n}{student\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{105}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} conditional statement}
+\PYG{+w}{        }\PYG{n}{v\PYGZus{}first\PYGZus{}letter}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{get\PYGZus{}first\PYGZus{}letter}\PYG{p}{(}\PYG{n}{v\PYGZus{}last\PYGZus{}name}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} assignment statement}
+\PYG{+w}{        }\PYG{k}{IF}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}N\PYGZsq{}}\PYG{+w}{ }\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{}v\PYGZus{}first\PYGZus{}letter\PYGZsq{}}\PYG{+w}{ }\PYG{k}{THEN}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} conditional statement}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The last name for \PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{v\PYGZus{}first\PYGZus{}name}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}
+\PYG{+w}{                                    }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{v\PYGZus{}last\PYGZus{}name}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{} is between A and M\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{ELSE}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}The last name for \PYGZsq{}}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{v\PYGZus{}first\PYGZus{}name}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}
+\PYG{+w}{                                    }\PYG{o}{||}\PYG{+w}{ }\PYG{n}{v\PYGZus{}last\PYGZus{}name}\PYG{+w}{ }\PYG{o}{||}\PYG{+w}{ }\PYG{l+s+s1}{\PYGZsq{} is between N and Z\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{END}\PYG{+w}{ }\PYG{k}{IF}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

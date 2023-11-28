@@ -1,0 +1,58 @@
+#+title: PL/SQL 6-1
+#+LATEX_HEADER: \usepackage[margin=0.5in]{geometry}
+
+* Vocabulary
+1. Explicit Cursor
+2. Cursor
+3. CLOSE
+4. Oracle Server
+5. Implicit cursor
+6. OPEN
+7. FETCH
+8. Active set
+
+* Try/Solve it
+1. An implicit cursor is defined by Oracle Server when you do DML statements and
+   a explicit cursor is a user declared for queries that return one row.
+2. The SELECT statement
+3. Two circumstances when you need an explicit cursor:
+   1. When you have a statement that returns more than one row.
+   2. To produce a report of all employees
+4. CURRENCIES tables:
+   1. Display all the rows in CURRENCIES:
+     #+begin_src sql
+DECLARE
+    CURSOR currencies_cur IS SELECT currency_code, currency_name FROM WF_CURRENCIES ORDER BY currency_name;
+    v_curr_name WF_CURRENCIES.currency_name%TYPE;
+    v_curr_code WF_CURRENCIES.currency_code%TYPE;
+BEGIN
+    OPEN currencies_cur;
+    LOOP
+        FETCH currencies_cur INTO v_curr_code, v_curr_name;
+        EXIT WHEN currencies_cur%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_curr_code || ',' || v_curr_name);
+    END LOOP;
+END;
+     #+end_src
+   2. Read and display all the rows in the countries table where region = 5:
+      #+begin_src sql
+DECLARE
+    CURSOR countries_cur IS SELECT
+        country_name,national_holiday_name,national_holiday_date
+    FROM WF_COUNTRIES WHERE REGION_ID = 5;
+    v_country_name WF_COUNTRIES.country_name%TYPE;
+    v_nat_holiday_name WF_COUNTRIES.national_holiday_name%TYPE;
+    v_nat_holiday_date WF_COUNTRIES.national_holiday_date%TYPE;
+BEGIN
+    OPEN countries_cur;
+    LOOP
+        FETCH countries_cur INTO v_country_name, v_nat_holiday_name, v_nat_holiday_date;
+        EXIT WHEN countries_cur%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_country_name || ',' || v_nat_holiday_name || ',' || v_nat_holiday_date);
+    END LOOP;
+END;
+      #+end_src
+5. Three guidelines for fetching data from a cursor
+   1. Include the same number of variables in the INTO clause of the FETCH statement as columns in the SELECT statement
+   2. Match each variable to correspond to the columns position in the cursor definition.
+   3. Use %TYPE to insure data types are compatible between variable and table.

@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{    }\PYG{n}{number\PYGZus{}of\PYGZus{}copies}\PYG{+w}{ }\PYG{n}{PLS\PYGZus{}INTEGER}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} valid}
+\PYG{+w}{    }\PYG{n}{printer\PYGZus{}name}\PYG{+w}{ }\PYG{n}{CONSTANT}\PYG{+w}{ }\PYG{n}{VARCHAR2}\PYG{p}{(}\PYG{l+m+mi}{10}\PYG{p}{);}\PYG{+w}{ }\PYG{c+c1}{\PYGZhy{}\PYGZhy{} valid}
+\PYG{+w}{    }\PYG{n}{by\PYGZus{}when}\PYG{+w}{ }\PYG{n+nb}{DATE}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{SYSDATE}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{;}
+\end{Verbatim}

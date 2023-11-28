@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{        }\PYG{k}{DECLARE}
+\PYG{+w}{            }\PYG{n}{today}\PYG{+w}{ }\PYG{n+nb}{DATE}\PYG{p}{:}\PYG{o}{=}\PYG{n}{SYSDATE}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{tomorrow}\PYG{+w}{ }\PYG{n}{today}\PYG{o}{\PYGZpc{}}\PYG{k}{TYPE}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{BEGIN}
+\PYG{+w}{            }\PYG{n}{tomorrow}\PYG{+w}{ }\PYG{p}{:}\PYG{o}{=}\PYG{+w}{ }\PYG{n}{today}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{;}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Hello World\PYGZsq{}}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{n}{today}\PYG{p}{);}
+\PYG{+w}{            }\PYG{n}{DBMS\PYGZus{}OUTPUT}\PYG{p}{.}\PYG{n}{PUT\PYGZus{}LINE}\PYG{p}{(}\PYG{n}{tomorrow}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{END}\PYG{p}{;}
+\end{Verbatim}

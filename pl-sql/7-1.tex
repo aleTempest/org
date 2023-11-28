@@ -1,0 +1,210 @@
+% Created 2023-11-26 Sun 23:16
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{7 1}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={7 1},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vocabulary}
+\label{sec:org27628ed}
+
+\begin{enumerate}
+\item Exception Handler Code that defines the recovery actions to be performed when execution-time errors occur.
+\item Exception Occurs when an error is discovered during the execution of a program that disrupts the normal operation of the program.
+\end{enumerate}
+\section{Try It / Solve It}
+\label{sec:org2482a1e}
+
+\begin{enumerate}
+\item What happens when Oracle encounters a runtime problem while executing a PL/SQL block?
+
+Launches an Exception
+
+\item What do you need to add to your PL/SQL block to address these problems?
+
+An exception handler
+
+\item List three advantages of handling exceptions within a PL/SQL block.
+
+\begin{enumerate}
+\item Protects users from errors
+
+\item Protects database from errors
+
+\item Protects from software crashes
+\end{enumerate}
+
+\item Run this PL/SQL code and then answer the questions that follow.
+\end{enumerate}
+\begin{verbatim}
+DECLARE
+        v_jobid employees.job_id%TYPE;
+BEGIN
+      SELECT job_id INTO v_jobid FROM employees WHERE department_id = 80;
+END;
+\end{verbatim}
+
+\begin{enumerate}
+\item What happens when you run the block? In your own words, explain what you can do to fix this problem.
+
+The server returns an error. You can fix this by changing the code so the \texttt{department\_id} is not 80.
+
+\item Modify the code to fix the problem. Use a TOO\textsubscript{MANY}\textsubscript{ROWS} exception handler.
+\begin{verbatim}
+ DECLARE
+     v_jobid employees.job_id%TYPE;
+ BEGIN
+     SELECT job_id INTO v_jobid FROM employees WHERE department_id = 80;
+
+ EXCEPTION
+     WHEN NO_DATA_FOUND THEN
+         DBMS_OUTPUT.PUT_LINE('No data found for the given condition.');
+     WHEN TOO_MANY_ROWS THEN
+         DBMS_OUTPUT.PUT_LINE('Too many rows returned for the given condition.');
+     WHEN OTHERS THEN
+         DBMS_OUTPUT.PUT_LINE('An error occurred: ' || SQLCODE || ' - ' || SQLERRM);
+ END;
+\end{verbatim}
+
+\item Run your modified code. What happens this time?
+
+It prints a message when the exception is launched
+
+\item Run the following PL/SQL block, which tries to insert a new row (with department\textsubscript{id} = 50) into the departments table. What happens and why?
+\begin{verbatim}
+ BEGIN
+     INSERT INTO departments (department_id, department_name, manager_id, location_id) VALUES (50, 'A new department', 100, 1500); DBMS_OUTPUT.PUT_LINE('The new department was inserted');
+ EXCEPTION
+     WHEN OTHERS THEN
+     DBMS_OUTPUT.PUT_LINE ('An exception has occurred.');
+ END;
+\end{verbatim}
+
+This block tries to insert a new row into the departments table. If the insertion is successful, it will print 'The new department was inserted.' If an exception occurs, it will print 'An exception has occurred.' The outcome depends on factors like whether there is a department with the ID 50, constraints on the table, etc.
+
+\item Enter the following code to create a copy of the employees table for this and the next question.
+\begin{verbatim}
+ CREATE TABLE emp_temp AS SELECT * FROM employees;
+\end{verbatim}
+\end{enumerate}
+
+In the new emp\textsubscript{temp} table, delete all but one of the employees in department 10.
+
+\begin{verbatim}
+SELECT * FROM emp_temp WHERE department_id = 10;
+DELETE FROM emp_temp WHERE employee_id = …; (repeat as necessary)
+\end{verbatim}
+
+Enter the following PL/SQL block, which tries to SELECT all the employees in a specific department. Run it three times, using department\textsubscript{ids} 10, 20, and 30. What happens and why?
+
+\begin{verbatim}
+    DECLARE
+        v_employee_id employees.employee_id%TYPE;
+        v_last_name employees.last_name%TYPE;
+    BEGIN
+        SELECT employee_id, last_name INTO v_employee_id, v_last_name
+        FROM employees
+        WHERE department_id = 10; -- run with values 10, 20, and 30
+        DBMS_OUTPUT.PUT_LINE('The SELECT was successful');
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('An exception has occurred');
+    END;
+\end{verbatim}
+
+This block tries to select an employee's ID and last name from the employees table for a specified department. If the select is successful, it prints 'The SELECT was successful.' If an exception occurs, it prints 'An exception has occurred.'
+
+\begin{enumerate}
+\item Modify your code from question 6 to add two more exception handlers to trap the possible exceptions individually. Use NO\textsubscript{DATA}\textsubscript{FOUND} and TOO\textsubscript{MANY}\textsubscript{ROWS}. Re-run the block three times, using 10, 20, and 30 as before. Observe the message displayed in each case. When finished, remember to delete the emp\textsubscript{temp} table. DROP TABLE emp\textsubscript{temp};
+\begin{verbatim}
+DECLARE
+    v_employee_id employees.employee_id%TYPE;
+    v_last_name employees.last_name%TYPE;
+BEGIN
+    SELECT employee_id, last_name INTO v_employee_id, v_last_name
+    FROM employees
+    WHERE department_id = 10; -- Run with values 10, 20, and 30
+    DBMS_OUTPUT.PUT_LINE('The SELECT was successful');
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('No data found for the given condition.');
+    WHEN TOO_MANY_ROWS THEN
+        DBMS_OUTPUT.PUT_LINE('Too many rows returned for the given condition.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('An exception has occurred');
+END;
+\end{verbatim}
+
+\item List three guidelines for trapping exceptions.
+\begin{enumerate}
+\item Specific Exception Handling: Handle specific exceptions when possible (e.g., NO\textsubscript{DATA}\textsubscript{FOUND}, TOO\textsubscript{MANY}\textsubscript{ROWS}) rather than using the generic OTHERS exception.
+
+\item Logging and Messaging: Implement proper logging and messaging within the exception handlers to provide meaningful information about the error.
+
+\item Graceful Degradation: Handle exceptions gracefully, ensuring that the application can degrade gracefully in the face of unexpected issues.
+\end{enumerate}
+
+\item Enter and run the following PL/SQL block. Explain the output. Note: the WHEN OTHERS handler successfully handles any type of exception which occurs.
+\begin{verbatim}
+DECLARE
+    v_number NUMBER(2);
+BEGIN
+    v_number := 9999;
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('An exception has occurred');
+END;
+\end{verbatim}
+
+This block sets v\textsubscript{number} to 9999. Since there are no exceptions, it will not enter the exception block. The output will be nothing because there's no exception.
+
+\item Modify the block in question 9 to omit the exception handler, then re-run the block. Explain the output.
+
+it will likely get a standard Oracle error message.
+
+\item Enter and run the following code and explain the output.
+\begin{verbatim}
+    DECLARE
+        v_number NUMBER(4);
+    BEGIN
+        v_number := 1234;
+
+        DECLARE
+            v_number NUMBER(4);
+        BEGIN
+            v_number := 5678;
+            v_number := 'A character string';
+        END;
+
+    EXCEPTION
+        WHEN OTHERS THEN
+            DBMS_OUTPUT.PUT_LINE('An exception has occurred');
+            DBMS_OUTPUT.PUT_LINE('The number is: ' || v_number);
+    END;
+\end{verbatim}
+
+This code has a nested PL/SQL block that declares v\textsubscript{number} again. The inner block assigns a character string to v\textsubscript{number}, which conflicts with the outer block's declaration of v\textsubscript{number} as a NUMBER. This will result in a runtime error when the inner block is executed. The OTHERS exception handler catches the error and prints a message along with the value of v\textsubscript{number} at that point in the code.
+\end{enumerate}
+\end{document}

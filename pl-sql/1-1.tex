@@ -1,0 +1,117 @@
+% Created 2023-10-17 Tue 11:30
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[spanish, english]{babel}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{1-1: Introduction to PL/SQL}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={1-1: Introduction to PL/SQL},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section*{Vocabulary}
+\label{sec:orgfceb6bb}
+\begin{enumerate}
+\item Programming language features such as reusable/callable program units,
+modular blocks, cursors, constants, variables, assignment statements,
+conditional control statements, and loops
+
+\textbf{Procedural Constructs}
+
+\item Oracle Corporations standard procedural language for relational databases
+which allows basic program logic and control flow to be combined with SQL
+statements
+
+\textbf{PL/SQL}
+\end{enumerate}
+\section*{Try/Solve it}
+\label{sec:orgdd28264}
+
+\begin{enumerate}
+\item Match the criteria
+
+\begin{center}
+\begin{tabular}{ll}
+Criteria & Language\\[0pt]
+\hline
+3GL & \textbf{PL/SQL}\\[0pt]
+4GL & \textbf{SQL}\\[0pt]
+Is proprietary to Oracle Corporation & \textbf{PL/SQL}\\[0pt]
+Nonprocedural & \textbf{SQL}\\[0pt]
+Procedural & \textbf{PL/SQL}\\[0pt]
+Is ANSI-compliant & \textbf{SQL}\\[0pt]
+\end{tabular}
+\end{center}
+
+\item In your own words, describe why a procedural language like PL/SQL is needed.
+
+\textbf{Error handling, transaction management, reusabillity}.
+
+\item List some examples of procedural constructs in PL/SQL.
+
+\begin{enumerate}
+\item Anonymous block
+
+\item Variables
+
+\item Functions
+
+\item Conditional statements
+
+\item Loops
+
+\item Cursors
+
+\item Exceptions
+
+\item Triggers
+\end{enumerate}
+
+\item In the following code, identify (circle or highlight) examples of these
+procedural constructs: variable, conditional control statement,
+reusable/callable program unit, and an assignment statement.
+
+\begin{minted}[]{sql}
+    DECLARE
+        v_first_name varchar2(40); -- variable declaration
+        v_last_name varchar2(40); -- variable declaration
+        v_first_letter varchar2(1); -- variable declaration
+    BEGIN
+        SELECT first_name, last_name INTO v_first_name, v_last_name
+            FROM students
+            WHERE student_id = 105; -- conditional statement
+        v_first_letter := get_first_letter(v_last_name); -- assignment statement
+        IF 'N' > 'v_first_letter' THEN -- conditional statement
+            DBMS_OUTPUT.PUT_LINE('The last name for ' || v_first_name || ' '
+                                    || v_last_name || ' is between A and M');
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('The last name for ' || v_first_name || ' '
+                                    || v_last_name || ' is between N and Z');
+        END IF;
+    END;
+\end{minted}
+
+The comments of the code are the ``highlights''.
+\end{enumerate}
+\end{document}

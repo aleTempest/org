@@ -1,0 +1,97 @@
+% Created 2023-11-26 Sun 13:31
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{PL/SQL 6-1}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={PL/SQL 6-1},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vocabulary}
+\label{sec:orgef2286f}
+\begin{enumerate}
+\item Explicit Cursor
+\item Cursor
+\item CLOSE
+\item Oracle Server
+\item Implicit cursor
+\item OPEN
+\item FETCH
+\item Active set
+\end{enumerate}
+\section{Try/Solve it}
+\label{sec:org7f0a3cd}
+\begin{enumerate}
+\item An implicit cursor is defined by Oracle Server when you do DML statements and
+a explicit cursor is a user declared for queries that return one row.
+\item The SELECT statement
+\item Two circumstances when you need an explicit cursor:
+\begin{enumerate}
+\item When you have a statement that returns more than one row.
+\item To produce a report of all employees
+\end{enumerate}
+\item CURRENCIES tables:
+\begin{enumerate}
+\item Display all the rows in CURRENCIES:
+\begin{verbatim}
+DECLARE
+    CURSOR currencies_cur IS SELECT currency_code, currency_name FROM WF_CURRENCIES ORDER BY currency_name;
+    v_curr_name WF_CURRENCIES.currency_name%TYPE;
+    v_curr_code WF_CURRENCIES.currency_code%TYPE;
+BEGIN
+    OPEN currencies_cur;
+    LOOP
+        FETCH currencies_cur INTO v_curr_code, v_curr_name;
+        EXIT WHEN currencies_cur%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_curr_code || ',' || v_curr_name);
+    END LOOP;
+END;
+\end{verbatim}
+\item Read and display all the rows in the countries table where region = 5:
+\begin{verbatim}
+DECLARE
+    CURSOR countries_cur IS SELECT
+        country_name,national_holiday_name,national_holiday_date
+    FROM WF_COUNTRIES WHERE REGION_ID = 5;
+    v_country_name WF_COUNTRIES.country_name%TYPE;
+    v_nat_holiday_name WF_COUNTRIES.national_holiday_name%TYPE;
+    v_nat_holiday_date WF_COUNTRIES.national_holiday_date%TYPE;
+BEGIN
+    OPEN countries_cur;
+    LOOP
+        FETCH countries_cur INTO v_country_name, v_nat_holiday_name, v_nat_holiday_date;
+        EXIT WHEN countries_cur%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_country_name || ',' || v_nat_holiday_name || ',' || v_nat_holiday_date);
+    END LOOP;
+END;
+\end{verbatim}
+\end{enumerate}
+\item Three guidelines for fetching data from a cursor
+\begin{enumerate}
+\item Include the same number of variables in the INTO clause of the FETCH statement as columns in the SELECT statement
+\item Match each variable to correspond to the columns position in the cursor definition.
+\item Use \%TYPE to insure data types are compatible between variable and table.
+\end{enumerate}
+\end{enumerate}
+\end{document}

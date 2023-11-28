@@ -1,0 +1,115 @@
+% Created 2023-11-26 Sun 13:38
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{PL/SQL 6-6}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={PL/SQL 6-6},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Try It / Solve It}
+\label{sec:orgdca7a72}
+
+\begin{enumerate}
+\item Write and run a PL/SQL block which produces a listing of departments and their employees. Use the DEPARTMENTS and EMPLOYEES  tables. In a cursor FOR loop, retrieve and display the department\textsubscript{id} and department\textsubscript{name} for each department, and display a second line containing '----------' as a separator. In a nested cursor FOR loop, retrieve and display the first\textsubscript{name}, last\textsubscript{name}, and salary of each employee in that department, followed by a blank line at the end of each department. Order the departments by department\textsubscript{id}, and the employees in each department by last\textsubscript{name}. You will need to declare two cursors, one to fetch and display the departments, the second to fetch and display the employees in that department, passing the department\textsubscript{id} as a parameter. Your output should look something like this (only the first few departments are shown):
+\begin{verbatim}
+DECLARE
+    CURSOR cur_dept IS (
+        SELECT * FROM departments
+    );
+    CURSOR cur_emp (p_dept_id NUMBER) IS (
+        SELECT *
+            FROM employees
+        WHERE department_id = p_dept_id
+    );
+BEGIN
+    FOR dept_rec IN cur_dept LOOP
+        DBMS_OUTPUT.PUT_LINE(dept_rec.department_id || ' ' || dept_rec.department_name);
+        DBMS_OUTPUT.PUT_LINE(chr(10) || '-----------------------------' || chr(10));
+        FOR emp_rec IN cur_emp(dept_rec.department_id) LOOP
+            DBMS_OUTPUT.PUT_LINE(chr(10) || emp_rec.first_name || ' ' || emp_rec.last_name || ' ' || emp_rec.salary || chr(10));
+        END LOOP;
+        DBMS_OUTPUT.PUT_LINE(chr(10));
+    END LOOP;
+END;
+\end{verbatim}
+
+\item Write and run a PL/SQL block which produces a report listing world regions, countries in those regions, and the land area and population for each country. You will need two cursors: an outer loop cursor which fetches and displays rows from the REGIONS table, and an inner loop cursor which fetches and displays rows from the COUNTRIES table for countries in that region, passing the region\textsubscript{id} as a parameter. Restrict your regions to those in the Americas (region\textsubscript{name} like ‘\%America\%’). Order your output by region\textsubscript{name}, and by country\textsubscript{name} within each region. Your output should look something like this (only the first two regions are shown):
+\begin{verbatim}
+DECLARE
+    CURSOR cur_regions IS
+        SELECT *
+            FROM wf_world_regions
+        WHERE region_name LIKE '%America%'
+        ORDER BY region_name
+        FETCH FIRST 2 ROWS ONLY;
+    CURSOR cur_countries(p_region_id NUMBER) IS
+        SELECT *
+            FROM wf_countries
+        WHERE region_id = p_region_id
+        ORDER BY country_name;
+BEGIN
+    FOR reg_rec IN cur_regions LOOP
+        DBMS_OUTPUT.PUT_LINE(reg_rec.region_id || ' ' || reg_rec.region_name);
+        DBMS_OUTPUT.PUT_LINE(chr(10) || '-----------------------------' || chr(10));
+        FOR country_rec IN cur_countries(reg_rec.region_id) LOOP
+            DBMS_OUTPUT.PUT_LINE(country_rec.country_name || ' ' || country_rec.area || ' ' || country_rec.population);
+            DBMS_OUTPUT.PUT_LINE(chr(10));
+        END LOOP;
+    END LOOP;
+END;
+\end{verbatim}
+
+\item Modify your block from question 2 to display the names of official spoken languages in each country. You will need three cursors and three loops. The first two cursors should fetch and display regions and countries, as in question 2. The innermost loop should accept a country\textsubscript{id} as a parameter, and fetch and display the name of each official language, using a join of the SPOKEN\textsubscript{LANGUAGES} table and the LANGUAGES table. Within each country, the languages should be ordered by language\textsubscript{name}. Test your block, restricting regions to those in the Americas. Your output should look something like this (only the first two regions are shown):
+\begin{verbatim}
+DECLARE
+    CURSOR cur_regions IS
+        SELECT * FROM wf_world_regions
+        WHERE region_name LIKE '%America%'
+        ORDER BY region_name
+        FETCH FIRST 2 ROWS ONLY;
+    CURSOR cur_countries(p_region_id NUMBER) IS
+        SELECT * FROM wf_countries
+        WHERE region_id = p_region_id
+        ORDER BY country_name;
+    CURSOR cur_lang (p_country_id NUMBER) IS
+        SELECT language_name
+        FROM wf_spoken_languages sl, wf_languages l
+        WHERE sl.language_id = l.language_id AND official = 'Y' AND country_id = p_country_id;
+BEGIN
+    FOR reg_rec IN cur_regions LOOP
+        DBMS_OUTPUT.PUT_LINE(reg_rec.region_id || ' ' || reg_rec.region_name);
+        DBMS_OUTPUT.PUT_LINE(chr(10) || '-----------------------------' || chr(10));
+        FOR country_rec IN cur_countries(reg_rec.region_id) LOOP
+            DBMS_OUTPUT.PUT_LINE(country_rec.country_name || ' ' || country_rec.area || ' ' || country_rec.population);
+            DBMS_OUTPUT.PUT_LINE(chr(10));
+            FOR lang_rec IN cur_lang(country_rec.country_id) LOOP
+                DBMS_OUTPUT.PUT_LINE('--- ' || lang_rec.language_name);
+            END LOOP;
+        END LOOP;
+    END LOOP;
+END;
+\end{verbatim}
+\end{enumerate}
+\end{document}
