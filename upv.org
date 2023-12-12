@@ -239,9 +239,9 @@ SCHEDULED: <2023-11-24 Fri>
 SCHEDULED: <2023-11-27 Mon>
 
 ** TODO Reporte Unidad 3
-SCHEDULED: <2023-11-28 Tue>
+SCHEDULED: <2023-11-29 mié>
 ** TODO Examen Unidad 3
-SCHEDULED: <2023-11-29 Wed>
+SCHEDULED: <2023-12-01 vie>
 - TEMAS:
   - [ ] Definición de Transformadas de laplace
   - [ ] Transformadas de laplace
@@ -252,7 +252,6 @@ SCHEDULED: <2023-11-29 Wed>
   - [ ] Transformadas de derivadas
 ** TODO Recuperación
 *** Unidad 1
-SCHEDULED: <2023-11-30 Thu>
 - TEMAS:
   - [ ] Integración
   - [ ] Derivadas
@@ -262,7 +261,6 @@ SCHEDULED: <2023-11-30 Thu>
   - [ ] EC exactas
   - [ ] EC lineales
 *** Unidad 2
-SCHEDULED: <2023-12-01 Fri>
 - TEMAS:
   - [ ] Reducción de orden
   - [ ] EC Lineales homogéneas/no homo
@@ -295,20 +293,30 @@ Saludos cordiales!
 #+end_quote
 
 * TODO Estancias
-** TODO Encontrar empresa
+** DONE Encontrar empresa
+** TODO Reunión
+SCHEDULED: <2023-12-05 mar>
 ** TODO Entregar documentación
 - [ ] Seguro médico del IMSS
 - [ ] Carta de aceptación
 ** TODO Bitácoras
 ** TODO Reporte
 
-* Proyecto de redes
-** Entrega del proyecto
+* TODO Proyecto de redes
+** DONE Entrega del proyecto
 SCHEDULED: <2023-12-01 Fri>
-- [ ] Reporte
-- [ ] Archivo de packet tracer
+- [X] Reporte
+- [X] Archivo de packet tracer
 ** Presentación
 SCHEDULED: <2023-12-04 Mon>
 Presentación de diapositivas explicando todo.
 
 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
+
+* Feria
+- Entradas a conciertos
+- Comida
+- Tickets
+- Juegos
+- Tickets para niños
+- Login

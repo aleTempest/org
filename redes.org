@@ -40,27 +40,27 @@ Router on a stick
 ip dhcp pool skibidi
  network 192.168.20.0 255.255.255.0
  default-router 192.168.20.1
- dns-server 8.8.8.8
+ dns-server 192.168.30.6
 ip dhcp pool vlan10
  network 192.168.10.0 255.255.255.224
  default-router 192.168.10.1
- dns-server 8.8.8.8
+ dns-server 192.168.30.6
 ip dhcp pool vlan20
  network 192.168.10.32 255.255.255.224
  default-router 192.168.10.33
- dns-server 8.8.8.8
+ dns-server 192.168.30.6
 ip dhcp pool vlan30
  network 192.168.10.64 255.255.255.224
  default-router 192.168.10.65
- dns-server 8.8.8.8
+ dns-server 192.168.30.6
 ip dhcp pool vlan40
  network 192.168.10.96 255.255.255.224
  default-router 192.168.10.97
- dns-server 8.8.8.8
+ dns-server 192.168.30.6
 ip dhcp pool vlan50
  network 192.168.10.128 255.255.255.224
  default-router 192.168.10.129
- dns-server 8.8.8.8
+ dns-server 192.168.30.6
 #+end_src
 
 no ip dhcp pool vlan10
@@ -93,9 +93,9 @@ En cada switch de las PCs
 #+begin_src
 enable
 configure terminal
-spanning-tree vlan 10,20,30,40,50 priority 0
-interface range FastEthernet0/1 - 10
-spanning-tree portfast
+no spanning-tree vlan 10,20,30,40,50 priority 0
+no interface range FastEthernet0/1 - 10
+no spanning-tree portfast
 #+end_src
 
 ** Etherchannel
@@ -108,3 +108,8 @@ exit
 int Port-channel1
 sw m t
 #+end_src
+
+no network 200.200.200.0 0.0.0.7 area 0
+no network 200.200.200.8 0.0.0.7 area 0
+no network 192.168.100.0 0.0.0.7 area 0
+no network 192.168.100.8 0.0.0.7 area 0

@@ -1,0 +1,124 @@
+#+title: Ospf
+
+Subinterfaces
+#+begin_src
+interface g0/1
+sw m t
+sw t a v 11,22,99,111
+
+interface g0/1.11
+encapsulation dot1Q 11
+ip address 192.168.10.13 255.255.255.248
+desc gateway para la vlan amarillo
+
+interface g0/1.22
+encapsulation dot1Q 22
+ip address 192.168.10.1 255.255.255.252
+desc gateway para la vlan azul
+#+end_src
+
+interface GigabitEthernet0/1
+ ip address 192.168.30.1 255.255.255.248
+ ip ospf 1 area 0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1.11
+ encapsulation dot1Q 11
+ ip address 192.168.40.1 255.255.255.248
+ ip ospf 1 area 0
+!
+interface GigabitEthernet0/1.22
+ encapsulation dot1Q 22
+ ip address 192.168.40.9 255.255.255.248
+ ip ospf 1 area 0
+
+ network 192.168.10.0 0.0.0.7 area 0
+ network 192.168.10.8 0.0.0.7 area 0
+ network 192.168.10.12 0.0.0.7 area 0
+
+
+int s0/1/0
+no ip ospf 1 area 0
+int s0/1/1
+no ip ospf 1 area 0
+
+router ospf 1
+no network 200.200.200.0 0.0.0.7 area 0
+no network 200.200.200.8 0.0.0.7 area 0
+no network 200.200.200.16 0.0.0.7 area 0
+
+no network 192.168.30.0 0.0.0.7 area 0
+no network 200.200.200.8 0.0.0.7 area 0
+ no network 200.200.200.16 0.0.0.7 area 0
+ no network 200.200.200.8 0.0.0.7 area 0
+
+
+no access-list 100 deny icmp host 192.168.10.10 host 192.168.20.2
+no access-list 100 permit ip any any
+interface GigabitEthernet0/0
+no ip access-group 100 in
+
+int g0/0
+ip ospf hello-interval 5
+ip ospf dead-interval 20
+
+access-list 2 deny icmp host 192.168.10.10 any
+access-list 2 permit ip any any
+
+access-list 100 deny tcp any any eq 25
+access-list 100 permit ip any any
+
+line vty 0 15
+password 123
+login
+exit
+enable secret 123
+
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.248
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.20.9 255.255.255.248
+interface GigabitEthernet0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.20.17 255.255.255.248
+
+
+ interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.10.5 255.255.255.252
+!
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.10.9 255.255.255.252
+!
+interface GigabitEthernet0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.10.13 255.255.255.252
+!
+interface GigabitEthernet0/0.99
+ encapsulation dot1Q 99
+ ip address 192.168.10.17 255.255.255.252
+!
+
+access-list 101 deny tcp any host 192.168.1.6 eq telnet
+access-list 101 deny tcp any host 192.168.1.10 eq telnet
+access-list 101 deny tcp any host 192.168.1.14 eq telnet
+access-list 101 permit ip any any
+
+access-list 101 deny tcp any host 192.168.1.0 eq telnet
+access-list 101 permit ip any any
+
+no access-list 101 deny tcp any host 192.168.10.6 eq 23
+no access-list 101 deny tcp any host 192.168.10.10 eq 23
+no access-list 101 deny tcp any host 192.168.10.14 eq 23
+no access-list 101 permit ip any any
+
+int g0/0
+no ip access-group 101 in
+no ip access-group 101 out
+
+access-list 100 permit tcp 192.168.20.0 0.0.0.5 host 172.16.0.3 eq telnet
+access-list 100 deny tcp any host 172.16.0.5 eq telnet

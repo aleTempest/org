@@ -1,0 +1,190 @@
+% Created 2023-12-03 dom 20:06
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=0.5in]{geometry}
+\author{Agustín Alejandro Mota Hinojosa}
+\date{\today}
+\title{8-2}
+\hypersetup{
+ pdfauthor={Agustín Alejandro Mota Hinojosa},
+ pdftitle={8-2},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Vocabulary}
+\label{sec:orgad1d907}
+\begin{enumerate}
+\item Parameter Passing: Pass or communicate data between the caller and subprogram.
+\item Actual Parameter: The actual value assigned to a parameter.
+\item Actual Argument: Can be literal values, variables, or expressions that are provided in the parameter list of a called subprogram.
+\item Formal Parameter: A parameter name declared in the procedure heading.
+\end{enumerate}
+\section{Try}
+\label{sec:orgb3ce8b8}
+\begin{enumerate}
+\item Parameters in PL/SQL subprograms are variables used to pass values into or out of subprograms such as procedures and functions.
+\begin{itemize}
+\item There are two types of parameters:
+\begin{itemize}
+\item IN Parameters: Used for passing values into the subprogram. The values are read-only within the subprogram.
+\item OUT Parameters: Used for passing values out of the subprogram. The subprogram can modify the values of OUT parameters.
+\item IN OUT Parameters: Used for both passing values into and out of the subprogram.
+\end{itemize}
+\end{itemize}
+\item COUNTRIES table:
+\begin{enumerate}
+\item code:
+\begin{verbatim}
+CREATE OR REPLACE PROCEDURE get_country_info(
+   p_country_id IN COUNTRIES.COUNTRY_ID%TYPE
+) AS
+   v_country_name COUNTRIES.COUNTRY_NAME%TYPE;
+   v_capital COUNTRIES.CAPITAL%TYPE;
+BEGIN
+   SELECT COUNTRY_NAME, CAPITAL INTO v_country_name, v_capital
+   FROM COUNTRIES
+   WHERE COUNTRY_ID = p_country_id;
+
+   DBMS_OUTPUT.PUT_LINE('Country: ' || v_country_name || ', Capital: ' || v_capital);
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT_LINE('No information found for Country ID ' || p_country_id);
+END get_country_info;
+/
+\end{verbatim}
+
+\item execute:
+\begin{verbatim}
+BEGIN
+   get_country_info(90);
+END;
+\end{verbatim}
+
+\item re-execute: This would display the information for the country with ID 95 if it exists; otherwise, it will handle the NO\textsubscript{DATA}\textsubscript{FOUND} exception.
+
+\item Modify
+\begin{verbatim}
+CREATE OR REPLACE PROCEDURE get_country_info(
+   p_country_id IN COUNTRIES.COUNTRY_ID%TYPE
+) AS
+   v_country_name COUNTRIES.COUNTRY_NAME%TYPE;
+   v_capital COUNTRIES.CAPITAL%TYPE;
+BEGIN
+   BEGIN
+      SELECT COUNTRY_NAME, CAPITAL INTO v_country_name, v_capital
+      FROM COUNTRIES
+      WHERE COUNTRY_ID = p_country_id;
+
+      DBMS_OUTPUT.PUT_LINE('Country: ' || v_country_name || ', Capital: ' || v_capital);
+   EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+         DBMS_OUTPUT.PUT_LINE('No information found for Country ID ' || p_country_id);
+   END;
+END get_country_info;
+/
+\end{verbatim}
+\end{enumerate}
+
+\item Formal Parameter: Parameters declared in the subprogram specification or body. They define the interface of the subprogram.
+
+\item Procedure for Region's Highest Elevation:
+
+\begin{enumerate}
+\item code:
+\begin{verbatim}
+CREATE OR REPLACE PROCEDURE country_count_by_elevation(
+   p_region_id IN REGIONS.REGION_ID%TYPE,
+   p_min_elevation IN NUMBER,
+   p_first_char IN CHAR DEFAULT NULL
+) AS
+   v_count NUMBER;
+BEGIN
+   SELECT COUNT(*)
+   INTO v_count
+   FROM COUNTRIES c
+   JOIN LOCATIONS l ON c.LOCATION_ID = l.LOCATION_ID
+   WHERE c.REGION_ID = p_region_id
+      AND l.HIGHEST_ELEVATION > p_min_elevation
+      AND (p_first_char IS NULL OR SUBSTR(c.COUNTRY_NAME, 1, 1) = p_first_char);
+
+   DBMS_OUTPUT.PUT_LINE('Number of countries: ' || v_count);
+END country_count_by_elevation;
+/
+\end{verbatim}
+
+\item Execute:
+\begin{verbatim}
+BEGIN
+   country_count_by_elevation(5, 2000);
+END;
+\end{verbatim}
+
+\item DESC table: Can't because I'm not in apex
+
+\item modify code:
+\begin{verbatim}
+CREATE OR REPLACE PROCEDURE country_count_by_elevation(
+   p_region_id IN REGIONS.REGION_ID%TYPE,
+   p_min_elevation IN NUMBER,
+   p_first_char IN CHAR DEFAULT NULL
+) AS
+   v_count NUMBER;
+BEGIN
+   SELECT COUNT(*)
+   INTO v_count
+   FROM COUNTRIES c
+   JOIN LOCATIONS l ON c.LOCATION_ID = l.LOCATION_ID
+   WHERE c.REGION_ID = p_region_id
+      AND l.HIGHEST_ELEVATION > p_min_elevation
+      AND (p_first_char IS NULL OR SUBSTR(c.COUNTRY_NAME, 1, 1) = p_first_char);
+
+   DBMS_OUTPUT.PUT_LINE('Number of countries: ' || v_count);
+EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+      DBMS_OUTPUT.PUT_LINE('No countries found for the specified criteria.');
+END country_count_by_elevation;
+/
+\end{verbatim}
+
+\item Anonymous Block
+
+\begin{verbatim}
+   DECLARE
+      v_region_id REGIONS.REGION_ID%TYPE := 5;
+      v_elevation NUMBER := 2000;
+      v_first_char CHAR := 'B';
+   BEGIN
+      country_count_by_elevation(v_region_id, v_elevation, v_first_char);
+   END;
+\end{verbatim}
+
+\item code
+\begin{verbatim}
+DECLARE
+   v_region_id REGIONS.REGION_ID%TYPE := 5;
+   v_elevation NUMBER := 2000;
+   v_first_char CHAR := 'B';
+BEGIN
+   country_count_by_elevation(v_first_char, v_region_id, v_elevation);
+END;
+\end{verbatim}
+\end{enumerate}
+\end{enumerate}
+\end{document}

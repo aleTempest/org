@@ -1,0 +1,76 @@
+#+title: Todo
+
+switch multicapa
+#+begin_src
+vlan 20
+name AREA1
+vlan 30
+name AREA2
+vlan 40
+name AREA3
+vtp mode server
+vtp domain cisco
+vtp password cisco
+#+end_src
+
+switches conectados al multicapa
+#+begin_src
+vtp mode client
+vtp domain cisco
+vtp password cisco
+#+end_src
+
+subinterfaces
+#+begin_src
+interface GigabitEthernet0/1.20
+description gateway para la vlan 20
+encapsulation dot1Q 20
+ip address 192.168.30.1 255.255.255.224
+interface GigabitEthernet0/1.30
+description gateway para la vlan 30
+encapsulation dot1Q 30
+ip address 192.168.30.33 255.255.255.224
+interface GigabitEthernet0/1.40
+description gateway para la vlan 40
+encapsulation dot1Q 40
+ip address 192.168.30.65 255.255.255.224
+#+end_src
+
+dhcp
+#+begin_src
+ip dhcp pool AREA1
+network 192.168.30.0 255.255.255.224
+default-router 192.168.30.98
+dns-server 192.168.10.3
+ip dhcp pool AREA2
+network 192.168.30.32 255.255.255.224
+default-router 192.168.30.98
+dns-server 192.168.10.3
+ip dhcp pool AREA3
+network 192.168.30.64 255.255.255.224
+default-router 192.168.30.98
+dns-server 192.168.10.3
+#+end_src
+
+puertos de acceso
+#+begin_src
+ena
+conf t
+int fa0/2
+sw m a
+sw a vl
+#+end_src
+
+ospf
+#+begin_src
+ip ospf 1 area 0
+#+end_src
+
+ip route 0.0.0.0 0.0.0.0 200.200.200.1
+ip route 0.0.0.0 0.0.0.0 200.200.200.1
+ip route 0.0.0.0 0.0.0.0 s0/1/0
+default-information originate
+ip route 172.16.0.0 255.255.0.0
+ip route 172.16.0.0 255.255.0.0 s0/1/0
+no ip route 200.200.200.0 255.255.255.248 Serial0/1/0
+no ip route 200.200.200.0 255.255.255.248 Serial0/0/1

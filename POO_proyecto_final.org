@@ -1,0 +1,18 @@
+#+title: Poo Proyecto Final
+
+* Idea
+Aplicación cliente-servidor que permina administrar partidos de futbol
+y visualizar un tablero de los partidos actuales. CRUD para los equipos.
+
+- Login
+- Registro de jugadores
+  - Registro de equipos
+  - Registro de partidos
+- Manejo de equipos
+- Tablero de eventos
+
+* Base de datos
+#+begin_src sql
+#+end_src
+* Pantallas
+* Módulos

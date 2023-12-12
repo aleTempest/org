@@ -1,0 +1,9 @@
+#+title: Color
+
+* Gruvbox
+
+* Nord
+
+* NeoSolarized
+
+* doom-one
