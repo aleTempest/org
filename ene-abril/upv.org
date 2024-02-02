@@ -1,0 +1,40 @@
+#+title: Index
+
+* Horario
+| Hora          | Lunes  | Martes | Miércoles | Jueves | Viernes |
+|---------------+--------+--------+-----------+--------+---------|
+| 07:00 - 07:54 | webdev | webdev | webdev    |        |         |
+| 07:55 - 08:49 | webdev | webdev | webdev    |        | fide    |
+| 09:45 - 10:39 | fide   | fide   | fide      | fide   |         |
+| 11:10 - 12:04 | eng    | eng    | eng       | eng    | eng     |
+| 12:05 - 12:59 | eng    |        |           |        |         |
+| 14:55 - 15:49 | nuno   | nuno   | nuno      | nuno   | nuno    |
+
+* Programación Movil
+** Unidad 1
+*** TODO Proyecto Individual
+DEADLINE: <2024-02-09 vie.>
+**** PHPSimplex
+- [[https:www.phpsimplex.com/simplex/simplex.htm][Link del programa]]
+- [[https://github.com/aleTempest/AS-PIU1][Repositorio de la app]]
+- [[https://github.com/aleTempest/PIU1-Reporte][Repositorio del reporte]]
+*** TODO Proyecto en equipo:
+DEADLINE: <2024-02-13 mar.>
+**** Generar el codigo en Kotlin de las clases ingresadas
+- [[https:online.visual-paradigm.com/es/diagrams/solutions/free-class-diagram-tool/][Link del programa]]
+- [[https://github.com/aleTempest/PEU1-Reporte][Repositorio del reporte]]
+*** WAIT Asignación especial
+
+* Estancias
+** TODO Entrega de documentos
+- [ ] Carta de aceptación
+- [ ] Carta de presentación
+- [ ] Carta de liberación
+- [ ] Bitácoras 1-4
+- [ ] Reporte
+** TODO Proyecto
+SCHEDULED: <2024-02-05 lun.>
+Presentar proyecto
+* Beca de ITABEC
+** Registro
+DEADLINE: <2024-02-29 jue.>
