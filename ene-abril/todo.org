@@ -1,0 +1,6 @@
+* Ahorita
+- Crear una clase que pueda dibujar un canvas
+  - La clase tiene que poder dibujar entidades en pantalla (pasadas)
+    como argumento del constructor de la clase
+  - La clase tiene que tener la capacidad de aceptar más entidades
+    y actualizarce cuando reciba una más.

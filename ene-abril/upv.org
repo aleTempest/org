@@ -5,9 +5,12 @@
 |---------------+--------+--------+-----------+--------+---------|
 | 07:00 - 07:54 | webdev | webdev | webdev    |        |         |
 | 07:55 - 08:49 | webdev | webdev | webdev    |        | fide    |
+| 08:50 - 09:44 |        |        |           |        |         |
 | 09:45 - 10:39 | fide   | fide   | fide      | fide   |         |
 | 11:10 - 12:04 | eng    | eng    | eng       | eng    | eng     |
 | 12:05 - 12:59 | eng    |        |           |        |         |
+| 13:00 - 13:54 |        |        |           |        |         |
+| 13:55 - 14:54 |        |        |           |        |         |
 | 14:55 - 15:49 | nuno   | nuno   | nuno      | nuno   | nuno    |
 
 * Programación Movil
@@ -25,16 +28,23 @@ DEADLINE: <2024-02-13 mar.>
 - [[https://github.com/aleTempest/PEU1-Reporte][Repositorio del reporte]]
 *** WAIT Asignación especial
 
+* webdev
+** Rúbrica
+| Prácticas | 50% |
+| Examen    | 20% |
+| Proyecto  | 30% |
 * Estancias
 ** TODO Entrega de documentos
-- [ ] Carta de aceptación
-- [ ] Carta de presentación
+- [X] Carta de aceptación
+- [X] Carta de presentación
 - [ ] Carta de liberación
 - [ ] Bitácoras 1-4
 - [ ] Reporte
+- [ ] Diagrama de Gantt
 ** TODO Proyecto
 SCHEDULED: <2024-02-05 lun.>
 Presentar proyecto
 * Beca de ITABEC
 ** Registro
+[[https://sistemasiceet.tamaulipas.gob.mx/becas/futurotamaulipas/][Link]]
 DEADLINE: <2024-02-29 jue.>
