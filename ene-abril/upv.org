@@ -21,11 +21,14 @@ DEADLINE: <2024-02-09 vie.>
 - [[https:www.phpsimplex.com/simplex/simplex.htm][Link del programa]]
 - [[https://github.com/aleTempest/AS-PIU1][Repositorio de la app]]
 - [[https://github.com/aleTempest/PIU1-Reporte][Repositorio del reporte]]
+- [[https://github.com/mnunom-upv-classroom/proyecto-individual-u1-aleTempest][Repositorio para la entrega]]
 *** TODO Proyecto en equipo:
 DEADLINE: <2024-02-13 mar.>
 **** Generar el codigo en Kotlin de las clases ingresadas
 - [[https:online.visual-paradigm.com/es/diagrams/solutions/free-class-diagram-tool/][Link del programa]]
 - [[https://github.com/aleTempest/PEU1-Reporte][Repositorio del reporte]]
+- [[https://github.com/aleTempest/PEU1][Repositorio de la app]]
+- [[https://github.com/mnunom-upv-classroom/proyecto-en-equipo-u1-aleTempest][Repositorio de entrega]]
 *** WAIT Asignación especial
 
 * webdev
@@ -33,6 +36,13 @@ DEADLINE: <2024-02-13 mar.>
 | Prácticas | 50% |
 | Examen    | 20% |
 | Proyecto  | 30% |
+** TODO Instalar un servidor para php y mysql
+SCHEDULED: <2024-02-12 lun>
+- [ ] Instalar wordpress
+- [ ] Subir una template
+- [ ] Exportar la base de datos a .sql
+- [ ] Subir el proyecto a github
+
 * Estancias
 ** TODO Entrega de documentos
 - [X] Carta de aceptación
@@ -40,10 +50,9 @@ DEADLINE: <2024-02-13 mar.>
 - [ ] Carta de liberación
 - [ ] Bitácoras 1-4
 - [ ] Reporte
-- [ ] Diagrama de Gantt
-** TODO Proyecto
+- [ ] E4
+** DONE Presentar Proyecto
 SCHEDULED: <2024-02-05 lun.>
-Presentar proyecto
 * Beca de ITABEC
 ** Registro
 [[https://sistemasiceet.tamaulipas.gob.mx/becas/futurotamaulipas/][Link]]

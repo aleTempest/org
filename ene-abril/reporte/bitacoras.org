@@ -1,0 +1,13 @@
+* Semana 1
+Estuve analizando los requerimientos del sistema y diseñar la base de datos
+para el sistema conforme a las especificaciones de mi asesor empresarial.
+* Semana 2
+Esta semana fue para investigar tecnologías útiles para el sistema: lenguajes de
+programación adecuados, el motor de la base de datos y librerías para diseño de la página.
+* Semana 3
+Esta semana estuve realizando el backend del sistema, aplicar diseños de algoritmos
+como DAO para realizar las consultas a la base de datos, implementé un CRUD para el
+sistema de inventarios.
+* Semana 4
+Se incorporó el diseño de la página previamente planeado usando la librería booststrap
+y también se incorporaron a la pagina todos los assets que la empresa requiere como logos.
